@@ -1,118 +1,659 @@
-CONCEPT LOCATION — OPENING SOON — SPRINGFIELD, MO
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menu — Mach Coffee Co.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FAF7F0;
+    --navy: #1B2A4A;
+    --navy-dark: #121d36;
+    --gold: #C9A24B;
+    --brick: #8B2E2E;
+    --ink: #2C2C2C;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Source Serif 4', serif;
+    line-height: 1.6;
+  }
+  h1, h2, h3, .display {
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
 
-MACH COFFEE CO.
-ORDER NOW
-The Manifest
-FULL MENU
-Every drink, every build, every flight condition. Pick your altitude.
-H Hot I Iced B Blended
-SIGNATURE SHOTS
-SMOOTH CRUISE
-LOADED FLAVORS
-TEA & MATCHA
-COLD & REFRESHERS
-SPECIALTY
-01
-SIGNATURE SHOTS
-High-octane espresso builds. Not for the faint of heart.
-The Redliner
-HIB
-5 shots espresso, splash of half and half, pinch of Himalayan pink salt, dark caramel.
-The Afterburner
-HIB
-4 shots espresso, half and half, cayenne, mocha.
-The Stall
-HIB
-3 shots decaf, splash of half and half, pinch of salt, mocha.
-Bingo Fuel
-HIB
-2 shots espresso, touch of milk, brown sugar.
+  .top-strip {
+    background: var(--navy);
+    color: var(--cream);
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 8px 0;
+    text-align: center;
+    border-bottom: 2px solid var(--gold);
+  }
 
-02
-SMOOTH CRUISE
-Easy, balanced, steady altitude. No turbulence.
-The Cruise
-HIB
-2 shots espresso, honey, cinnamon.
-The Glider
-HIB
-2 shots espresso, oat milk, brown butter.
-The Still
-HIB
-2 shots espresso, caramel, milk.
-The Cloud
-HIB
-2 shots espresso, vanilla, milk.
-The Climb
-HI
-2 shots espresso, caramel machiato.
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 6%;
+    background: var(--cream);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(27,42,74,0.15);
+  }
+  .logo-mark { display: flex; align-items: center; gap: 14px; }
+  .logo-text {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    letter-spacing: 0.08em;
+    color: var(--navy);
+  }
+  .logo-text span { color: var(--brick); }
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .nav-links a { color: var(--navy); text-decoration: none; position: relative; padding-bottom: 4px; }
+  .nav-links a.active { color: var(--brick); }
+  .nav-links a::after {
+    content: '';
+    position: absolute; left: 0; bottom: 0;
+    width: 0; height: 2px;
+    background: var(--gold);
+    transition: width 0.25s ease;
+  }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-cta {
+    background: var(--navy);
+    color: var(--cream);
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 10px 22px;
+    border-radius: 2px;
+    text-decoration: none;
+    border: 1px solid var(--navy);
+    transition: all 0.25s ease;
+  }
+  .nav-cta:hover { background: transparent; color: var(--navy); }
 
-03
-LOADED FLAVORS
-Heavy cargo. Rich, stacked, full payload.
-The Payload
-HIB
-2 shots espresso, peanut butter, mocha, milk.
-The Heavy Lift
-HIB
-2 shots espresso, banana, mocha, peanut butter, milk.
-The Tailspin
-HIB
-2 shots espresso, banana, cinnamon, milk.
-The Black Box
-HIB
-2 shots espresso, mocha.
-The Crosswind
-HIB
-2 shots espresso, caramel, mocha.
-The Jet Exhaust
-HIB
-2 shots espresso, brown sugar, salted caramel.
+  /* ---------- MENU HERO ---------- */
+  .menu-hero {
+    padding: 70px 6% 50px;
+    text-align: center;
+    border-bottom: 1px solid rgba(27,42,74,0.12);
+  }
+  .eyebrow {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.25em;
+    color: var(--brick);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+  .eyebrow::before, .eyebrow::after { content: ''; width: 28px; height: 1px; background: var(--brick); }
+  .menu-hero h1 { font-size: clamp(2.4rem, 5vw, 3.6rem); color: var(--navy); margin-bottom: 14px; }
+  .menu-hero p { color: #5a594f; max-width: 540px; margin: 0 auto; }
 
-04
-TEA & MATCHA
-No espresso required. Calm air, clear skies.
-The Tailwind
-HIB
-Chai.
-The Headwind
-HI
-Tea.
-The Field Landing
-HIB
-Matcha, sweet cream.
-The Strawberry Field Landing
-HIB
-Matcha, strawberry slices, strawberry sweet cream.
+  /* ---------- TEMP KEY ---------- */
+  .temp-key {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    flex-wrap: wrap;
+    margin-top: 34px;
+    padding: 18px 24px;
+    background: var(--navy);
+    border-radius: 3px;
+    max-width: 620px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .temp-key-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.05em;
+    color: var(--cream);
+  }
+  .temp-key-letter {
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: var(--gold);
+    color: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.8rem;
+  }
 
-05
-COLD & REFRESHERS
-High altitude, low temperature.
-The Mayday
-I
-1 shot espresso, milk, honey, vanilla.
-The Jet Fuel
-IB
-Energy refresher, flavor of your choice.
-The Standby
-IB
-Refresher, flavor of your choice, caffeine-free.
-The Frostline
-B
-Blended smoothie, flavor of your choice.
+  /* ---------- CATEGORY NAV (jump links) ---------- */
+  .category-jump {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 28px 6%;
+    background: #F2EDE1;
+    border-bottom: 1px solid rgba(27,42,74,0.12);
+    position: sticky;
+    top: 81px;
+    z-index: 90;
+  }
+  .category-jump a {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--navy);
+    text-decoration: none;
+    padding: 8px 16px;
+    border: 1px solid rgba(27,42,74,0.3);
+    border-radius: 20px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+  .category-jump a:hover { background: var(--navy); color: var(--cream); border-color: var(--navy); }
 
-06
-SPECIALTY
-A couple of one-off builds, just because.
-The Flight Deck
-H
-Cappuccino, fancy milk froth design.
-The Mach Break
-IB
-2 shots espresso, cold brew, ice, cinnamon.
-READY TO ORDER?
-Pick up in-shop or get it delivered — your call.
-ORDER AHEAD
-MACH COFFEE CO.
-"Coffee, engineered for altitude."
-© 2026 Mach Coffee Co. All rights reserved.
+  /* ---------- CATEGORY SECTIONS ---------- */
+  .menu-section { padding: 70px 6% 20px; max-width: 1100px; margin: 0 auto; }
+  .category-head {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    margin-bottom: 8px;
+    border-bottom: 2px solid var(--navy);
+    padding-bottom: 14px;
+  }
+  .category-num {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.9rem;
+    color: var(--brick);
+    letter-spacing: 0.1em;
+  }
+  .category-head h2 { color: var(--navy); font-size: clamp(1.6rem, 3vw, 2.2rem); }
+  .category-tag {
+    font-family: 'Source Serif 4', serif;
+    font-style: italic;
+    color: #8a8a82;
+    font-size: 0.95rem;
+    margin-bottom: 36px;
+    margin-top: 8px;
+  }
+
+  .drink-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+    margin-bottom: 20px;
+  }
+
+  .drink-card {
+    background: #fff;
+    border: 1px solid rgba(27,42,74,0.13);
+    border-radius: 3px;
+    padding: 26px 28px;
+    transition: all 0.2s ease;
+    position: relative;
+  }
+  .drink-card:hover {
+    border-color: var(--gold);
+    box-shadow: 0 12px 28px rgba(27,42,74,0.1);
+    transform: translateY(-2px);
+  }
+  .drink-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 10px;
+  }
+  .drink-name {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.15rem;
+    color: var(--navy);
+    letter-spacing: 0.02em;
+  }
+  .drink-temps {
+    display: flex;
+    gap: 5px;
+    flex-shrink: 0;
+  }
+  .temp-pill {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--cream);
+    border: 1px solid var(--navy);
+    color: var(--navy);
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .drink-desc {
+    font-size: 0.92rem;
+    color: #5a594f;
+    line-height: 1.55;
+  }
+
+  .menu-divider {
+    height: 1px;
+    background: repeating-linear-gradient(to right, var(--navy) 0 8px, transparent 8px 16px);
+    opacity: 0.3;
+    margin: 60px 0;
+  }
+
+  /* ---------- ORDER CTA BAND ---------- */
+  .order-cta-band {
+    background: var(--navy);
+    color: var(--cream);
+    text-align: center;
+    padding: 70px 6%;
+    margin-top: 60px;
+  }
+  .order-cta-band h2 { color: var(--cream); font-size: clamp(1.8rem, 3.5vw, 2.4rem); margin-bottom: 16px; }
+  .order-cta-band p { color: rgba(250,247,240,0.8); margin-bottom: 30px; }
+  .btn-gold {
+    background: var(--gold);
+    color: var(--navy);
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    padding: 16px 36px;
+    text-decoration: none;
+    border-radius: 2px;
+    display: inline-block;
+    border: 1px solid var(--gold);
+    transition: all 0.25s ease;
+  }
+  .btn-gold:hover { background: transparent; color: var(--gold); }
+
+  footer {
+    background: var(--navy-dark);
+    color: rgba(250,247,240,0.6);
+    padding: 50px 6% 30px;
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+  }
+  footer .foot-logo { color: var(--cream); font-size: 1.1rem; letter-spacing: 0.1em; margin-bottom: 10px; }
+  footer .foot-logo span { color: var(--gold); }
+  footer .foot-tag {
+    color: rgba(250,247,240,0.4);
+    font-style: italic;
+    font-family: 'Source Serif 4', serif;
+    text-transform: none;
+    letter-spacing: 0;
+    margin-bottom: 24px;
+  }
+
+  @media (max-width: 880px) {
+    .nav-links { display: none; }
+    .drink-grid { grid-template-columns: 1fr; }
+    .category-jump { top: 0; position: relative; }
+    .menu-section { padding: 50px 6% 10px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="top-strip">Concept Location &mdash; Opening Soon &mdash; Springfield, MO</div>
+
+<nav>
+  <div class="logo-mark">
+    <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+      <circle cx="17" cy="17" r="16" stroke="#1B2A4A" stroke-width="1.5"/>
+      <path d="M17 3 L17 31 M3 17 L31 17" stroke="#1B2A4A" stroke-width="0.75"/>
+      <path d="M17 6 L20 17 L17 28 L14 17 Z" fill="#8B2E2E"/>
+      <circle cx="17" cy="17" r="2.5" fill="#C9A24B"/>
+    </svg>
+    <div class="logo-text">MACH <span>COFFEE CO.</span></div>
+  </div>
+  <div class="nav-links">
+    <a href="index.html#menu">Home</a>
+    <a href="menu.html" class="active">Menu</a>
+    <a href="index.html#story">Our Story</a>
+    <a href="index.html#visit">Visit</a>
+  </div>
+  <a href="index.html#order" class="nav-cta">Order Now</a>
+</nav>
+
+<section class="menu-hero">
+  <div class="eyebrow">The Manifest</div>
+  <h1>Full Menu</h1>
+  <p>Every drink, every build, every flight condition. Pick your altitude.</p>
+
+  <div class="temp-key">
+    <div class="temp-key-item"><span class="temp-key-letter">H</span> Hot</div>
+    <div class="temp-key-item"><span class="temp-key-letter">I</span> Iced</div>
+    <div class="temp-key-item"><span class="temp-key-letter">B</span> Blended</div>
+  </div>
+</section>
+
+<div class="category-jump">
+  <a href="#signature">Signature Shots</a>
+  <a href="#smooth">Smooth Cruise</a>
+  <a href="#loaded">Loaded Flavors</a>
+  <a href="#tea">Tea &amp; Matcha</a>
+  <a href="#cold">Cold &amp; Refreshers</a>
+  <a href="#specialty">Specialty</a>
+</div>
+
+<!-- ===================== SIGNATURE SHOTS ===================== -->
+<section class="menu-section" id="signature">
+  <div class="category-head">
+    <span class="category-num">01</span>
+    <h2>Signature Shots</h2>
+  </div>
+  <p class="category-tag">High-octane espresso builds. Not for the faint of heart.</p>
+
+  <div class="drink-grid">
+    <div class="drink-card">
+      <div class="drink-card-top">
+        <div class="drink-name">The Redliner</div>
+        <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+      </div>
+      <div class="drink-desc">5 shots espresso, splash of half and half, pinch of Himalayan pink salt, dark caramel.</div>
+    </div>
+
+    <div class="drink-card">
+      <div class="drink-card-top">
+        <div class="drink-name">The Afterburner</div>
+        <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+      </div>
+      <div class="drink-desc">4 shots espresso, half and half, cayenne, mocha.</div>
+    </div>
+
+    <div class="drink-card">
+      <div class="drink-card-top">
+        <div class="drink-name">The Stall</div>
+        <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+      </div>
+      <div class="drink-desc">3 shots decaf, splash of half and half, pinch of salt, mocha.</div>
+    </div>
+
+    <div class="drink-card">
+      <div class="drink-card-top">
+        <div class="drink-name">Bingo Fuel</div>
+        <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+      </div>
+      <div class="drink-desc">2 shots espresso, touch of milk, brown sugar.</div>
+    </div>
+  </div>
+</section>
+
+<div class="menu-divider"></div>
+
+<!-- ===================== SMOOTH CRUISE ===================== -->
+<section class="menu-section" id="smooth">
+  <div class="category-head">
+    <span class="category-num">02</span>
+    <h2>Smooth Cruise</h2>
+  </div>
+  <p class="category-tag">Easy, balanced, steady altitude. No turbulence.</p>
+
+  <div class="drink-grid">
+    <div class="drink-card">
+      <div class="drink-card-top">
+        <div class="drink-name">The Cruise</div>
+        <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+      </div>
+      <div class="drink-desc">2 shots espresso, honey, cinnamon.</div>
+    </div>
+
+    <div class="drink-card">
+      <div class="drink-card-top">
+        <div class="drink-name">The Glider</div>
+        <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+      </div>
+      <div class="drink-desc">2 shots espresso, oat milk, brown butter.</div>
+    </div>
+
+    <div class="drink-card">
+      <div class="drink-card-top">
+        <div class="drink-name">The Still</div>
+        <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+      </div>
+      <div class="drink-desc">2 shots espresso, caramel, milk.</div>
+    </div>
+
+    <div class="drink-card">
+      <div class="drink-card-top">
+        <div class="drink-name">The Cloud</div>
+        <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+      </div>
+      <div class="drink-desc">2 shots espresso, vanilla, milk.</div>
+    </div>
+
+    <div class="drink-card">
+      <div class="drink-card-top">
+        <div class="drink-name">The Climb</div>
+        <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span></div>
+      </div>
+      <div class="drink-desc">2 shots espresso, caramel machiato.</div>
+    </div>
+  </div>
+</section>
+
+<div class="menu-divider"></div>
+
+<!-- ===================== LOADED FLAVORS ===================== -->
+<section class="menu-section" id="loaded">
+  <div class="category-head">
+    <span class="category-num">03</span>
+    <h2>Loaded Flavors</h2>
+  </div>
+  <p class="category-tag">Heavy cargo. Rich, stacked, full payload.</p>
+
+  <div class="drink-grid">
+    <div class="drink-card">
+      <div class="drink-card-top">
+        <div class="drink-name">The Payload</div>
+        <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+      </div>
+      <div class="drink-desc">2 shots espresso, peanut butter, mocha, milk.</div>
+    </div>
+
+    <div class="drink-card">
+      <div class="drink-card-top">
+        <div class="drink-name">The Heavy Lift</div>
+        <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+      </div>
+      <div class="drink-desc">2 shots espresso, banana, mocha, peanut butter, milk.</div>
+    </div>
+
+    <div class="drink-card">
+      <div class="drink-card-top">
+        <div class="drink-name">The Tailspin</div>
+        <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+      </div>
+      <div class="drink-desc">2 shots espresso, banana, cinnamon, milk.</div>
+    </div>
+
+    <div class="drink-card">
+      <div class="drink-card-top">
+        <div class="drink-name">The Black Box</div>
+        <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+      </div>
+      <div class="drink-desc">2 shots espresso, mocha.</div>
+    </div>
+
+    <div class="drink-card">
+      <div class="drink-card-top">
+        <div class="drink-name">The Crosswind</div>
+        <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+      </div>
+      <div class="drink-desc">2 shots espresso, caramel, mocha.</div>
+    </div>
+
+    <div class="drink-card">
+      <div class="drink-card-top">
+        <div class="drink-name">The Jet Exhaust</div>
+        <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+      </div>
+      <div class="drink-desc">2 shots espresso, brown sugar, salted caramel.</div>
+    </div>
+  </div>
+</section>
+
+<div class="menu-divider"></div>
+
+<!-- ===================== TEA & MATCHA ===================== -->
+<section class="menu-section" id="tea">
+  <div class="category-head">
+    <span class="category-num">04</span>
+    <h2>Tea &amp; Matcha</h2>
+  </div>
+  <p class="category-tag">No espresso required. Calm air, clear skies.</p>
+
+  <div class="drink-grid">
+    <div class="drink-card">
+      <div class="drink-card-top">
+        <div class="drink-name">The Tailwind</div>
+        <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+      </div>
+      <div class="drink-desc">Chai.</div>
+    </div>
+
+    <div class="drink-card">
+      <div class="drink-card-top">
+        <div class="drink-name">The Headwind</div>
+        <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span></div>
+      </div>
+      <div class="drink-desc">Tea.</div>
+    </div>
+
+    <div class="drink-card">
+      <div class="drink-card-top">
+        <div class="drink-name">The Field Landing</div>
+        <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+      </div>
+      <div class="drink-desc">Matcha, sweet cream.</div>
+    </div>
+
+    <div class="drink-card">
+      <div class="drink-card-top">
+        <div class="drink-name">The Strawberry Field Landing</div>
+        <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+      </div>
+      <div class="drink-desc">Matcha, strawberry slices, strawberry sweet cream.</div>
+    </div>
+  </div>
+</section>
+
+<div class="menu-divider"></div>
+
+<!-- ===================== COLD & REFRESHERS ===================== -->
+<section class="menu-section" id="cold">
+  <div class="category-head">
+    <span class="category-num">05</span>
+    <h2>Cold &amp; Refreshers</h2>
+  </div>
+  <p class="category-tag">High altitude, low temperature.</p>
+
+  <div class="drink-grid">
+    <div class="drink-card">
+      <div class="drink-card-top">
+        <div class="drink-name">The Mayday</div>
+        <div class="drink-temps"><span class="temp-pill">I</span></div>
+      </div>
+      <div class="drink-desc">1 shot espresso, milk, honey, vanilla.</div>
+    </div>
+
+    <div class="drink-card">
+      <div class="drink-card-top">
+        <div class="drink-name">The Jet Fuel</div>
+        <div class="drink-temps"><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+      </div>
+      <div class="drink-desc">Energy refresher, flavor of your choice.</div>
+    </div>
+
+    <div class="drink-card">
+      <div class="drink-card-top">
+        <div class="drink-name">The Standby</div>
+        <div class="drink-temps"><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+      </div>
+      <div class="drink-desc">Refresher, flavor of your choice, caffeine-free.</div>
+    </div>
+
+    <div class="drink-card">
+      <div class="drink-card-top">
+        <div class="drink-name">The Frostline</div>
+        <div class="drink-temps"><span class="temp-pill">B</span></div>
+      </div>
+      <div class="drink-desc">Blended smoothie, flavor of your choice.</div>
+    </div>
+  </div>
+</section>
+
+<div class="menu-divider"></div>
+
+<!-- ===================== SPECIALTY ===================== -->
+<section class="menu-section" id="specialty">
+  <div class="category-head">
+    <span class="category-num">06</span>
+    <h2>Specialty</h2>
+  </div>
+  <p class="category-tag">A couple of one-off builds, just because.</p>
+
+  <div class="drink-grid">
+    <div class="drink-card">
+      <div class="drink-card-top">
+        <div class="drink-name">The Flight Deck</div>
+        <div class="drink-temps"><span class="temp-pill">H</span></div>
+      </div>
+      <div class="drink-desc">Cappuccino, fancy milk froth design.</div>
+    </div>
+
+    <div class="drink-card">
+      <div class="drink-card-top">
+        <div class="drink-name">The Mach Break</div>
+        <div class="drink-temps"><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+      </div>
+      <div class="drink-desc">2 shots espresso, cold brew, ice, cinnamon.</div>
+    </div>
+  </div>
+</section>
+
+<div class="order-cta-band">
+  <h2>Ready to Order?</h2>
+  <p>Pick up in-shop or get it delivered &mdash; your call.</p>
+  <a href="index.html#order" class="btn-gold">Order Ahead</a>
+</div>
+
+<footer>
+  <div class="foot-logo">MACH <span>COFFEE CO.</span></div>
+  <div class="foot-tag">"Coffee, engineered for altitude."</div>
+  <div>&copy; 2026 Mach Coffee Co. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
