@@ -1,77 +1,941 @@
-CONCEPT LOCATION — OPENING SOON — SPRINGFIELD, MO
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mach Coffee Co.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FAF7F0;
+    --navy: #1B2A4A;
+    --navy-dark: #121d36;
+    --gold: #C9A24B;
+    --brick: #8B2E2E;
+    --ink: #2C2C2C;
+  }
 
-MACH COFFEE CO.
-ORDER NOW
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-Est. Flight Plan Filed
-COFFEE, ENGINEERED FOR ALTITUDE.
-Every drink on the manifest is built like a flight checklist — precise, deliberate, and a little dangerous at full throttle. Welcome to Mach Coffee Co.
-VIEW THE MANIFEST
-ORDER AHEAD
-N
-S
-E
-W
-NE
-SE
-SW
-NW
-MACH COFFEE CO.
+  html { scroll-behavior: smooth; }
 
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Source Serif 4', serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
 
-AMBIENT MODE — TAP TO USE LIVE HEADING
-ENABLE
-5 SHOTS, NO SURVIVORS◆ THE REDLINER◆ CLEARED FOR TAKEOFF◆ THE AFTERBURNER◆ BREW ALTITUDE: MAX◆ 5 SHOTS, NO SURVIVORS◆ THE REDLINER◆ CLEARED FOR TAKEOFF◆ THE AFTERBURNER◆ BREW ALTITUDE: MAX◆
-The Manifest
-FLAGSHIP DRINKS
-01
-The Redliner
-5 shots, half & half, pink salt, dark caramel
+  h1, h2, h3, .display {
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
 
-H / I / B
-02
-The Afterburner
-4 shots, half & half, cayenne, mocha
+  /* ---------- TOP STRIP ---------- */
+  .top-strip {
+    background: var(--navy);
+    color: var(--cream);
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 8px 0;
+    text-align: center;
+    border-bottom: 2px solid var(--gold);
+  }
 
-H / I / B
-03
-The Glider
-2 shots, oat milk, brown butter
+  /* ---------- NAV ---------- */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 6%;
+    background: var(--cream);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(27,42,74,0.15);
+  }
 
-H / I / B
-04
-The Mayday
-1 shot, milk, honey, vanilla
+  .logo-mark {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
 
-ICED
-SEE FULL MENU
-Our Story
-BUILT ON A DREAM OF THE SKY
-Mach Coffee Co. started with a simple idea: coffee should feel like the moment a plane lifts off the runway. Every name on the menu, every detail in the build, comes from a real love of aviation and the people who push themselves to fly.
-READ THE FULL STORY
-THE SHORT VERSION
-This shop is being built by someone with their sights set on the sky — every cup is a small step toward something bigger. More to come as the story unfolds.
-Cleared for Departure
-ORDER AHEAD
-Pickup In-Shop
-Order ahead, skip the line
-DoorDash
-Delivery & pickup
-Grubhub
-Delivery & pickup
-Uber Eats
-Delivery & pickup
-FIND US
-123 Runway Lane Springfield, MO 65801
-(417) 555-0199
-Get Directions
-HOURS
-Mon – Fri
-6:00 AM – 3:00 PM
-Saturday
-7:00 AM – 1:00 PM
-Sunday
-Closed
-MACH COFFEE CO.
-"Coffee, engineered for altitude."
-© 2026 Mach Coffee Co. All rights reserved.
+  .logo-text {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    letter-spacing: 0.08em;
+    color: var(--navy);
+  }
+  .logo-text span { color: var(--brick); }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .nav-links a {
+    color: var(--navy);
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 4px;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: 0;
+    width: 0; height: 2px;
+    background: var(--gold);
+    transition: width 0.25s ease;
+  }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-cta {
+    background: var(--navy);
+    color: var(--cream);
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 10px 22px;
+    border-radius: 2px;
+    text-decoration: none;
+    border: 1px solid var(--navy);
+    transition: all 0.25s ease;
+  }
+  .nav-cta:hover { background: transparent; color: var(--navy); }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    position: relative;
+    padding: 90px 6% 110px;
+    background: var(--cream);
+    overflow: hidden;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 60px;
+    align-items: center;
+    max-width: 1280px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .eyebrow {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.25em;
+    color: var(--brick);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .eyebrow::before {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: var(--brick);
+  }
+
+  .hero h1 {
+    font-size: clamp(3rem, 6.5vw, 5.2rem);
+    line-height: 0.98;
+    color: var(--navy);
+    margin-bottom: 26px;
+    font-weight: 700;
+  }
+  .hero h1 .accent { color: var(--brick); }
+
+  .hero-sub {
+    font-size: 1.15rem;
+    color: #44433f;
+    max-width: 460px;
+    margin-bottom: 38px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--navy);
+    color: var(--cream);
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    padding: 16px 32px;
+    text-decoration: none;
+    border-radius: 2px;
+    border: 1px solid var(--navy);
+    transition: all 0.25s ease;
+  }
+  .btn-primary:hover { background: var(--navy-dark); }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--navy);
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    padding: 16px 32px;
+    text-decoration: none;
+    border-radius: 2px;
+    border: 1px solid var(--navy);
+    transition: all 0.25s ease;
+  }
+  .btn-secondary:hover { background: var(--navy); color: var(--cream); }
+
+  /* Compass rose motif */
+  .compass-wrap {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .compass-instrument {
+    position: relative;
+    width: 100%;
+    max-width: 440px;
+  }
+  .compass-bezel {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 18px 34px rgba(27,42,74,0.22));
+  }
+  .compass-needle-layer {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotate(0deg);
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .compass-needle-layer.ambient-spin {
+    animation: spin-slow 70s linear infinite;
+    transition: none;
+  }
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .compass-needle-layer.ambient-spin { animation: none; }
+  }
+
+  .compass-status {
+    margin-top: 22px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--navy);
+    opacity: 0.65;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: default;
+  }
+  .compass-status .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--brick);
+  }
+  .compass-status.live .dot { background: #3a7d44; }
+  .compass-status button {
+    background: none;
+    border: 1px solid var(--navy);
+    color: var(--navy);
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 2px;
+    cursor: pointer;
+    margin-left: 6px;
+  }
+  .compass-status button:hover { background: var(--navy); color: var(--cream); }
+  .compass-heading-readout {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.95rem;
+    color: var(--navy);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+  }
+
+  .altitude-line {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 1px;
+    background: repeating-linear-gradient(to bottom, var(--gold) 0 6px, transparent 6px 14px);
+    opacity: 0.4;
+  }
+
+  /* ---------- MARQUEE STRIP ---------- */
+  .marquee-strip {
+    background: var(--navy);
+    color: var(--gold);
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 14px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    border-top: 2px solid var(--gold);
+    border-bottom: 2px solid var(--gold);
+  }
+  .marquee-track {
+    display: inline-block;
+    animation: scroll-left 32s linear infinite;
+  }
+  .marquee-track span { margin: 0 28px; }
+  @keyframes scroll-left {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ---------- SECTION SHARED ---------- */
+  section { padding: 100px 6%; }
+  .section-inner { max-width: 1280px; margin: 0 auto; }
+
+  .section-head {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+  .section-head .eyebrow { justify-content: center; }
+  .section-head .eyebrow::before { display: none; }
+  .section-head .eyebrow::after {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: var(--brick);
+  }
+  .section-head h2 {
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    color: var(--navy);
+  }
+
+  /* ---------- MENU PREVIEW ---------- */
+  .menu-preview { background: var(--cream); }
+
+  .manifest-table {
+    border-top: 2px solid var(--navy);
+    border-bottom: 2px solid var(--navy);
+  }
+
+  .manifest-row {
+    display: grid;
+    grid-template-columns: 80px 1fr auto 140px;
+    align-items: baseline;
+    gap: 24px;
+    padding: 22px 0;
+    border-bottom: 1px dashed rgba(27,42,74,0.25);
+  }
+  .manifest-row:last-child { border-bottom: none; }
+
+  .manifest-code {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.75rem;
+    color: var(--brick);
+    letter-spacing: 0.1em;
+  }
+
+  .manifest-name {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.2rem;
+    color: var(--navy);
+    letter-spacing: 0.02em;
+  }
+
+  .manifest-desc {
+    font-size: 0.92rem;
+    color: #5a594f;
+    font-style: italic;
+  }
+
+  .manifest-temps {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.75rem;
+    color: var(--gold);
+    text-align: right;
+    letter-spacing: 0.1em;
+  }
+
+  .menu-cta {
+    text-align: center;
+    margin-top: 48px;
+  }
+
+  /* ---------- ABOUT TEASER ---------- */
+  .about-teaser {
+    background: var(--navy);
+    color: var(--cream);
+    position: relative;
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 70px;
+    align-items: center;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .about-teaser .eyebrow { color: var(--gold); }
+  .about-teaser .eyebrow::before { background: var(--gold); }
+  .about-teaser h2 { color: var(--cream); margin-bottom: 24px; font-size: clamp(2rem, 3.6vw, 2.8rem); }
+  .about-teaser p { color: rgba(250,247,240,0.85); font-size: 1.05rem; margin-bottom: 20px; max-width: 520px; }
+
+  .logbook-card {
+    background: var(--cream);
+    color: var(--ink);
+    padding: 44px;
+    border-radius: 2px;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  }
+  .logbook-card::before {
+    content: 'FLIGHT LOG — ENTRY 01';
+    position: absolute;
+    top: -14px;
+    left: 30px;
+    background: var(--gold);
+    color: var(--navy);
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    padding: 6px 14px;
+  }
+  .logbook-card h3 {
+    color: var(--navy);
+    font-size: 1.1rem;
+    margin-bottom: 14px;
+    margin-top: 8px;
+  }
+  .logbook-card p {
+    color: #4a4940;
+    font-size: 0.95rem;
+  }
+
+  /* ---------- ORDER STRIP ---------- */
+  .order-strip {
+    background: var(--cream);
+    text-align: center;
+  }
+  .order-strip .section-head { margin-bottom: 48px; }
+
+  .order-options {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .order-card {
+    background: #fff;
+    border: 1px solid rgba(27,42,74,0.15);
+    padding: 32px 40px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: var(--navy);
+    min-width: 200px;
+    transition: all 0.25s ease;
+  }
+  .order-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-4px);
+    box-shadow: 0 14px 30px rgba(27,42,74,0.12);
+  }
+  .order-card .platform {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.05rem;
+    letter-spacing: 0.04em;
+    margin-bottom: 6px;
+  }
+  .order-card .platform-sub {
+    font-size: 0.8rem;
+    color: #8a8a82;
+    font-style: italic;
+  }
+
+  .order-card--pickup {
+    background: var(--navy);
+    border-color: var(--navy);
+    position: relative;
+  }
+  .order-card--pickup .platform { color: var(--cream); }
+  .order-card--pickup .platform-sub { color: var(--gold); font-style: normal; }
+  .order-card--pickup:hover {
+    border-color: var(--gold);
+    background: var(--navy-dark);
+  }
+  .order-card--pickup::before {
+    content: 'NO FEES';
+    position: absolute;
+    top: -10px;
+    right: 14px;
+    background: var(--gold);
+    color: var(--navy);
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    padding: 3px 9px;
+    border-radius: 2px;
+  }
+
+  /* ---------- LOCATION / CONTACT ---------- */
+  .location {
+    background: var(--cream);
+    border-top: 1px solid rgba(27,42,74,0.15);
+  }
+  .location-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .location-block h3 {
+    color: var(--navy);
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .location-block h3::before {
+    content: '';
+    width: 8px; height: 8px;
+    background: var(--brick);
+    border-radius: 50%;
+  }
+  .location-block p {
+    font-size: 1.05rem;
+    color: #44433f;
+  }
+  .location-block a { color: var(--navy); text-decoration: none; border-bottom: 1px solid var(--gold); }
+
+  .hours-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px dashed rgba(27,42,74,0.2);
+    font-size: 0.95rem;
+  }
+  .hours-row:last-child { border-bottom: none; }
+  .hours-day { font-family: 'Oswald', sans-serif; letter-spacing: 0.05em; color: var(--navy); font-size: 0.85rem; }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    background: var(--navy-dark);
+    color: rgba(250,247,240,0.6);
+    padding: 50px 6% 30px;
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+  }
+  footer .foot-logo {
+    color: var(--cream);
+    font-size: 1.1rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
+  }
+  footer .foot-logo span { color: var(--gold); }
+  footer .foot-tag {
+    color: rgba(250,247,240,0.4);
+    font-style: italic;
+    font-family: 'Source Serif 4', serif;
+    text-transform: none;
+    letter-spacing: 0;
+    margin-bottom: 24px;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 880px) {
+    .nav-links { display: none; }
+    .hero-grid { grid-template-columns: 1fr; }
+    .compass-wrap { order: -1; max-width: 260px; margin: 0 auto 20px; }
+    .about-grid { grid-template-columns: 1fr; }
+    .location-grid { grid-template-columns: 1fr; gap: 40px; }
+    .manifest-row { grid-template-columns: 50px 1fr; row-gap: 6px; }
+    .manifest-desc { grid-column: 2 / 3; }
+    .manifest-temps { grid-column: 2 / 3; text-align: left; }
+    section { padding: 70px 6%; }
+  }
+
+  /* Focus visibility */
+  a:focus-visible, .order-card:focus-visible {
+    outline: 2px solid var(--brick);
+    outline-offset: 3px;
+  }
+</style>
+</head>
+<body>
+
+<div class="top-strip">Concept Location &mdash; Opening Soon &mdash; Springfield, MO</div>
+
+<nav>
+  <div class="logo-mark">
+    <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+      <circle cx="17" cy="17" r="16" stroke="#1B2A4A" stroke-width="1.5"/>
+      <path d="M17 3 L17 31 M3 17 L31 17" stroke="#1B2A4A" stroke-width="0.75"/>
+      <path d="M17 6 L20 17 L17 28 L14 17 Z" fill="#8B2E2E"/>
+      <circle cx="17" cy="17" r="2.5" fill="#C9A24B"/>
+    </svg>
+    <div class="logo-text">MACH <span>COFFEE CO.</span></div>
+  </div>
+  <div class="nav-links">
+    <a href="#menu">Menu</a>
+    <a href="#story">Our Story</a>
+    <a href="#order">Order</a>
+    <a href="#visit">Visit</a>
+  </div>
+  <a href="#order" class="nav-cta">Order Now</a>
+</nav>
+
+<header class="hero">
+  <div class="altitude-line"></div>
+  <div class="hero-grid">
+    <div>
+      <div class="eyebrow">Est. Flight Plan Filed</div>
+      <h1>Coffee, Engineered<br>for <span class="accent">Altitude.</span></h1>
+      <p class="hero-sub">Every drink on the manifest is built like a flight checklist — precise, deliberate, and a little dangerous at full throttle. Welcome to Mach Coffee Co.</p>
+      <div class="hero-actions">
+        <a href="#menu" class="btn-primary">View the Manifest</a>
+        <a href="#order" class="btn-secondary">Order Ahead</a>
+      </div>
+    </div>
+    <div class="compass-wrap">
+      <div class="compass-instrument">
+        <!-- Static bezel: outer casing, engraved ticks, degree numerals, cardinal letters -->
+        <svg class="compass-bezel" viewBox="0 0 440 440" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="bezelFace" cx="50%" cy="42%" r="65%">
+              <stop offset="0%" stop-color="#FFFDF9"/>
+              <stop offset="70%" stop-color="#FAF7F0"/>
+              <stop offset="100%" stop-color="#EFE9DA"/>
+            </radialGradient>
+            <linearGradient id="rimMetal" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#2c3d61"/>
+              <stop offset="50%" stop-color="#1B2A4A"/>
+              <stop offset="100%" stop-color="#0e1730"/>
+            </linearGradient>
+          </defs>
+
+          <circle cx="220" cy="220" r="216" fill="url(#rimMetal)"/>
+          <circle cx="220" cy="220" r="216" fill="none" stroke="#C9A24B" stroke-width="2"/>
+          <circle cx="220" cy="220" r="202" fill="none" stroke="#C9A24B" stroke-width="1" opacity="0.5"/>
+
+          <circle cx="220" cy="220" r="190" fill="url(#bezelFace)"/>
+          <circle cx="220" cy="220" r="190" fill="none" stroke="#1B2A4A" stroke-width="1.5"/>
+          <circle cx="220" cy="220" r="160" fill="none" stroke="#C9A24B" stroke-width="1" opacity="0.55"/>
+
+          <g stroke="#1B2A4A" stroke-width="1.4">
+            <g id="ticks"></g>
+          </g>
+
+          <text x="220" y="58" text-anchor="middle" fill="#8B2E2E" font-family="Oswald, sans-serif" font-size="30" font-weight="700">N</text>
+          <text x="220" y="398" text-anchor="middle" fill="#1B2A4A" font-family="Oswald, sans-serif" font-size="26" font-weight="700">S</text>
+          <text x="388" y="230" text-anchor="middle" fill="#1B2A4A" font-family="Oswald, sans-serif" font-size="26" font-weight="700">E</text>
+          <text x="52" y="230" text-anchor="middle" fill="#1B2A4A" font-family="Oswald, sans-serif" font-size="26" font-weight="700">W</text>
+
+          <text x="306" y="116" text-anchor="middle" fill="#1B2A4A" font-family="Oswald, sans-serif" font-size="15" letter-spacing="1" opacity="0.7">NE</text>
+          <text x="306" y="334" text-anchor="middle" fill="#1B2A4A" font-family="Oswald, sans-serif" font-size="15" letter-spacing="1" opacity="0.7">SE</text>
+          <text x="128" y="334" text-anchor="middle" fill="#1B2A4A" font-family="Oswald, sans-serif" font-size="15" letter-spacing="1" opacity="0.7">SW</text>
+          <text x="128" y="116" text-anchor="middle" fill="#1B2A4A" font-family="Oswald, sans-serif" font-size="15" letter-spacing="1" opacity="0.7">NW</text>
+
+          <text x="220" y="290" text-anchor="middle" fill="#1B2A4A" font-family="Oswald, sans-serif" font-size="11" letter-spacing="3" opacity="0.55">MACH COFFEE CO.</text>
+
+          <circle cx="220" cy="220" r="58" fill="none" stroke="#1B2A4A" stroke-width="1" opacity="0.3"/>
+        </svg>
+
+        <div class="compass-needle-layer ambient-spin" id="compassNeedle">
+          <svg viewBox="0 0 440 440" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:100%; position:absolute; top:0; left:0;">
+            <path d="M220 70 L234 220 L220 235 L206 220 Z" fill="#8B2E2E"/>
+            <path d="M220 370 L232 222 L220 210 L208 222 Z" fill="#1B2A4A"/>
+            <circle cx="220" cy="220" r="13" fill="#C9A24B" stroke="#1B2A4A" stroke-width="1.5"/>
+            <circle cx="220" cy="220" r="4" fill="#1B2A4A"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="compass-status" id="compassStatus">
+        <span class="dot"></span>
+        <span id="compassStatusText">Ambient mode &mdash; tap to use live heading</span>
+        <button id="compassEnableBtn" type="button">Enable</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span>5 SHOTS, NO SURVIVORS</span><span>&#9670;</span>
+    <span>THE REDLINER</span><span>&#9670;</span>
+    <span>CLEARED FOR TAKEOFF</span><span>&#9670;</span>
+    <span>THE AFTERBURNER</span><span>&#9670;</span>
+    <span>BREW ALTITUDE: MAX</span><span>&#9670;</span>
+    <span>5 SHOTS, NO SURVIVORS</span><span>&#9670;</span>
+    <span>THE REDLINER</span><span>&#9670;</span>
+    <span>CLEARED FOR TAKEOFF</span><span>&#9670;</span>
+    <span>THE AFTERBURNER</span><span>&#9670;</span>
+    <span>BREW ALTITUDE: MAX</span><span>&#9670;</span>
+  </div>
+</div>
+
+<section class="menu-preview" id="menu">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="eyebrow">The Manifest</div>
+      <h2>Flagship Drinks</h2>
+    </div>
+    <div class="manifest-table">
+      <div class="manifest-row">
+        <div class="manifest-code">01</div>
+        <div>
+          <div class="manifest-name">The Redliner</div>
+          <div class="manifest-desc">5 shots, half & half, pink salt, dark caramel</div>
+        </div>
+        <div></div>
+        <div class="manifest-temps">H / I / B</div>
+      </div>
+      <div class="manifest-row">
+        <div class="manifest-code">02</div>
+        <div>
+          <div class="manifest-name">The Afterburner</div>
+          <div class="manifest-desc">4 shots, half & half, cayenne, mocha</div>
+        </div>
+        <div></div>
+        <div class="manifest-temps">H / I / B</div>
+      </div>
+      <div class="manifest-row">
+        <div class="manifest-code">03</div>
+        <div>
+          <div class="manifest-name">The Glider</div>
+          <div class="manifest-desc">2 shots, oat milk, brown butter</div>
+        </div>
+        <div></div>
+        <div class="manifest-temps">H / I / B</div>
+      </div>
+      <div class="manifest-row">
+        <div class="manifest-code">04</div>
+        <div>
+          <div class="manifest-name">The Mayday</div>
+          <div class="manifest-desc">1 shot, milk, honey, vanilla</div>
+        </div>
+        <div></div>
+        <div class="manifest-temps">ICED</div>
+      </div>
+    </div>
+    <div class="menu-cta">
+      <a href="menu.html" class="btn-secondary">See Full Menu</a>
+    </div>
+  </div>
+</section>
+
+<section class="about-teaser" id="story">
+  <div class="about-grid">
+    <div>
+      <div class="eyebrow">Our Story</div>
+      <h2>Built on a Dream of the Sky</h2>
+      <p>Mach Coffee Co. started with a simple idea: coffee should feel like the moment a plane lifts off the runway. Every name on the menu, every detail in the build, comes from a real love of aviation and the people who push themselves to fly.</p>
+      <a href="about.html" class="btn-secondary" style="border-color: var(--gold); color: var(--gold);">Read the Full Story</a>
+    </div>
+    <div class="logbook-card">
+      <h3>The Short Version</h3>
+      <p>This shop is being built by someone with their sights set on the sky — every cup is a small step toward something bigger. More to come as the story unfolds.</p>
+    </div>
+  </div>
+</section>
+
+<section class="order-strip" id="order">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="eyebrow">Cleared for Departure</div>
+      <h2>Order Ahead</h2>
+    </div>
+    <div class="order-options">
+      <a href="#visit" class="order-card order-card--pickup">
+        <div class="platform">Pickup In-Shop</div>
+        <div class="platform-sub">Order ahead, skip the line</div>
+      </a>
+      <a href="#" class="order-card">
+        <div class="platform">DoorDash</div>
+        <div class="platform-sub">Delivery &amp; pickup</div>
+      </a>
+      <a href="#" class="order-card">
+        <div class="platform">Grubhub</div>
+        <div class="platform-sub">Delivery &amp; pickup</div>
+      </a>
+      <a href="#" class="order-card">
+        <div class="platform">Uber Eats</div>
+        <div class="platform-sub">Delivery &amp; pickup</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="location" id="visit">
+  <div class="location-grid">
+    <div class="location-block">
+      <h3>Find Us</h3>
+      <p>123 Runway Lane<br>Springfield, MO 65801</p>
+      <p style="margin-top: 14px;"><a href="tel:4175550199">(417) 555-0199</a></p>
+      <p style="margin-top: 14px;"><a href="#">Get Directions</a></p>
+    </div>
+    <div class="location-block">
+      <h3>Hours</h3>
+      <div class="hours-row"><span class="hours-day">Mon &ndash; Fri</span><span>6:00 AM &ndash; 3:00 PM</span></div>
+      <div class="hours-row"><span class="hours-day">Saturday</span><span>7:00 AM &ndash; 1:00 PM</span></div>
+      <div class="hours-row"><span class="hours-day">Sunday</span><span>Closed</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-logo">MACH <span>COFFEE CO.</span></div>
+  <div class="foot-tag">"Coffee, engineered for altitude."</div>
+  <div>&copy; 2026 Mach Coffee Co. All rights reserved.</div>
+</footer>
+
+<script>
+  // --- Generate engraved degree ticks on the static bezel ---
+  (function buildTicks() {
+    const ticksGroup = document.getElementById('ticks');
+    if (!ticksGroup) return;
+    const cx = 220, cy = 220;
+    const outerR = 190;
+    for (let deg = 0; deg < 360; deg += 10) {
+      const isMajor = deg % 30 === 0;
+      const len = isMajor ? 16 : 9;
+      const innerR = outerR - len;
+      const rad = (deg - 90) * Math.PI / 180; // 0deg = up
+      const x1 = cx + outerR * Math.cos(rad);
+      const y1 = cy + outerR * Math.sin(rad);
+      const x2 = cx + innerR * Math.cos(rad);
+      const y2 = cy + innerR * Math.sin(rad);
+      const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      line.setAttribute('x1', x1.toFixed(1));
+      line.setAttribute('y1', y1.toFixed(1));
+      line.setAttribute('x2', x2.toFixed(1));
+      line.setAttribute('y2', y2.toFixed(1));
+      line.setAttribute('opacity', isMajor ? '0.8' : '0.35');
+      ticksGroup.appendChild(line);
+    }
+  })();
+
+  // --- Live compass heading (device orientation), with ambient fallback ---
+  (function compassLogic() {
+    const needle = document.getElementById('compassNeedle');
+    const statusEl = document.getElementById('compassStatus');
+    const statusText = document.getElementById('compassStatusText');
+    const enableBtn = document.getElementById('compassEnableBtn');
+    if (!needle || !statusEl) return;
+
+    let liveActive = false;
+
+    function setHeading(deg) {
+      // Rotate needle layer opposite to heading so North marker stays pointing true north
+      needle.style.transform = `rotate(${(-deg).toFixed(1)}deg)`;
+    }
+
+    function goLive() {
+      needle.classList.remove('ambient-spin');
+      liveActive = true;
+      statusEl.classList.add('live');
+      if (enableBtn) enableBtn.style.display = 'none';
+    }
+
+    function handleOrientation(e) {
+      let heading = null;
+      if (typeof e.webkitCompassHeading === 'number') {
+        // iOS Safari gives compass heading directly (already true/magnetic north relative)
+        heading = e.webkitCompassHeading;
+      } else if (typeof e.alpha === 'number') {
+        // Other browsers: alpha is rotation around z-axis; absolute orientation events are closer to compass heading
+        heading = 360 - e.alpha;
+      }
+      if (heading === null || isNaN(heading)) return;
+      if (!liveActive) goLive();
+      statusText.textContent = 'Live heading: ' + Math.round(heading) + '\u00B0';
+      setHeading(heading);
+    }
+
+    function startListening() {
+      window.addEventListener('deviceorientationabsolute', handleOrientation, true);
+      window.addEventListener('deviceorientation', handleOrientation, true);
+      // If nothing fires within a couple seconds, stay in ambient mode quietly
+      setTimeout(() => {
+        if (!liveActive) {
+          statusText.textContent = 'Ambient mode \u2014 live heading unavailable on this device';
+          if (enableBtn) enableBtn.style.display = 'none';
+        }
+      }, 2500);
+    }
+
+    function requestPermissionAndStart() {
+      if (typeof DeviceOrientationEvent !== 'undefined' &&
+          typeof DeviceOrientationEvent.requestPermission === 'function') {
+        // iOS 13+ requires explicit user-gesture permission
+        DeviceOrientationEvent.requestPermission()
+          .then(result => {
+            if (result === 'granted') {
+              startListening();
+            } else {
+              statusText.textContent = 'Permission denied \u2014 ambient mode';
+              if (enableBtn) enableBtn.style.display = 'none';
+            }
+          })
+          .catch(() => {
+            statusText.textContent = 'Ambient mode \u2014 tap not supported here';
+            if (enableBtn) enableBtn.style.display = 'none';
+          });
+      } else if (window.DeviceOrientationEvent) {
+        // Android / other browsers: no explicit permission step needed
+        startListening();
+      } else {
+        statusText.textContent = 'Ambient mode \u2014 this device has no compass sensor';
+        if (enableBtn) enableBtn.style.display = 'none';
+      }
+    }
+
+    if (enableBtn) {
+      enableBtn.addEventListener('click', requestPermissionAndStart);
+    }
+
+    // On Android, sensor data can flow without a permission prompt, so try silently too.
+    // (No-op on iOS Safari until the user taps Enable, by design of the platform.)
+    if (window.DeviceOrientationEvent &&
+        typeof DeviceOrientationEvent.requestPermission !== 'function') {
+      startListening();
+    }
+  })();
+</script>
+
+</body>
+</html>
