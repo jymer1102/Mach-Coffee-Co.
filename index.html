@@ -858,10 +858,23 @@
     if (!needle || !statusEl) return;
 
     let liveActive = false;
+    let currentRotation = 0; // cumulative rotation applied to the needle layer (can exceed +-360)
+    let lastHeading = null;  // last raw heading value (0-360) we received
 
-    function setHeading(deg) {
-      // Rotate needle layer opposite to heading so North marker stays pointing true north
-      needle.style.transform = `rotate(${(-deg).toFixed(1)}deg)`;
+    function setHeading(heading) {
+      // heading is raw compass degrees, 0-360, where the needle should point to "north"
+      if (lastHeading === null) {
+        // First reading: just snap to it directly, no delta to compute yet
+        currentRotation = -heading;
+      } else {
+        // Find the shortest signed angular difference between the new and last heading,
+        // so the needle never takes the "long way around" through 0/360.
+        let delta = heading - lastHeading;
+        delta = ((delta + 180) % 360 + 360) % 360 - 180; // normalize to [-180, 180]
+        currentRotation += -delta;
+      }
+      lastHeading = heading;
+      needle.style.transform = `rotate(${currentRotation.toFixed(1)}deg)`;
     }
 
     function goLive() {
@@ -881,6 +894,7 @@
         heading = 360 - e.alpha;
       }
       if (heading === null || isNaN(heading)) return;
+      heading = ((heading % 360) + 360) % 360; // normalize to [0, 360)
       if (!liveActive) goLive();
       statusText.textContent = 'Live heading: ' + Math.round(heading) + '\u00B0';
       setHeading(heading);
