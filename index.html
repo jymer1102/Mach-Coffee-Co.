@@ -147,7 +147,8 @@
     align-items: center;
     gap: 12px;
   }
-  .eyebrow::before {
+  .eyebrow::before,
+  .eyebrow::after {
     content: '';
     width: 28px;
     height: 1px;
@@ -330,13 +331,6 @@
     margin-bottom: 64px;
   }
   .section-head .eyebrow { justify-content: center; }
-  .section-head .eyebrow::before { display: none; }
-  .section-head .eyebrow::after {
-    content: '';
-    width: 28px;
-    height: 1px;
-    background: var(--brick);
-  }
   .section-head h2 {
     font-size: clamp(2.2rem, 4vw, 3.2rem);
     color: var(--navy);
@@ -408,7 +402,8 @@
     margin: 0 auto;
   }
   .about-teaser .eyebrow { color: var(--gold); }
-  .about-teaser .eyebrow::before { background: var(--gold); }
+  .about-teaser .eyebrow::before,
+  .about-teaser .eyebrow::after { background: var(--gold); }
   .about-teaser h2 { color: var(--cream); margin-bottom: 24px; font-size: clamp(2rem, 3.6vw, 2.8rem); }
   .about-teaser p { color: rgba(250,247,240,0.85); font-size: 1.05rem; margin-bottom: 20px; max-width: 520px; }
 
