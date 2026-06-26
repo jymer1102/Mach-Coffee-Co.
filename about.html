@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Our Story — Mach Coffee Co.</title>
+<link rel="icon" id="favicon" type="image/png" href="favicon/frame_00.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap" rel="stylesheet">
@@ -414,6 +415,27 @@
   <div class="foot-tag">"Coffee, engineered for altitude."</div>
   <div>&copy; 2026 Mach Coffee Co. All rights reserved.</div>
 </footer>
+<script>
+  // --- Animated spinning favicon (compass needle) ---
+  (function animateFavicon() {
+    const FRAME_COUNT = 24;
+    const FRAME_INTERVAL_MS = 80; // ~1.9s per full rotation
+    const favicon = document.getElementById('favicon');
+    if (!favicon) return;
+
+    const frameUrls = [];
+    for (let i = 0; i < FRAME_COUNT; i++) {
+      frameUrls.push(`favicon/frame_${String(i).padStart(2, '0')}.png`);
+    }
+    frameUrls.forEach(src => { const img = new Image(); img.src = src; });
+
+    let frameIndex = 0;
+    setInterval(() => {
+      frameIndex = (frameIndex + 1) % FRAME_COUNT;
+      favicon.setAttribute('href', frameUrls[frameIndex]);
+    }, FRAME_INTERVAL_MS);
+  })();
+</script>
 
 </body>
 </html>
