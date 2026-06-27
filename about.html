@@ -73,6 +73,18 @@
     text-decoration: none;
     cursor: pointer;
   }
+  .nav-compass-needle {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: nav-compass-spin 6s linear infinite;
+  }
+  @keyframes nav-compass-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .nav-compass-needle { animation: none; }
+  }
   .logo-text {
     font-family: 'Oswald', sans-serif;
     font-weight: 700;
@@ -321,7 +333,9 @@
     <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
       <circle cx="17" cy="17" r="16" stroke="#1B2A4A" stroke-width="1.5"/>
       <path d="M17 3 L17 31 M3 17 L31 17" stroke="#1B2A4A" stroke-width="0.75"/>
-      <path d="M17 6 L20 17 L17 28 L14 17 Z" fill="#8B2E2E"/>
+      <g class="nav-compass-needle">
+        <path d="M17 6 L20 17 L17 28 L14 17 Z" fill="#8B2E2E"/>
+      </g>
       <circle cx="17" cy="17" r="2.5" fill="#C9A24B"/>
     </svg>
     <div class="logo-text">MACH <span>COFFEE CO.</span></div>
@@ -431,9 +445,7 @@
   // --- Animated spinning favicon (compass needle) ---
   (function animateFavicon() {
     const FRAME_COUNT = 48;
-    const FRAME_INTERVAL_MS = 45; // ~2.1s per full rotation, smoother steps
-    const favicon = document.getElementById('favicon');
-    if (!favicon) return;
+    const FRAME_INTERVAL_MS = 45; // ~2.1s per full rotation
 
     const frameUrls = [];
     for (let i = 0; i < FRAME_COUNT; i++) {
@@ -442,9 +454,24 @@
     frameUrls.forEach(src => { const img = new Image(); img.src = src; });
 
     let frameIndex = 0;
+
+    function setFavicon(href) {
+      const old = document.getElementById('favicon');
+      const link = document.createElement('link');
+      link.id = 'favicon';
+      link.rel = 'icon';
+      link.type = 'image/png';
+      link.href = href;
+      if (old) {
+        old.parentNode.replaceChild(link, old);
+      } else {
+        document.head.appendChild(link);
+      }
+    }
+
     setInterval(() => {
       frameIndex = (frameIndex + 1) % FRAME_COUNT;
-      favicon.setAttribute('href', frameUrls[frameIndex]);
+      setFavicon(frameUrls[frameIndex]);
     }, FRAME_INTERVAL_MS);
   })();
 </script>
