@@ -81,6 +81,18 @@
     text-decoration: none;
     cursor: pointer;
   }
+  .nav-compass-needle {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: nav-compass-spin 6s linear infinite;
+  }
+  @keyframes nav-compass-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .nav-compass-needle { animation: none; }
+  }
 
   .logo-text {
     font-family: 'Oswald', sans-serif;
@@ -585,6 +597,79 @@
     margin-bottom: 24px;
   }
 
+  /* ---------- DIRECTIONS PICKER MODAL ---------- */
+  .directions-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(18, 29, 54, 0.55);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .directions-overlay.active {
+    display: flex;
+  }
+  .directions-modal {
+    background: var(--cream);
+    border-radius: 4px;
+    max-width: 420px;
+    width: 100%;
+    padding: 30px 30px 26px;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+    border: 1px solid var(--gold);
+  }
+  .directions-modal-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 1.05rem;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .directions-close {
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    line-height: 1;
+    color: var(--navy);
+    cursor: pointer;
+    padding: 0 0 0 12px;
+  }
+  .directions-modal-sub {
+    font-size: 0.9rem;
+    color: #5a594f;
+    margin-bottom: 22px;
+  }
+  .directions-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .directions-option {
+    display: block;
+    text-align: center;
+    background: var(--navy);
+    color: var(--cream);
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    padding: 14px;
+    text-decoration: none;
+    border-radius: 2px;
+    border: 1px solid var(--navy);
+    transition: all 0.2s ease;
+  }
+  .directions-option:hover {
+    background: transparent;
+    color: var(--navy);
+  }
+
   /* ---------- RESPONSIVE ---------- */
   @media (max-width: 880px) {
     .nav-links { display: none; }
@@ -614,7 +699,9 @@
     <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
       <circle cx="17" cy="17" r="16" stroke="#1B2A4A" stroke-width="1.5"/>
       <path d="M17 3 L17 31 M3 17 L31 17" stroke="#1B2A4A" stroke-width="0.75"/>
-      <path d="M17 6 L20 17 L17 28 L14 17 Z" fill="#8B2E2E"/>
+      <g class="nav-compass-needle">
+        <path d="M17 6 L20 17 L17 28 L14 17 Z" fill="#8B2E2E"/>
+      </g>
       <circle cx="17" cy="17" r="2.5" fill="#C9A24B"/>
     </svg>
     <div class="logo-text">MACH <span>COFFEE CO.</span></div>
@@ -908,13 +995,13 @@
     <div class="location-block">
       <h3>Find Us</h3>
       <p>123 Runway Lane<br>Springfield, MO 65801</p>
-      <p style="margin-top: 14px;"><a href="tel:4175550199">(417) 555-0199</a></p>
-      <p style="margin-top: 14px;"><a href="#">Get Directions</a></p>
+      <p style="margin-top: 14px;"><a href="tel:4178723145">(417) 872-3145</a></p>
+      <p style="margin-top: 14px;"><a href="#" id="directionsLink">Get Directions</a></p>
     </div>
     <div class="location-block">
       <h3>Hours</h3>
-      <div class="hours-row"><span class="hours-day">Mon &ndash; Fri</span><span>6:00 AM &ndash; 3:00 PM</span></div>
-      <div class="hours-row"><span class="hours-day">Saturday</span><span>7:00 AM &ndash; 1:00 PM</span></div>
+      <div class="hours-row"><span class="hours-day">Mon &ndash; Fri</span><span>6:00 AM &ndash; 5:00 PM</span></div>
+      <div class="hours-row"><span class="hours-day">Saturday</span><span>7:00 AM &ndash; 3:00 PM</span></div>
       <div class="hours-row"><span class="hours-day">Sunday</span><span>Closed</span></div>
     </div>
   </div>
@@ -926,7 +1013,65 @@
   <div>&copy; 2026 Mach Coffee Co. All rights reserved.</div>
 </footer>
 
+<!-- Directions picker modal -->
+<div class="directions-overlay" id="directionsOverlay">
+  <div class="directions-modal">
+    <div class="directions-modal-head">
+      <span>Get Directions</span>
+      <button class="directions-close" id="directionsClose" aria-label="Close">&times;</button>
+    </div>
+    <p class="directions-modal-sub">Open 123 Runway Lane, Springfield, MO 65801 in:</p>
+    <div class="directions-options">
+      <a class="directions-option" id="directionsApple" href="#" target="_blank" rel="noopener">
+        <span>Apple Maps</span>
+      </a>
+      <a class="directions-option" id="directionsGoogle" href="#" target="_blank" rel="noopener">
+        <span>Google Maps</span>
+      </a>
+      <a class="directions-option" id="directionsWaze" href="#" target="_blank" rel="noopener">
+        <span>Waze</span>
+      </a>
+    </div>
+  </div>
+</div>
+
 <script>
+  // --- Directions picker: Apple Maps / Google Maps / Waze ---
+  (function directionsPicker() {
+    const SHOP_ADDRESS = '123 Runway Lane, Springfield, MO 65801';
+    const encoded = encodeURIComponent(SHOP_ADDRESS);
+
+    const overlay = document.getElementById('directionsOverlay');
+    const trigger = document.getElementById('directionsLink');
+    const closeBtn = document.getElementById('directionsClose');
+    const appleLink = document.getElementById('directionsApple');
+    const googleLink = document.getElementById('directionsGoogle');
+    const wazeLink = document.getElementById('directionsWaze');
+
+    if (!overlay || !trigger) return;
+
+    if (appleLink) appleLink.href = `https://maps.apple.com/?daddr=${encoded}`;
+    if (googleLink) googleLink.href = `https://www.google.com/maps/dir/?api=1&destination=${encoded}`;
+    if (wazeLink) wazeLink.href = `https://waze.com/ul?q=${encoded}&navigate=yes`;
+
+    function openModal(e) {
+      e.preventDefault();
+      overlay.classList.add('active');
+    }
+    function closeModal() {
+      overlay.classList.remove('active');
+    }
+
+    trigger.addEventListener('click', openModal);
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+  })();
+
   // --- Generate engraved degree ticks on the static bezel ---
   (function buildTicks() {
     const ticksGroup = document.getElementById('ticks');
@@ -1056,9 +1201,7 @@
   // --- Animated spinning favicon (compass needle) ---
   (function animateFavicon() {
     const FRAME_COUNT = 48;
-    const FRAME_INTERVAL_MS = 45; // ~2.1s per full rotation, smoother steps
-    const favicon = document.getElementById('favicon');
-    if (!favicon) return;
+    const FRAME_INTERVAL_MS = 45; // ~2.1s per full rotation
 
     const frameUrls = [];
     for (let i = 0; i < FRAME_COUNT; i++) {
@@ -1068,9 +1211,27 @@
     frameUrls.forEach(src => { const img = new Image(); img.src = src; });
 
     let frameIndex = 0;
+
+    function setFavicon(href) {
+      // Recreate the <link> element each frame rather than mutating href.
+      // Some browsers defer/batch repaints when only the attribute changes
+      // while the tab is focused; swapping the element forces an immediate repaint.
+      const old = document.getElementById('favicon');
+      const link = document.createElement('link');
+      link.id = 'favicon';
+      link.rel = 'icon';
+      link.type = 'image/png';
+      link.href = href;
+      if (old) {
+        old.parentNode.replaceChild(link, old);
+      } else {
+        document.head.appendChild(link);
+      }
+    }
+
     setInterval(() => {
       frameIndex = (frameIndex + 1) % FRAME_COUNT;
-      favicon.setAttribute('href', frameUrls[frameIndex]);
+      setFavicon(frameUrls[frameIndex]);
     }, FRAME_INTERVAL_MS);
   })();
 </script>
