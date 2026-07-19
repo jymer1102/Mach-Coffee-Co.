@@ -6,8 +6,8 @@
 <meta charset="UTF-8">`
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Our Story — Mach Coffee Co.</title>
-<link rel="icon" id="favicon" type="image/png" href="images/favicon/frame_00.png">
-<link rel="apple-touch-icon" href="images/favicon/apple-touch-icon.png">
+<link rel="icon" id="favicon" type="image/png" href="{{ '/images/favicon/frame_00.png' | relative_url }}">
+<link rel="apple-touch-icon" href="{{ '/images/favicon/apple-touch-icon.png' | relative_url }}">
 
 <!-- Social preview (Open Graph / Twitter Card) -->
 <!-- NOTE: swap "https://jymer1102.github.io/Mach-Coffee-Co" below for your real domain once you buy one -->
@@ -330,8 +330,8 @@
 
 <div class="top-strip">Concept Location &mdash; Opening Soon &mdash; Springfield, MO</div>
 
-<nav>
-  <a href="index.html" class="logo-mark" aria-label="Mach Coffee Co. — Home">
+<nav id="top">
+  <a href="{{ '/' | relative_url }}" class="logo-mark" aria-label="Mach Coffee Co. — Home">
     <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
       <circle cx="17" cy="17" r="16" stroke="#1B2A4A" stroke-width="1.5"/>
       <path d="M17 3 L17 31 M3 17 L31 17" stroke="#1B2A4A" stroke-width="0.75"/>
@@ -342,15 +342,14 @@
     </svg>
     <div class="logo-text">MACH <span>COFFEE CO.</span></div>
   </a>
-<nav id="top">
-    <a href="{{ '/' | relative_url }}#top" class="logo">Mach Coffee Co.</a>
-    <div class="nav-links">
-        <a href="{{ '/' | relative_url }}">Home</a>
-        <a href="{{ '/menu/' | relative_url }}">Menu</a>
-        <a href="{{ '/about/' | relative_url }}" class="active">Our Story</a>
-    </div>
-</nav>
-  <a href="index.html#order" class="nav-cta">Order Now</a>
+
+  <div class="nav-links">
+    <a href="{{ '/' | relative_url }}">Home</a>
+    <a href="{{ '/menu/' | relative_url }}">Menu</a>
+    <a href="{{ '/about/' | relative_url }}" class="active">Our Story</a>
+  </div>
+
+  <a href="{{ '/' | relative_url }}#order" class="nav-cta">Order Now</a>
 </nav>
 
 <section class="about-hero">
@@ -437,7 +436,7 @@
 <div class="about-cta-band">
   <h2>See the Full Manifest</h2>
   <p>Every drink Jackson built, organized and ready to order.</p>
-  <a href="menu.html" class="btn-primary">View the Menu</a>
+  <a href="{{ '/menu/' | relative_url }}" class="btn-primary">View the Menu</a>
 </div>
 
 <footer>
@@ -453,7 +452,7 @@
 
     const frameUrls = [];
     for (let i = 0; i < FRAME_COUNT; i++) {
-      frameUrls.push(`images/favicon/frame_${String(i).padStart(2, '0')}.png`);
+      frameUrls.push(`{{ '/images/favicon/' | relative_url }}frame_${String(i).padStart(2, '0')}.png`);
     }
     frameUrls.forEach(src => { const img = new Image(); img.src = src; });
 
