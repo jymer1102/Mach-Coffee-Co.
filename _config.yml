@@ -1,5 +1,6 @@
 title: "Mach Coffee Co."
 description: "Coffee, engineered for altitude."
+theme: minima
 permalink: pretty
 baseurl: "/Mach-Coffee-Co."
 url: "https://jymer1102.github.io"
