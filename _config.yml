@@ -1,3 +1,5 @@
-theme: jekyll-theme-minimal
-title: Mach Coffee Co.
-description: Coffee, engineered for altitude.
+title: "Mach Coffee Co."
+description: "Coffee, engineered for altitude."
+permalink: pretty
+baseurl: "/Mach-Coffee-Co."
+url: ""
