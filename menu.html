@@ -22,130 +22,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 <style>
-  :root {
-    --cream: #FAF7F0;
-    --navy: #1B2A4A;
-    --navy-dark: #121d36;
-    --gold: #C9A24B;
-    --brick: #8B2E2E;
-    --ink: #2C2C2C;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    background: var(--cream);
-    color: var(--ink);
-    font-family: 'Source Serif 4', serif;
-    line-height: 1.6;
-  }
-  h1, h2, h3, .display {
-    font-family: 'Oswald', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-  }
-
-  .top-strip {
-    background: var(--navy);
-    color: var(--cream);
-    font-family: 'Oswald', sans-serif;
-    font-size: 0.7rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    padding: 8px 0;
-    text-align: center;
-    border-bottom: 2px solid var(--gold);
-  }
-
-  nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 24px 6%;
-    background: var(--cream);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    border-bottom: 1px solid rgba(27,42,74,0.15);
-  }
-  .logo-mark {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  .nav-compass-needle {
-    transform-box: fill-box;
-    transform-origin: center;
-    animation: nav-compass-spin 6s linear infinite;
-  }
-  @keyframes nav-compass-spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .nav-compass-needle { animation: none; }
-  }
-  .logo-text {
-    font-family: 'Oswald', sans-serif;
-    font-weight: 700;
-    font-size: 1.3rem;
-    letter-spacing: 0.08em;
-    color: var(--navy);
-  }
-  .logo-text span { color: var(--brick); }
-  .nav-links {
-    display: flex;
-    gap: 36px;
-    font-family: 'Oswald', sans-serif;
-    font-size: 0.85rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-  .nav-links a { color: var(--navy); text-decoration: none; position: relative; padding-bottom: 4px; }
-  .nav-links a.active { color: var(--brick); }
-  .nav-links a::after {
-    content: '';
-    position: absolute; left: 0; bottom: 0;
-    width: 0; height: 2px;
-    background: var(--gold);
-    transition: width 0.25s ease;
-  }
-  .nav-links a:hover::after { width: 100%; }
-  .nav-cta {
-    background: var(--navy);
-    color: var(--cream);
-    font-family: 'Oswald', sans-serif;
-    font-size: 0.8rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 10px 22px;
-    border-radius: 2px;
-    text-decoration: none;
-    border: 1px solid var(--navy);
-    transition: all 0.25s ease;
-  }
-  .nav-cta:hover { background: transparent; color: var(--navy); }
-
   /* ---------- MENU HERO ---------- */
+  .eyebrow { justify-content: center; }
   .menu-hero {
     padding: 70px 6% 50px;
     text-align: center;
     border-bottom: 1px solid rgba(27,42,74,0.12);
   }
-  .eyebrow {
-    font-family: 'Oswald', sans-serif;
-    font-size: 0.8rem;
-    letter-spacing: 0.25em;
-    color: var(--brick);
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .eyebrow::before, .eyebrow::after { content: ''; width: 28px; height: 1px; background: var(--brick); }
   .menu-hero h1 { font-size: clamp(2.4rem, 5vw, 3.6rem); color: var(--navy); margin-bottom: 14px; }
   .menu-hero p { color: #5a594f; max-width: 540px; margin: 0 auto; }
 
@@ -324,44 +209,7 @@
   }
   .order-cta-band h2 { color: var(--cream); font-size: clamp(1.8rem, 3.5vw, 2.4rem); margin-bottom: 16px; }
   .order-cta-band p { color: rgba(250,247,240,0.8); margin-bottom: 30px; }
-  .btn-gold {
-    background: var(--gold);
-    color: var(--navy);
-    font-family: 'Oswald', sans-serif;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    font-size: 0.85rem;
-    padding: 16px 36px;
-    text-decoration: none;
-    border-radius: 2px;
-    display: inline-block;
-    border: 1px solid var(--gold);
-    transition: all 0.25s ease;
-  }
-  .btn-gold:hover { background: transparent; color: var(--gold); }
-
-  footer {
-    background: var(--navy-dark);
-    color: rgba(250,247,240,0.6);
-    padding: 50px 6% 30px;
-    text-align: center;
-    font-family: 'Oswald', sans-serif;
-    font-size: 0.8rem;
-    letter-spacing: 0.05em;
-  }
-  footer .foot-logo { color: var(--cream); font-size: 1.1rem; letter-spacing: 0.1em; margin-bottom: 10px; }
-  footer .foot-logo span { color: var(--gold); }
-  footer .foot-tag {
-    color: rgba(250,247,240,0.4);
-    font-style: italic;
-    font-family: 'Source Serif 4', serif;
-    text-transform: none;
-    letter-spacing: 0;
-    margin-bottom: 24px;
-  }
-
   @media (max-width: 880px) {
-    .nav-links { display: none; }
     .drink-grid { grid-template-columns: 1fr; }
     .category-jump { top: 0; position: relative; }
     .menu-section { padding: 50px 6% 10px; }
