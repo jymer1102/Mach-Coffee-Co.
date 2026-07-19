@@ -1,5 +1,7 @@
 # Mach Coffee Co.
+<div align="center">
 
+![README Banner](images/mach-coffee-co.-banner.png)
 Concept website for Mach Coffee Co. — an aviation-themed coffee shop.
 
 **Status:** Concept / pre-launch. Not yet a registered business.
