@@ -22,128 +22,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 <style>
-  :root {
-    --cream: #FAF7F0;
-    --navy: #1B2A4A;
-    --navy-dark: #121d36;
-    --gold: #C9A24B;
-    --brick: #8B2E2E;
-    --ink: #2C2C2C;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--cream);
-    color: var(--ink);
-    font-family: 'Source Serif 4', serif;
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
-
-  h1, h2, h3, .display {
-    font-family: 'Oswald', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-  }
-
-  /* ---------- TOP STRIP ---------- */
-  .top-strip {
-    background: var(--navy);
-    color: var(--cream);
-    font-family: 'Oswald', sans-serif;
-    font-size: 0.7rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    padding: 8px 0;
-    text-align: center;
-    border-bottom: 2px solid var(--gold);
-  }
-
-  /* ---------- NAV ---------- */
-  nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 24px 6%;
-    background: var(--cream);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    border-bottom: 1px solid rgba(27,42,74,0.15);
-  }
-
-  .logo-mark {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  .nav-compass-needle {
-    transform-box: fill-box;
-    transform-origin: center;
-    animation: nav-compass-spin 6s linear infinite;
-  }
-  @keyframes nav-compass-spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .nav-compass-needle { animation: none; }
-  }
-
-  .logo-text {
-    font-family: 'Oswald', sans-serif;
-    font-weight: 700;
-    font-size: 1.3rem;
-    letter-spacing: 0.08em;
-    color: var(--navy);
-  }
-  .logo-text span { color: var(--brick); }
-
-  .nav-links {
-    display: flex;
-    gap: 36px;
-    font-family: 'Oswald', sans-serif;
-    font-size: 0.85rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-  .nav-links a {
-    color: var(--navy);
-    text-decoration: none;
-    position: relative;
-    padding-bottom: 4px;
-  }
-  .nav-links a::after {
-    content: '';
-    position: absolute;
-    left: 0; bottom: 0;
-    width: 0; height: 2px;
-    background: var(--gold);
-    transition: width 0.25s ease;
-  }
-  .nav-links a:hover::after { width: 100%; }
-
-  .nav-cta {
-    background: var(--navy);
-    color: var(--cream);
-    font-family: 'Oswald', sans-serif;
-    font-size: 0.8rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 10px 22px;
-    border-radius: 2px;
-    text-decoration: none;
-    border: 1px solid var(--navy);
-    transition: all 0.25s ease;
-  }
-  .nav-cta:hover { background: transparent; color: var(--navy); }
-
   /* ---------- HERO ---------- */
   .hero {
     position: relative;
@@ -161,24 +41,6 @@
     margin: 0 auto;
     position: relative;
     z-index: 2;
-  }
-
-  .eyebrow {
-    font-family: 'Oswald', sans-serif;
-    font-size: 0.8rem;
-    letter-spacing: 0.25em;
-    color: var(--brick);
-    margin-bottom: 18px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .eyebrow::before,
-  .eyebrow::after {
-    content: '';
-    width: 28px;
-    height: 1px;
-    background: var(--brick);
   }
 
   .hero h1 {
@@ -202,36 +64,6 @@
     gap: 18px;
     flex-wrap: wrap;
   }
-
-  .btn-primary {
-    background: var(--navy);
-    color: var(--cream);
-    font-family: 'Oswald', sans-serif;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    font-size: 0.85rem;
-    padding: 16px 32px;
-    text-decoration: none;
-    border-radius: 2px;
-    border: 1px solid var(--navy);
-    transition: all 0.25s ease;
-  }
-  .btn-primary:hover { background: var(--navy-dark); }
-
-  .btn-secondary {
-    background: transparent;
-    color: var(--navy);
-    font-family: 'Oswald', sans-serif;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    font-size: 0.85rem;
-    padding: 16px 32px;
-    text-decoration: none;
-    border-radius: 2px;
-    border: 1px solid var(--navy);
-    transition: all 0.25s ease;
-  }
-  .btn-secondary:hover { background: var(--navy); color: var(--cream); }
 
   /* Compass rose motif */
   .compass-wrap {
@@ -346,20 +178,6 @@
   @keyframes scroll-left {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
-  }
-
-  /* ---------- SECTION SHARED ---------- */
-  section { padding: 100px 6%; }
-  .section-inner { max-width: 1280px; margin: 0 auto; }
-
-  .section-head {
-    text-align: center;
-    margin-bottom: 64px;
-  }
-  .section-head .eyebrow { justify-content: center; }
-  .section-head h2 {
-    font-size: clamp(2.2rem, 4vw, 3.2rem);
-    color: var(--navy);
   }
 
   /* ---------- MENU PREVIEW ---------- */
@@ -573,32 +391,6 @@
   .hours-row:last-child { border-bottom: none; }
   .hours-day { font-family: 'Oswald', sans-serif; letter-spacing: 0.05em; color: var(--navy); font-size: 0.85rem; }
 
-  /* ---------- FOOTER ---------- */
-  footer {
-    background: var(--navy-dark);
-    color: rgba(250,247,240,0.6);
-    padding: 50px 6% 30px;
-    text-align: center;
-    font-family: 'Oswald', sans-serif;
-    font-size: 0.8rem;
-    letter-spacing: 0.05em;
-  }
-  footer .foot-logo {
-    color: var(--cream);
-    font-size: 1.1rem;
-    letter-spacing: 0.1em;
-    margin-bottom: 10px;
-  }
-  footer .foot-logo span { color: var(--gold); }
-  footer .foot-tag {
-    color: rgba(250,247,240,0.4);
-    font-style: italic;
-    font-family: 'Source Serif 4', serif;
-    text-transform: none;
-    letter-spacing: 0;
-    margin-bottom: 24px;
-  }
-
   /* ---------- DIRECTIONS PICKER MODAL ---------- */
   .directions-overlay {
     display: none;
@@ -674,7 +466,6 @@
 
   /* ---------- RESPONSIVE ---------- */
   @media (max-width: 880px) {
-    .nav-links { display: none; }
     .hero-grid { grid-template-columns: 1fr; }
     .compass-wrap { order: -1; max-width: 260px; margin: 0 auto 20px; }
     .about-grid { grid-template-columns: 1fr; }
@@ -685,11 +476,6 @@
     section { padding: 70px 6%; }
   }
 
-  /* Focus visibility */
-  a:focus-visible, .order-card:focus-visible {
-    outline: 2px solid var(--brick);
-    outline-offset: 3px;
-  }
 </style>
 </head>
 <body>
@@ -778,7 +564,7 @@
           <svg viewBox="0 0 440 440" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:100%; position:absolute; top:0; left:0;">
             <path d="M220 70 L234 220 L220 235 L206 220 Z" fill="#8B2E2E"/>
             <path d="M220 370 L232 222 L220 210 L208 222 Z" fill="#1B2A4A"/>
-            <circle cx="220" cy="220" r="11" fill="#C9A24B" stroke="#1B2A4A" stroke-width="1.5"/>
+            <circle cx="220" cy="220" r="13" fill="#C9A24B" stroke="#1B2A4A" stroke-width="1.5"/>
             <circle cx="220" cy="220" r="4" fill="#1B2A4A"/>
           </svg>
         </div>
