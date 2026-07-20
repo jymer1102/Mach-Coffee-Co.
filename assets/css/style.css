@@ -245,12 +245,18 @@ a:focus-visible, .order-card:focus-visible {
   .nav-links { display: none; }
 }
 
-/* Custom default cursor */
+/* Custom default cursor (The Airplane) */
 html, body {
-  cursor: url('../../images/cursor/custom-cursor.png'), default;
+  cursor: url('../../images/custom-cursor.png'), default;
 }
 
-/* Custom pointer cursor */
-a, button, .nav-cta, .btn-primary, select, input[type="submit"] {
-  cursor: url('../../images/cursor/custom-cursor-pointer.png'), pointer;
+/* Custom pointer cursor (The Coffee Emoji ☕) */
+a, 
+button, 
+.nav-cta, 
+.btn-primary, 
+select, 
+input[type="submit"],
+.connect-value {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' style='font-size:24px'><text y='24'>☕</text></svg>"), pointer;
 }
