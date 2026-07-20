@@ -247,5 +247,5 @@ a:focus-visible, .order-card:focus-visible {
 
 /* Custom default cursor for the entire site */
 html, body {
-  cursor: url("{{ '/images/custom-cursor.png' | relative_url }}"), default;
+  cursor: url("{{ '/images/cursor/custom-cursor.png' | relative_url }}"), default;
 }
