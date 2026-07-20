@@ -1,74 +1,295 @@
 ---
+layout: default
+title: Connect — Mach Coffee Co.
 ---
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Menu — Mach Coffee Co.</title>
+<title>Connect // Mach Coffee Co.</title>
 <link rel="icon" id="favicon" type="image/png" href="{{ '/images/favicon/frame_00.png' | relative_url }}">
 <link rel="apple-touch-icon" href="{{ '/images/favicon/apple-touch-icon.png' | relative_url }}">
 
-<!-- Social preview (Open Graph / Twitter Card) -->
-<!-- NOTE: swap "https://jymer1102.github.io/Mach-Coffee-Co." below for your real domain once you buy one -->
-<meta property="og:title" content="Menu — Mach Coffee Co.">
-<meta property="og:description" content="Every drink, every build, every flight condition. Pick your altitude.">
+<meta property="og:title" content="Connect — Mach Coffee Co.">
+<meta property="og:description" content="Establish contact with ground control. File your message on our transmission frequencies.">
 <meta property="og:image" content="https://jymer1102.github.io/Mach-Coffee-Co./images/social-card.png">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Menu — Mach Coffee Co.">
-<meta name="twitter:description" content="Every drink, every build, every flight condition.">
-<meta name="twitter:image" content="https://jymer1102.github.io/Mach-Coffee-Co./images/social-card.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css">
 <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+<style>
+  /* ---------- CONNECT HERO ---------- */
+  .connect-hero {
+    position: relative;
+    padding: 90px 6% 60px;
+    background: var(--cream);
+    text-align: center;
+    border-bottom: 1px dashed rgba(27,42,74,0.15);
+  }
+  .connect-hero h1 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1.05;
+    color: var(--navy);
+    margin-bottom: 18px;
+    font-weight: 700;
+  }
+  .connect-hero h1 .accent { color: var(--brick); }
+  .connect-sub {
+    font-size: 1.1rem;
+    color: #44433f;
+    max-width: 600px;
+    margin: 0 auto;
+  }
 
+  /* ---------- TRANSMISSION FORM SECTION ---------- */
+  .transmission-section {
+    background: var(--cream);
+    padding: 60px 6% 80px;
+    position: relative;
+  }
+  .form-container {
+    max-width: 680px;
+    margin: 0 auto;
+    background: #fff;
+    border: 1px solid rgba(27,42,74,0.15);
+    border-top: 4px solid var(--navy);
+    border-radius: 4px;
+    padding: 40px;
+    box-shadow: 0 14px 35px rgba(27,42,74,0.06);
+    position: relative;
+  }
+  .form-container::before {
+    content: 'COMMS FREQ // OPR-09.26';
+    position: absolute;
+    top: 14px;
+    right: 20px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.65rem;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+  }
+
+  .form-group {
+    margin-bottom: 24px;
+  }
+  .form-group label {
+    display: block;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .form-control {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid rgba(27,42,74,0.2);
+    border-radius: 2px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: var(--ink);
+    background-color: var(--cream);
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+  }
+  .form-control:focus {
+    outline: none;
+    border-color: var(--gold);
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(201, 162, 75, 0.15);
+  }
+  select.form-control {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 5 5-5z' fill='%231B2A4A'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+  }
+  textarea.form-control {
+    resize: vertical;
+    min-height: 140px;
+  }
+
+  /* ---------- COMM CHANNELS GRID ---------- */
+  .comm-channels {
+    background: var(--navy);
+    color: var(--cream);
+    padding: 70px 6%;
+  }
+  .channels-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 40px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .channel-card {
+    border-left: 2px solid var(--gold);
+    padding-left: 20px;
+  }
+  .channel-card h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.1rem;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+  .connect-item {
+    margin-bottom: 14px;
+  }
+  .connect-item:last-child {
+    margin-bottom: 0;
+  }
+  .connect-label {
+    display: block;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: rgba(250,247,240,0.6);
+    margin-bottom: 2px;
+  }
+  .connect-label i {
+    margin-right: 6px;
+    color: var(--gold);
+    width: 14px;
+    text-align: center;
+  }
+  .connect-value {
+    font-size: 1rem;
+    color: var(--cream);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--gold);
+    transition: color 0.2s ease;
+  }
+  .connect-value:hover {
+    color: var(--gold);
+  }
+  .channel-card p {
+    font-size: 0.95rem;
+    color: rgba(250,247,240,0.8);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 600px) {
+    .form-container { padding: 24px; }
+    .transmission-section { padding: 40px 4%; }
+  }
+</style>
 </head>
 <body>
 
-    <nav id="top">
-        <a href="{{ '/' | relative_url }}#top" class="logo">jymer1102</a>
-        <div class="nav-links">
-            <a href="{{ '/' | relative_url }}">Home</a>
-            <a href="{{ '/creations/' | relative_url }}">Creations</a>
-            <a href="{{ '/connect/' | relative_url }}" class="active">Connect</a>
-        </div>
-    </nav>
+<div class="top-strip">Concept Location — Opening Soon — Springfield, MO</div>
 
-    <header class="page-header" data-aos="fade-up" data-aos-duration="900">
-        <p class="eyebrow">portfolio / connect</p>
-        <h1 class="glow-text">Let's Connect<span class="cursor">_</span></h1>
-        <p class="subtitle">Have a project in mind, or just want to say hi?</p>
-    </header>
+<nav id="top">
+  <a href="{{ '/' | relative_url }}" class="logo-mark" aria-label="Mach Coffee Co. — Home">
+    <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+      <circle cx="17" cy="17" r="16" stroke="#1B2A4A" stroke-width="1.5"/>
+      <path d="M17 3 L17 31 M3 17 L31 17" stroke="#1B2A4A" stroke-width="0.75"/>
+      <g class="nav-compass-needle">
+        <path d="M17 6 L20 17 L17 28 L14 17 Z" fill="#8B2E2E"/>
+      </g>
+      <circle cx="17" cy="17" r="2.5" fill="#C9A24B"/>
+    </svg>
+    <div class="logo-text">MACH <span>COFFEE CO.</span></div>
+  </a>
 
-    <main class="container">
-        <div class="connect-panel" data-aos="fade-up" data-aos-duration="900">
-            <ul class="connect-list">
-                <li>
-                    <span class="connect-label"><i class="fa-solid fa-at"></i>Email</span>
-                    <a href="mailto:thebusiness@machcoffee.co" class="connect-value">theoneandonly@jymer1102.me</a>
-                </li>
-                <li>
-                    <span class="connect-label"><i class="fa-brands fa-linktree"></i>Linktree</span>
-                    <a href="https://linktr.ee/machcoffeeco" target="_blank" rel="noopener" class="connect-value">linktr.ee/jymer1102</a>
-                </li>
-            </ul>
-        </div>
-    </main>
+  <div class="nav-links">
+    <a href="{{ '/' | relative_url }}">Home</a>
+    <a href="{{ '/menu/' | relative_url }}">Menu</a>
+    <a href="{{ '/about/' | relative_url }}">Our Story</a>
+    <a href="{{ '/connect/' | relative_url }}" class="active">Connect</a>
+  </div>
 
-    <footer>jymer1102 — built with care.</footer>
+  <a href="{{ '/#order' | relative_url }}" class="nav-cta">Order Now</a>
+</nav>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            once: true,
-            duration: 900,
-            easing: 'ease-out-cubic'
-        });
-    </script>
-    <script>
-    // --- Animated spinning favicon (compass needle) ---
+<header class="connect-hero">
+  <div class="eyebrow">Open Comm Channels</div>
+  <h1>Establish <span class="accent">Contact.</span></h1>
+  <p class="connect-sub">Filing a mission manifest, detailing a heavy payload event, or dropping feedback into the flight log? Transmit your signal down below.</p>
+</header>
+
+<section class="transmission-section">
+  <div class="form-container">
+    <form action="#" method="POST">
+      <div class="form-group">
+        <label for="callsign">Pilot Name / Callsign</label>
+        <input type="text" id="callsign" name="name" class="form-control" placeholder="e.g., Captain Maverick" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="comms-email">Comms Frequency (Email Address)</label>
+        <input type="email" id="comms-email" name="email" class="form-control" placeholder="name@domain.com" required>
+      </div>
+
+      <div class="form-group">
+        <label for="manifest-type">Transmission Objective</label>
+        <select id="manifest-type" name="subject" class="form-control" required>
+          <option value="" disabled selected hidden>Select Objective...</option>
+          <option value="General Inquiries">General Mission Inquiries</option>
+          <option value="Catering & Events">Heavy Payload / Special Event Catering</option>
+          <option value="Feedback">Flight Diagnostics & Logs</option>
+          <option value="Media/Press">Public Affairs Airspace</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="log-message">Flight Log / Transmission Message</label>
+        <textarea id="log-message" name="message" class="form-control" placeholder="Write down your parameters or inquiries here..." required></textarea>
+      </div>
+
+      <button type="submit" class="btn-primary" style="width: 100%; text-align: center; border-radius: 2px; padding: 14px;">Transmit Message</button>
+    </form>
+  </div>
+</section>
+
+<section class="comm-channels">
+  <div class="channels-grid">
+    <div class="channel-card">
+      <h3>Secure Line</h3>
+      <div class="connect-item">
+        <span class="connect-label"><i class="fa-solid fa-at"></i>Email</span>
+        <a href="mailto:thebusiness@machcoffee.co" class="connect-value">thebusiness@machcoffee.co</a>
+      </div>
+      <div class="connect-item">
+        <span class="connect-label"><i class="fa-brands fa-linktree"></i>Linktree</span>
+        <a href="https://linktr.ee/machcoffeeco" target="_blank" rel="noopener" class="connect-value">linktr.ee/machcoffeeco</a>
+      </div>
+    </div>
+    
+    <div class="channel-card">
+      <h3>HQ Coordinates</h3>
+      <p>Drop into our location vector for a face-to-face debrief.<br>
+      <strong>123 Runway Lane, Springfield, MO 65801</strong></p>
+    </div>
+
+    <div class="channel-card">
+      <h3>Digital Airspace</h3>
+      <p>Follow our vector updates for live telemetry modifications on incoming manifests.<br>
+      <a href="#" class="connect-value">Instagram</a> // <a href="#" class="connect-value">Facebook</a></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-logo">MACH <span>COFFEE CO.</span></div>
+  <div class="foot-tag">"Coffee, engineered for altitude."</div>
+  <div>© 2026 Mach Coffee Co. All rights reserved.</div>
+</footer>
+
+<script>
+  // --- Animated spinning favicon (compass needle) ---
   (function animateFavicon() {
     const FRAME_COUNT = 48;
     const FRAME_INTERVAL_MS = 45; // ~2.1s per full rotation
@@ -77,15 +298,11 @@
     for (let i = 0; i < FRAME_COUNT; i++) {
       frameUrls.push(`{{ '/images/favicon/' | relative_url }}frame_${String(i).padStart(2, '0')}.png`);
     }
-    // Preload frames so swapping is instant, no flicker
     frameUrls.forEach(src => { const img = new Image(); img.src = src; });
 
     let frameIndex = 0;
 
     function setFavicon(href) {
-      // Recreate the <link> element each frame rather than mutating href.
-      // Some browsers defer/batch repaints when only the attribute changes
-      // while the tab is focused; swapping the element forces an immediate repaint.
       const old = document.getElementById('favicon');
       const link = document.createElement('link');
       link.id = 'favicon';
