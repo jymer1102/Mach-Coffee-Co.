@@ -249,3 +249,13 @@ a:focus-visible, .order-card:focus-visible {
 html, body {
   cursor: url("{{ '/images/cursor/custom-cursor.png' | relative_url }}"), default;
 }
+
+/* Custom pointer cursor for clickable elements */
+a, 
+button, 
+.nav-cta, 
+.btn-primary, 
+select, 
+input[type="submit"] {
+  cursor: url("{{ '/images/cursor/custom-cursor-pointer.png' | relative_url }}"), pointer;
+}
