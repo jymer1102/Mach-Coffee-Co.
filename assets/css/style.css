@@ -247,7 +247,7 @@ a:focus-visible, .order-card:focus-visible {
 
 /* Custom default cursor */
 html, body {
-  cursor: url('../../images/cursor/custom-cursor.png?v=2'), default;
+  cursor: url('../../images/cursor/custom-cursor.png'), default;
 }
 
 /* Custom pointer cursor */
