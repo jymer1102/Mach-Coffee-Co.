@@ -245,17 +245,12 @@ a:focus-visible, .order-card:focus-visible {
   .nav-links { display: none; }
 }
 
-/* Custom default cursor for the entire site */
+/* Custom default cursor */
 html, body {
-  cursor: url("{{ '/images/cursor/custom-cursor.png' | relative_url }}"), default;
+  cursor: url('../../images/cursor/custom-cursor.png?v=2'), default;
 }
 
-/* Custom pointer cursor for clickable elements */
-a, 
-button, 
-.nav-cta, 
-.btn-primary, 
-select, 
-input[type="submit"] {
-  cursor: url("{{ '/images/cursor/custom-cursor-pointer.png' | relative_url }}"), pointer;
+/* Custom pointer cursor */
+a, button, .nav-cta, .btn-primary, select, input[type="submit"] {
+  cursor: url('../../images/cursor/custom-cursor-pointer.png'), pointer;
 }
