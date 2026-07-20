@@ -245,12 +245,12 @@ a:focus-visible, .order-card:focus-visible {
   .nav-links { display: none; }
 }
 
-/* Custom default cursor (The Airplane) */
+/* Custom default cursor (The Airplane - Centered Hotspot) */
 html, body {
-  cursor: url('../../images/custom-cursor.png'), default;
+  cursor: url('../../images/cursor/custom-cursor.png') 16 16, default;
 }
 
-/* Custom pointer cursor (The Coffee Emoji ☕) */
+/* Custom pointer cursor (The Coffee Emoji ☕ - Centered Hotspot) */
 a, 
 button, 
 .nav-cta, 
@@ -258,5 +258,5 @@ button,
 select, 
 input[type="submit"],
 .connect-value {
-  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' style='font-size:24px'><text y='24'>☕</text></svg>"), pointer;
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' style='font-size:24px'><text x='4' y='24'>☕</text></svg>") 16 16, pointer;
 }
