@@ -1,6 +1,3 @@
----
----
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +20,7 @@
 <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 <style>
   /* ---------- CONNECT HERO ---------- */
-  .eyebrow { justify-content: center; } /* Centers the eyebrow text */
+  .eyebrow { justify-content: center; } 
   
   .connect-hero {
     position: relative;
@@ -125,9 +122,9 @@
   }
   .channels-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Split evenly down the center */
+    grid-template-columns: repeat(2, 1fr);
     gap: 40px;
-    max-width: 880px; /* Reduced to pull columns comfortably closer together */
+    max-width: 880px;
     margin: 0 auto;
   }
   .channel-card {
@@ -169,6 +166,7 @@
     text-decoration: none;
     border-bottom: 1px dashed var(--gold);
     transition: color 0.2s ease;
+    cursor: pointer;
   }
   .connect-value:hover {
     color: var(--gold);
@@ -178,6 +176,20 @@
     color: rgba(250,247,240,0.8);
     line-height: 1.6;
     margin: 0;
+  }
+
+  /* Modal Styles */
+  .directions-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+  }
+  .directions-overlay.active {
+    display: flex;
   }
 
   /* ---------- RESPONSIVE ---------- */
@@ -274,7 +286,7 @@
     <div class="channel-card">
       <h3>HQ Coordinates</h3>
       <p>Drop into our location vector for a face-to-face debrief.<br>
-      <strong>123 Runway Lane, Springfield, MO 65801</strong></p>
+      <a href="#" id="directionsLink" class="connect-value">123 Runway Lane, Springfield, MO 65801</a></p>
     </div>
   </div>
 </section>
@@ -285,13 +297,11 @@
   <div>© 2026 Mach Coffee Co. All rights reserved.</div>
 </footer>
 
-<script>
-  <!-- Directions picker modal -->
 <div class="directions-overlay" id="directionsOverlay">
   <div class="directions-modal">
     <div class="directions-modal-head">
       <span>Get Directions</span>
-      <button class="directions-close" id="directionsClose" aria-label="Close">&times;</button>
+      <button class="directions-close" id="directionsClose" aria-label="Close">×</button>
     </div>
     <p class="directions-modal-sub">Open 123 Runway Lane, Springfield, MO 65801 in:</p>
     <div class="directions-options">
@@ -308,6 +318,7 @@
   </div>
 </div>
 
+<script>
   // --- Directions picker: Apple Maps / Google Maps / Waze ---
   (function directionsPicker() {
     const SHOP_ADDRESS = '123 Runway Lane, Springfield, MO 65801';
@@ -343,6 +354,7 @@
       if (e.key === 'Escape') closeModal();
     });
   })();
+
   // --- Animated spinning favicon (compass needle) ---
   (function animateFavicon() {
     const FRAME_COUNT = 48;
