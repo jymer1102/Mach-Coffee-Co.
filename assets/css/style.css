@@ -1,8 +1,6 @@
 /* ==========================================================
    Mach Coffee Co. — Shared Styles
    Used across index.html, about.html, menu.html, and connect.html.
-   Page-specific styles (hero sections, cards, etc.) stay in
-   a small <style> block on each page.
    ========================================================== */
 
 :root {
@@ -127,7 +125,7 @@ nav {
 }
 .nav-cta:hover { background: transparent; color: var(--navy); }
 
-/* ---------- EYEBROW LABEL (shared base; pages may override justify-content) ---------- */
+/* ---------- EYEBROW LABEL ---------- */
 .eyebrow {
   font-family: 'Oswald', sans-serif;
   font-size: 0.8rem;
@@ -208,6 +206,79 @@ section { padding: 100px 6%; }
   color: var(--navy);
 }
 
+/* ---------- DIRECTIONS MODAL ---------- */
+.directions-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(18, 29, 54, 0.55);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.directions-overlay.active {
+  display: flex;
+}
+.directions-modal {
+  background: var(--cream);
+  border-radius: 4px;
+  max-width: 420px;
+  width: 100%;
+  padding: 30px 30px 26px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+  border: 1px solid var(--gold);
+}
+.directions-modal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 1.05rem;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+.directions-close {
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: var(--navy);
+  cursor: pointer;
+  padding: 0 0 0 12px;
+}
+.directions-modal-sub {
+  font-size: 0.9rem;
+  color: #5a594f;
+  margin-bottom: 22px;
+}
+.directions-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.directions-option {
+  display: block;
+  text-align: center;
+  background: var(--navy);
+  color: var(--cream);
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  padding: 14px;
+  text-decoration: none;
+  border-radius: 2px;
+  border: 1px solid var(--navy);
+  transition: all 0.2s ease;
+}
+.directions-option:hover {
+  background: transparent;
+  color: var(--navy);
+}
+
 /* ---------- FOOTER ---------- */
 footer {
   background: var(--navy-dark);
@@ -245,12 +316,12 @@ a:focus-visible, .order-card:focus-visible {
   .nav-links { display: none; }
 }
 
-/* Custom default cursor (The Airplane - Centered Hotspot) */
+/* Custom default cursor */
 html, body {
   cursor: url('../../images/cursor/custom-cursor.png') 16 16, default;
 }
 
-/* Custom pointer cursor (The Coffee Emoji ☕ - Centered Hotspot) */
+/* Custom pointer cursor */
 a,
 a *,
 button, 
