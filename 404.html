@@ -1,0 +1,202 @@
+---
+permalink: /404.html
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — Off Course | Mach Coffee Co.</title>
+<link rel="icon" id="favicon" type="image/png" href="{{ '/images/favicon/frame_00.png' | relative_url }}">
+<link rel="apple-touch-icon" href="{{ '/images/favicon/apple-touch-icon.png' | relative_url }}">
+
+<meta property="og:title" content="404 — Off Course | Mach Coffee Co.">
+<meta property="og:description" content="Vector lost. Return to base or recalibrate your navigation.">
+<meta property="og:image" content="https://jymer1102.github.io/Mach-Coffee-Co./images/social-card.png">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css">
+<link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+
+<style>
+  .error-section {
+    padding: 100px 6% 120px;
+    text-align: center;
+    background: var(--cream);
+    min-height: calc(100vh - 250px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .error-container {
+    max-width: 620px;
+    margin: 0 auto;
+  }
+
+  .error-code {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(5rem, 12vw, 9rem);
+    font-weight: 700;
+    line-height: 0.9;
+    color: var(--brick);
+    letter-spacing: 0.05em;
+    margin-bottom: 10px;
+  }
+
+  .error-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    color: var(--navy);
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+
+  .error-sub {
+    font-size: 1.1rem;
+    color: #44433f;
+    margin-bottom: 36px;
+    line-height: 1.6;
+  }
+
+  .error-actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  /* Radar scanning element */
+  .radar-wrap {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 30px;
+    position: relative;
+    border-radius: 50%;
+    border: 2px solid var(--navy);
+    background: radial-gradient(circle, rgba(27,42,74,0.05) 0%, rgba(27,42,74,0.15) 100%);
+    box-shadow: 0 0 15px rgba(27,42,74,0.1);
+  }
+
+  .radar-wrap::before, .radar-wrap::after {
+    content: '';
+    position: absolute;
+    background: rgba(27,42,74,0.2);
+  }
+
+  .radar-wrap::before {
+    top: 50%; left: 0; right: 0; height: 1px;
+  }
+
+  .radar-wrap::after {
+    left: 50%; top: 0; bottom: 0; width: 1px;
+  }
+
+  .radar-sweep {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, transparent 0deg, transparent 270deg, rgba(201,162,75,0.4) 360deg);
+    animation: radar-spin 4s linear infinite;
+  }
+
+  @keyframes radar-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .radar-sweep { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="top-strip">Concept Location — Opening Soon — Springfield, MO</div>
+
+<nav id="top">
+  <a href="{{ '/' | relative_url }}" class="logo-mark" aria-label="Mach Coffee Co. — Home">
+    <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+      <circle cx="17" cy="17" r="16" stroke="#1B2A4A" stroke-width="1.5"/>
+      <path d="M17 3 L17 31 M3 17 L31 17" stroke="#1B2A4A" stroke-width="0.75"/>
+      <g class="nav-compass-needle">
+        <path d="M17 6 L20 17 L17 28 L14 17 Z" fill="#8B2E2E"/>
+      </g>
+      <circle cx="17" cy="17" r="2.5" fill="#C9A24B"/>
+    </svg>
+    <div class="logo-text">MACH <span>COFFEE CO.</span></div>
+  </a>
+
+  <div class="nav-links">
+    <a href="{{ '/' | relative_url }}">Home</a>
+    <a href="{{ '/menu/' | relative_url }}">Menu</a>
+    <a href="{{ '/about/' | relative_url }}">Our Story</a>
+    <a href="{{ '/connect/' | relative_url }}">Connect</a>
+  </div>
+
+  <a href="{{ '/#order' | relative_url }}" class="nav-cta">Order Now</a>
+</nav>
+
+<section class="error-section">
+  <div class="error-container">
+    <div class="radar-wrap">
+      <div class="radar-sweep"></div>
+    </div>
+    <div class="eyebrow">Signal Lost</div>
+    <div class="error-code">404</div>
+    <h1 class="error-title">You've Drifted Off Course</h1>
+    <p class="error-sub">The coordinates you requested are outside assigned airspace. Return to base vector or consult the menu manifest.</p>
+    
+    <div class="error-actions">
+      <a href="{{ '/' | relative_url }}" class="btn-primary">Return to Base</a>
+      <a href="{{ '/menu/' | relative_url }}" class="btn-secondary">View Menu Manifest</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-logo">MACH <span>COFFEE CO.</span></div>
+  <div class="foot-tag">"Coffee, engineered for altitude."</div>
+  <div>&copy; 2026 Mach Coffee Co. All rights reserved.</div>
+</footer>
+
+<script>
+  // --- Animated spinning favicon (compass needle) ---
+  (function animateFavicon() {
+    const FRAME_COUNT = 48;
+    const FRAME_INTERVAL_MS = 45;
+
+    const frameUrls = [];
+    for (let i = 0; i < FRAME_COUNT; i++) {
+      frameUrls.push(`{{ '/images/favicon/' | relative_url }}frame_${String(i).padStart(2, '0')}.png`);
+    }
+    frameUrls.forEach(src => { const img = new Image(); img.src = src; });
+
+    let frameIndex = 0;
+
+    function setFavicon(href) {
+      const old = document.getElementById('favicon');
+      const link = document.createElement('link');
+      link.id = 'favicon';
+      link.rel = 'icon';
+      link.type = 'image/png';
+      link.href = href;
+      if (old) {
+        old.parentNode.replaceChild(link, old);
+      } else {
+        document.head.appendChild(link);
+      }
+    }
+
+    setInterval(() => {
+      frameIndex = (frameIndex + 1) % FRAME_COUNT;
+      setFavicon(frameUrls[frameIndex]);
+    }, FRAME_INTERVAL_MS);
+  })();
+</script>
+
+</body>
+</html>
