@@ -9,8 +9,6 @@
 <link rel="icon" id="favicon" type="image/png" href="{{ '/images/favicon/frame_00.png' | relative_url }}">
 <link rel="apple-touch-icon" href="{{ '/images/favicon/apple-touch-icon.png' | relative_url }}">
 
-<!-- Social preview (Open Graph / Twitter Card) -->
-<!-- NOTE: swap "https://jymer1102.github.io/Mach-Coffee-Co." below for your real domain once you buy one -->
 <meta property="og:title" content="Menu — Mach Coffee Co.">
 <meta property="og:description" content="Every drink, every build, every flight condition. Pick your altitude.">
 <meta property="og:image" content="https://jymer1102.github.io/Mach-Coffee-Co./images/social-card.png">
@@ -138,6 +136,9 @@
     padding: 26px 28px;
     transition: all 0.2s ease;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
   .drink-card:hover {
     border-color: var(--gold);
@@ -179,18 +180,35 @@
     font-size: 0.92rem;
     color: #5a594f;
     line-height: 1.55;
+    margin-bottom: 16px;
   }
-  .drink-price {
-    display: inline-block;
-    margin-top: 12px;
-    padding: 4px 12px;
+
+  /* ---------- MULTI-SIZE PRICING ---------- */
+  .size-pricing {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: auto;
+  }
+  .size-badge {
     font-family: 'Oswald', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: var(--gold);
-    border: 1px dashed rgba(201,162,75,0.6);
+    font-size: 0.8rem;
+    color: var(--navy);
+    background: rgba(242,237,225,0.6);
+    border: 1px dashed rgba(201,162,75,0.8);
     border-radius: 3px;
-    min-width: 50px;
+    padding: 4px 8px;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+  }
+  .size-badge .oz {
+    color: #8a8a82;
+    font-size: 0.72rem;
+  }
+  .size-badge .price {
+    color: var(--gold);
+    font-weight: 600;
   }
 
   .menu-divider {
@@ -265,7 +283,6 @@
   <a href="#specialty">Specialty</a>
 </div>
 
-<!-- ===================== SIGNATURE SHOTS ===================== -->
 <section class="menu-section" id="signature">
   <div class="category-head">
     <span class="category-num">01</span>
@@ -275,46 +292,69 @@
 
   <div class="drink-grid">
     <div class="drink-card">
-      <div class="drink-card-top">
-        <div class="drink-name">The Redliner</div>
-        <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+      <div>
+        <div class="drink-card-top">
+          <div class="drink-name">The Redliner</div>
+          <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+        </div>
+        <div class="drink-desc">5 shots espresso, splash of half and half, pinch of Himalayan pink salt, dark caramel.</div>
       </div>
-      <div class="drink-desc">5 shots espresso, splash of half and half, pinch of Himalayan pink salt, dark caramel.</div>
-      <div class="drink-price">$0.00</div>
+      <div class="size-pricing">
+        <div class="size-badge"><span class="oz">8oz</span><span class="price">$5.25</span></div>
+        <div class="size-badge"><span class="oz">12oz</span><span class="price">$6.25</span></div>
+        <div class="size-badge"><span class="oz">16oz</span><span class="price">$7.25</span></div>
+      </div>
     </div>
 
     <div class="drink-card">
-      <div class="drink-card-top">
-        <div class="drink-name">The Afterburner</div>
-        <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+      <div>
+        <div class="drink-card-top">
+          <div class="drink-name">The Afterburner</div>
+          <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+        </div>
+        <div class="drink-desc">4 shots espresso, half and half, cayenne, mocha.</div>
       </div>
-      <div class="drink-desc">4 shots espresso, half and half, cayenne, mocha.</div>
-      <div class="drink-price">$0.00</div>
+      <div class="size-pricing">
+        <div class="size-badge"><span class="oz">8oz</span><span class="price">$5.00</span></div>
+        <div class="size-badge"><span class="oz">12oz</span><span class="price">$6.00</span></div>
+        <div class="size-badge"><span class="oz">16oz</span><span class="price">$7.00</span></div>
+      </div>
     </div>
 
     <div class="drink-card">
-      <div class="drink-card-top">
-        <div class="drink-name">The Stall</div>
-        <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+      <div>
+        <div class="drink-card-top">
+          <div class="drink-name">The Stall</div>
+          <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+        </div>
+        <div class="drink-desc">3 shots decaf, splash of half and half, pinch of salt, mocha.</div>
       </div>
-      <div class="drink-desc">3 shots decaf, splash of half and half, pinch of salt, mocha.</div>
-      <div class="drink-price">$0.00</div>
+      <div class="size-pricing">
+        <div class="size-badge"><span class="oz">8oz</span><span class="price">$4.75</span></div>
+        <div class="size-badge"><span class="oz">12oz</span><span class="price">$5.50</span></div>
+        <div class="size-badge"><span class="oz">16oz</span><span class="price">$6.25</span></div>
+      </div>
     </div>
 
     <div class="drink-card">
-      <div class="drink-card-top">
-        <div class="drink-name">Bingo Fuel</div>
-        <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+      <div>
+        <div class="drink-card-top">
+          <div class="drink-name">Bingo Fuel</div>
+          <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+        </div>
+        <div class="drink-desc">2 shots espresso, touch of milk, brown sugar.</div>
       </div>
-      <div class="drink-desc">2 shots espresso, touch of milk, brown sugar.</div>
-      <div class="drink-price">$0.00</div>
+      <div class="size-pricing">
+        <div class="size-badge"><span class="oz">8oz</span><span class="price">$4.25</span></div>
+        <div class="size-badge"><span class="oz">12oz</span><span class="price">$5.00</span></div>
+        <div class="size-badge"><span class="oz">16oz</span><span class="price">$5.75</span></div>
+      </div>
     </div>
   </div>
 </section>
 
 <div class="menu-divider"></div>
 
-<!-- ===================== SMOOTH CRUISE ===================== -->
 <section class="menu-section" id="smooth">
   <div class="category-head">
     <span class="category-num">02</span>
@@ -324,55 +364,84 @@
 
   <div class="drink-grid">
     <div class="drink-card">
-      <div class="drink-card-top">
-        <div class="drink-name">The Cruise</div>
-        <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+      <div>
+        <div class="drink-card-top">
+          <div class="drink-name">The Cruise</div>
+          <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+        </div>
+        <div class="drink-desc">2 shots espresso, honey, cinnamon.</div>
       </div>
-      <div class="drink-desc">2 shots espresso, honey, cinnamon.</div>
-      <div class="drink-price">$0.00</div>
+      <div class="size-pricing">
+        <div class="size-badge"><span class="oz">8oz</span><span class="price">$4.25</span></div>
+        <div class="size-badge"><span class="oz">12oz</span><span class="price">$5.00</span></div>
+        <div class="size-badge"><span class="oz">16oz</span><span class="price">$5.75</span></div>
+      </div>
     </div>
 
     <div class="drink-card">
-      <div class="drink-card-top">
-        <div class="drink-name">The Glider</div>
-        <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+      <div>
+        <div class="drink-card-top">
+          <div class="drink-name">The Glider</div>
+          <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+        </div>
+        <div class="drink-desc">2 shots espresso, oat milk, brown butter.</div>
       </div>
-      <div class="drink-desc">2 shots espresso, oat milk, brown butter.</div>
-      <div class="drink-price">$0.00</div>
+      <div class="size-pricing">
+        <div class="size-badge"><span class="oz">8oz</span><span class="price">$4.50</span></div>
+        <div class="size-badge"><span class="oz">12oz</span><span class="price">$5.25</span></div>
+        <div class="size-badge"><span class="oz">16oz</span><span class="price">$6.00</span></div>
+      </div>
     </div>
 
     <div class="drink-card">
-      <div class="drink-card-top">
-        <div class="drink-name">The Still</div>
-        <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+      <div>
+        <div class="drink-card-top">
+          <div class="drink-name">The Still</div>
+          <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+        </div>
+        <div class="drink-desc">2 shots espresso, caramel, milk.</div>
       </div>
-      <div class="drink-desc">2 shots espresso, caramel, milk.</div>
-      <div class="drink-price">$0.00</div>
+      <div class="size-pricing">
+        <div class="size-badge"><span class="oz">8oz</span><span class="price">$4.25</span></div>
+        <div class="size-badge"><span class="oz">12oz</span><span class="price">$5.00</span></div>
+        <div class="size-badge"><span class="oz">16oz</span><span class="price">$5.75</span></div>
+      </div>
     </div>
 
     <div class="drink-card">
-      <div class="drink-card-top">
-        <div class="drink-name">The Cloud</div>
-        <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+      <div>
+        <div class="drink-card-top">
+          <div class="drink-name">The Cloud</div>
+          <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+        </div>
+        <div class="drink-desc">2 shots espresso, vanilla, milk.</div>
       </div>
-      <div class="drink-desc">2 shots espresso, vanilla, milk.</div>
-      <div class="drink-price">$0.00</div>
+      <div class="size-pricing">
+        <div class="size-badge"><span class="oz">8oz</span><span class="price">$4.25</span></div>
+        <div class="size-badge"><span class="oz">12oz</span><span class="price">$5.00</span></div>
+        <div class="size-badge"><span class="oz">16oz</span><span class="price">$5.75</span></div>
+      </div>
     </div>
 
     <div class="drink-card">
-      <div class="drink-card-top">
-        <div class="drink-name">The Climb</div>
-        <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span></div>
+      <div>
+        <div class="drink-card-top">
+          <div class="drink-name">The Climb</div>
+          <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span></div>
+        </div>
+        <div class="drink-desc">2 shots espresso, caramel mach-iato.</div>
       </div>
-      <div class="drink-desc">2 shots espresso, caramel mach-iato.</div>
-      <div class="drink-price">$0.00</div>
+      <div class="size-pricing">
+        <div class="size-badge"><span class="oz">8oz</span><span class="price">$4.50</span></div>
+        <div class="size-badge"><span class="oz">12oz</span><span class="price">$5.25</span></div>
+        <div class="size-badge"><span class="oz">16oz</span><span class="price">$6.00</span></div>
+      </div>
     </div>
   </div>
 </section>
 
 <div class="menu-divider"></div>
 
-<!-- ===================== LOADED FLAVORS ===================== -->
 <section class="menu-section" id="loaded">
   <div class="category-head">
     <span class="category-num">03</span>
@@ -382,64 +451,99 @@
 
   <div class="drink-grid">
     <div class="drink-card">
-      <div class="drink-card-top">
-        <div class="drink-name">The Payload</div>
-        <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+      <div>
+        <div class="drink-card-top">
+          <div class="drink-name">The Payload</div>
+          <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+        </div>
+        <div class="drink-desc">2 shots espresso, peanut butter, mocha, milk.</div>
       </div>
-      <div class="drink-desc">2 shots espresso, peanut butter, mocha, milk.</div>
-      <div class="drink-price">$0.00</div>
+      <div class="size-pricing">
+        <div class="size-badge"><span class="oz">8oz</span><span class="price">$4.75</span></div>
+        <div class="size-badge"><span class="oz">12oz</span><span class="price">$5.50</span></div>
+        <div class="size-badge"><span class="oz">16oz</span><span class="price">$6.25</span></div>
+      </div>
     </div>
 
     <div class="drink-card">
-      <div class="drink-card-top">
-        <div class="drink-name">The Heavy Lift</div>
-        <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+      <div>
+        <div class="drink-card-top">
+          <div class="drink-name">The Heavy Lift</div>
+          <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+        </div>
+        <div class="drink-desc">2 shots espresso, banana, mocha, peanut butter, milk.</div>
       </div>
-      <div class="drink-desc">2 shots espresso, banana, mocha, peanut butter, milk.</div>
-      <div class="drink-price">$0.00</div>
+      <div class="size-pricing">
+        <div class="size-badge"><span class="oz">8oz</span><span class="price">$5.00</span></div>
+        <div class="size-badge"><span class="oz">12oz</span><span class="price">$5.75</span></div>
+        <div class="size-badge"><span class="oz">16oz</span><span class="price">$6.50</span></div>
+      </div>
     </div>
 
     <div class="drink-card">
-      <div class="drink-card-top">
-        <div class="drink-name">The Tailspin</div>
-        <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+      <div>
+        <div class="drink-card-top">
+          <div class="drink-name">The Tailspin</div>
+          <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+        </div>
+        <div class="drink-desc">2 shots espresso, banana, cinnamon, milk.</div>
       </div>
-      <div class="drink-desc">2 shots espresso, banana, cinnamon, milk.</div>
-      <div class="drink-price">$0.00</div>
+      <div class="size-pricing">
+        <div class="size-badge"><span class="oz">8oz</span><span class="price">$4.50</span></div>
+        <div class="size-badge"><span class="oz">12oz</span><span class="price">$5.25</span></div>
+        <div class="size-badge"><span class="oz">16oz</span><span class="price">$6.00</span></div>
+      </div>
     </div>
 
     <div class="drink-card">
-      <div class="drink-card-top">
-        <div class="drink-name">The Black Box</div>
-        <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+      <div>
+        <div class="drink-card-top">
+          <div class="drink-name">The Black Box</div>
+          <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+        </div>
+        <div class="drink-desc">2 shots espresso, mocha.</div>
       </div>
-      <div class="drink-desc">2 shots espresso, mocha.</div>
-      <div class="drink-price">$0.00</div>
+      <div class="size-pricing">
+        <div class="size-badge"><span class="oz">8oz</span><span class="price">$4.25</span></div>
+        <div class="size-badge"><span class="oz">12oz</span><span class="price">$5.00</span></div>
+        <div class="size-badge"><span class="oz">16oz</span><span class="price">$5.75</span></div>
+      </div>
     </div>
 
     <div class="drink-card">
-      <div class="drink-card-top">
-        <div class="drink-name">The Crosswind</div>
-        <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+      <div>
+        <div class="drink-card-top">
+          <div class="drink-name">The Crosswind</div>
+          <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+        </div>
+        <div class="drink-desc">2 shots espresso, caramel, mocha.</div>
       </div>
-      <div class="drink-desc">2 shots espresso, caramel, mocha.</div>
-      <div class="drink-price">$0.00</div>
+      <div class="size-pricing">
+        <div class="size-badge"><span class="oz">8oz</span><span class="price">$4.50</span></div>
+        <div class="size-badge"><span class="oz">12oz</span><span class="price">$5.25</span></div>
+        <div class="size-badge"><span class="oz">16oz</span><span class="price">$6.00</span></div>
+      </div>
     </div>
 
     <div class="drink-card">
-      <div class="drink-card-top">
-        <div class="drink-name">The Jet Exhaust</div>
-        <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+      <div>
+        <div class="drink-card-top">
+          <div class="drink-name">The Jet Exhaust</div>
+          <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+        </div>
+        <div class="drink-desc">2 shots espresso, brown sugar, salted caramel.</div>
       </div>
-      <div class="drink-desc">2 shots espresso, brown sugar, salted caramel.</div>
-      <div class="drink-price">$0.00</div>
+      <div class="size-pricing">
+        <div class="size-badge"><span class="oz">8oz</span><span class="price">$4.50</span></div>
+        <div class="size-badge"><span class="oz">12oz</span><span class="price">$5.25</span></div>
+        <div class="size-badge"><span class="oz">16oz</span><span class="price">$6.00</span></div>
+      </div>
     </div>
   </div>
 </section>
 
 <div class="menu-divider"></div>
 
-<!-- ===================== TEA & MATCHA ===================== -->
 <section class="menu-section" id="tea">
   <div class="category-head">
     <span class="category-num">04</span>
@@ -449,46 +553,69 @@
 
   <div class="drink-grid">
     <div class="drink-card">
-      <div class="drink-card-top">
-        <div class="drink-name">The Tailwind</div>
-        <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+      <div>
+        <div class="drink-card-top">
+          <div class="drink-name">The Tailwind</div>
+          <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+        </div>
+        <div class="drink-desc">Chai.</div>
       </div>
-      <div class="drink-desc">Chai.</div>
-      <div class="drink-price">$0.00</div>
+      <div class="size-pricing">
+        <div class="size-badge"><span class="oz">8oz</span><span class="price">$3.75</span></div>
+        <div class="size-badge"><span class="oz">12oz</span><span class="price">$4.50</span></div>
+        <div class="size-badge"><span class="oz">16oz</span><span class="price">$5.25</span></div>
+      </div>
     </div>
 
     <div class="drink-card">
-      <div class="drink-card-top">
-        <div class="drink-name">The Headwind</div>
-        <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span></div>
+      <div>
+        <div class="drink-card-top">
+          <div class="drink-name">The Headwind</div>
+          <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span></div>
+        </div>
+        <div class="drink-desc">Tea.</div>
       </div>
-      <div class="drink-desc">Tea.</div>
-      <div class="drink-price">$0.00</div>
+      <div class="size-pricing">
+        <div class="size-badge"><span class="oz">8oz</span><span class="price">$3.00</span></div>
+        <div class="size-badge"><span class="oz">12oz</span><span class="price">$3.50</span></div>
+        <div class="size-badge"><span class="oz">16oz</span><span class="price">$4.00</span></div>
+      </div>
     </div>
 
     <div class="drink-card">
-      <div class="drink-card-top">
-        <div class="drink-name">The Field Landing</div>
-        <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+      <div>
+        <div class="drink-card-top">
+          <div class="drink-name">The Field Landing</div>
+          <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+        </div>
+        <div class="drink-desc">Matcha, sweet cream.</div>
       </div>
-      <div class="drink-desc">Matcha, sweet cream.</div>
-      <div class="drink-price">$0.00</div>
+      <div class="size-pricing">
+        <div class="size-badge"><span class="oz">8oz</span><span class="price">$4.25</span></div>
+        <div class="size-badge"><span class="oz">12oz</span><span class="price">$5.00</span></div>
+        <div class="size-badge"><span class="oz">16oz</span><span class="price">$5.75</span></div>
+      </div>
     </div>
 
     <div class="drink-card">
-      <div class="drink-card-top">
-        <div class="drink-name">The Strawberry Field Landing</div>
-        <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+      <div>
+        <div class="drink-card-top">
+          <div class="drink-name">The Strawberry Field Landing</div>
+          <div class="drink-temps"><span class="temp-pill">H</span><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+        </div>
+        <div class="drink-desc">Matcha, strawberry slices, strawberry sweet cream.</div>
       </div>
-      <div class="drink-desc">Matcha, strawberry slices, strawberry sweet cream.</div>
-      <div class="drink-price">$0.00</div>
+      <div class="size-pricing">
+        <div class="size-badge"><span class="oz">8oz</span><span class="price">$4.75</span></div>
+        <div class="size-badge"><span class="oz">12oz</span><span class="price">$5.50</span></div>
+        <div class="size-badge"><span class="oz">16oz</span><span class="price">$6.25</span></div>
+      </div>
     </div>
   </div>
 </section>
 
 <div class="menu-divider"></div>
 
-<!-- ===================== COLD & REFRESHERS ===================== -->
 <section class="menu-section" id="cold">
   <div class="category-head">
     <span class="category-num">05</span>
@@ -498,46 +625,66 @@
 
   <div class="drink-grid">
     <div class="drink-card">
-      <div class="drink-card-top">
-        <div class="drink-name">The Mayday</div>
-        <div class="drink-temps"><span class="temp-pill">I</span></div>
+      <div>
+        <div class="drink-card-top">
+          <div class="drink-name">The Mayday</div>
+          <div class="drink-temps"><span class="temp-pill">I</span></div>
+        </div>
+        <div class="drink-desc">1 shot espresso, milk, honey, vanilla.</div>
       </div>
-      <div class="drink-desc">1 shot espresso, milk, honey, vanilla.</div>
-      <div class="drink-price">$0.00</div>
+      <div class="size-pricing">
+        <div class="size-badge"><span class="oz">8oz</span><span class="price">$3.75</span></div>
+        <div class="size-badge"><span class="oz">12oz</span><span class="price">$4.50</span></div>
+        <div class="size-badge"><span class="oz">16oz</span><span class="price">$5.25</span></div>
+      </div>
     </div>
 
     <div class="drink-card">
-      <div class="drink-card-top">
-        <div class="drink-name">The Jet Fuel</div>
-        <div class="drink-temps"><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+      <div>
+        <div class="drink-card-top">
+          <div class="drink-name">The Jet Fuel</div>
+          <div class="drink-temps"><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+        </div>
+        <div class="drink-desc">Energy refresher, flavor of your choice.</div>
       </div>
-      <div class="drink-desc">Energy refresher, flavor of your choice.</div>
-      <div class="drink-price">$0.00</div>
+      <div class="size-pricing">
+        <div class="size-badge"><span class="oz">12oz</span><span class="price">$4.75</span></div>
+        <div class="size-badge"><span class="oz">16oz</span><span class="price">$5.50</span></div>
+      </div>
     </div>
 
     <div class="drink-card">
-      <div class="drink-card-top">
-        <div class="drink-name">The Standby</div>
-        <div class="drink-temps"><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+      <div>
+        <div class="drink-card-top">
+          <div class="drink-name">The Standby</div>
+          <div class="drink-temps"><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+        </div>
+        <div class="drink-desc">Refresher, flavor of your choice, caffeine-free.</div>
       </div>
-      <div class="drink-desc">Refresher, flavor of your choice, caffeine-free.</div>
-      <div class="drink-price">$0.00</div>
+      <div class="size-pricing">
+        <div class="size-badge"><span class="oz">12oz</span><span class="price">$4.25</span></div>
+        <div class="size-badge"><span class="oz">16oz</span><span class="price">$5.00</span></div>
+      </div>
     </div>
 
     <div class="drink-card">
-      <div class="drink-card-top">
-        <div class="drink-name">The Frostline</div>
-        <div class="drink-temps"><span class="temp-pill">B</span></div>
+      <div>
+        <div class="drink-card-top">
+          <div class="drink-name">The Frostline</div>
+          <div class="drink-temps"><span class="temp-pill">B</span></div>
+        </div>
+        <div class="drink-desc">Blended smoothie, flavor of your choice.</div>
       </div>
-      <div class="drink-desc">Blended smoothie, flavor of your choice.</div>
-      <div class="drink-price">$0.00</div>
+      <div class="size-pricing">
+        <div class="size-badge"><span class="oz">12oz</span><span class="price">$5.00</span></div>
+        <div class="size-badge"><span class="oz">16oz</span><span class="price">$5.75</span></div>
+      </div>
     </div>
   </div>
 </section>
 
 <div class="menu-divider"></div>
 
-<!-- ===================== SPECIALTY ===================== -->
 <section class="menu-section" id="specialty">
   <div class="category-head">
     <span class="category-num">06</span>
@@ -547,21 +694,31 @@
 
   <div class="drink-grid">
     <div class="drink-card">
-      <div class="drink-card-top">
-        <div class="drink-name">The Flight Deck</div>
-        <div class="drink-temps"><span class="temp-pill">H</span></div>
+      <div>
+        <div class="drink-card-top">
+          <div class="drink-name">The Flight Deck</div>
+          <div class="drink-temps"><span class="temp-pill">H</span></div>
+        </div>
+        <div class="drink-desc">Cappuccino, fancy milk froth design.</div>
       </div>
-      <div class="drink-desc">Cappuccino, fancy milk froth design.</div>
-      <div class="drink-price">$0.00</div>
+      <div class="size-pricing">
+        <div class="size-badge"><span class="oz">8oz</span><span class="price">$4.00</span></div>
+        <div class="size-badge"><span class="oz">12oz</span><span class="price">$4.75</span></div>
+      </div>
     </div>
 
     <div class="drink-card">
-      <div class="drink-card-top">
-        <div class="drink-name">The Mach Break</div>
-        <div class="drink-temps"><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+      <div>
+        <div class="drink-card-top">
+          <div class="drink-name">The Mach Break</div>
+          <div class="drink-temps"><span class="temp-pill">I</span><span class="temp-pill">B</span></div>
+        </div>
+        <div class="drink-desc">2 shots espresso, cold brew, ice, cinnamon.</div>
       </div>
-      <div class="drink-desc">2 shots espresso, cold brew, ice, cinnamon.</div>
-      <div class="drink-price">$0.00</div>
+      <div class="size-pricing">
+        <div class="size-badge"><span class="oz">12oz</span><span class="price">$5.25</span></div>
+        <div class="size-badge"><span class="oz">16oz</span><span class="price">$6.00</span></div>
+      </div>
     </div>
   </div>
 </section>
