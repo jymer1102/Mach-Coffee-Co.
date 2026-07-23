@@ -453,6 +453,22 @@
     }, FRAME_INTERVAL_MS);
   })();
 </script>
+<script>
+  // --- Mobile Navigation Drawer Toggle ---
+  (function mobileNav() {
+    const toggleBtn = document.getElementById('mobileNavToggle');
+    const navLinks = document.getElementById('navLinks');
+    if (!toggleBtn || !navLinks) return;
+
+    toggleBtn.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('nav-open');
+      const icon = toggleBtn.querySelector('i');
+      if (icon) {
+        icon.className = isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+      }
+    });
+  })();
+</script>
 
 </body>
 </html>
