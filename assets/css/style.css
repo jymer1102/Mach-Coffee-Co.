@@ -1,6 +1,6 @@
 /* ==========================================================
    Mach Coffee Co. — Shared Styles
-   Used across index.html, about.html, menu.html, and connect.html.
+   Used across index.html, about.html, menu.html, connect.html, and 404.html.
    ========================================================== */
 
 :root {
@@ -367,11 +367,6 @@ footer .foot-tag {
 a:focus-visible, .order-card:focus-visible {
   outline: 2px solid var(--brick);
   outline-offset: 3px;
-}
-
-/* ---------- SHARED RESPONSIVE ---------- */
-@media (max-width: 880px) {
-  .nav-links { display: none; }
 }
 
 /* Custom default cursor */
