@@ -85,6 +85,7 @@ nav {
 }
 .logo-text span { color: var(--brick); }
 
+/* Desktop Navigation Links */
 .nav-links {
   display: flex;
   gap: 36px;
@@ -124,6 +125,63 @@ nav {
   transition: all 0.25s ease;
 }
 .nav-cta:hover { background: transparent; color: var(--navy); }
+
+/* Mobile Hamburger Toggle Button */
+.mobile-nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--navy);
+  font-size: 1.5rem;
+  padding: 4px;
+  cursor: pointer;
+}
+
+/* Mobile Nav Drawer Styles */
+@media (max-width: 880px) {
+  .mobile-nav-toggle {
+    display: block;
+    order: 3;
+  }
+
+  .nav-cta {
+    margin-left: auto;
+    margin-right: 12px;
+    padding: 8px 14px;
+    font-size: 0.72rem;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--cream);
+    border-bottom: 2px solid var(--gold);
+    padding: 20px 6%;
+    gap: 18px;
+    box-shadow: 0 10px 25px rgba(27,42,74,0.12);
+    /* Off-screen slide transition */
+    transform: translateY(-150%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+    z-index: 99;
+  }
+
+  .nav-links.nav-open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .nav-links a {
+    font-size: 1rem;
+    padding: 6px 0;
+  }
+}
 
 /* ---------- EYEBROW LABEL ---------- */
 .eyebrow {
