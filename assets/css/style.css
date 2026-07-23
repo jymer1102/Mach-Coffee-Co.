@@ -155,14 +155,37 @@ nav {
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 100%;
+    top: calc(100% - 1px); /* Overlaps nav border seamlessly */
     left: 0;
     right: 0;
-    background: var(--cream) !important;
+    background-color: #FAF7F0 !important; /* Exact site cream hex */
     border-bottom: 2px solid var(--gold);
     padding: 20px 6%;
     gap: 18px;
-    box-shadow: 0 10px 25px rgba(27,42,74,0.12);
+    /* Pure downward shadow — no upward dark bleed */
+    box-shadow: 0 16px 20px -6px rgba(27, 42, 74, 0.15);
+    
+    /* Off-screen slide transition */
+    transform: translateY(-150%);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.3s ease-in-out, opacity 0.2s ease-in-out;
+    z-index: 99;
+  }
+
+  .nav-links.nav-open {
+    transform: translateY(0);
+    opacity: 1 !important;
+    visibility: visible;
+  }
+
+  .nav-links a {
+    font-size: 1rem;
+    padding: 6px 0;
+    background: transparent !important;
+  }
+}
+
     /* Off-screen slide transition */
     transform: translateY(-150%);
     opacity: 0;
