@@ -280,14 +280,18 @@
     <div class="logo-text">MACH <span>COFFEE CO.</span></div>
   </a>
 
-  <div class="nav-links">
-    <a href="{{ '/' | relative_url }}">Home</a>
-    <a href="{{ '/menu/' | relative_url }}">Menu</a>
-    <a href="{{ '/about/' | relative_url }}">Our Story</a>
-    <a href="{{ '/connect/' | relative_url }}" class="active">Connect</a>
+  <div class="nav-links" id="navLinks">
+    <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} class="active"{% endif %}>Home</a>
+    <a href="{{ '/menu/' | relative_url }}"{% if page.url == '/menu/' %} class="active"{% endif %}>Menu</a>
+    <a href="{{ '/about/' | relative_url }}"{% if page.url == '/about/' %} class="active"{% endif %}>Our Story</a>
+    <a href="{{ '/connect/' | relative_url }}"{% if page.url == '/connect/' %} class="active"{% endif %}>Connect</a>
   </div>
 
   <a href="{{ '/#order' | relative_url }}" class="nav-cta">Order Now</a>
+
+  <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation">
+    <i class="fa-solid fa-bars"></i>
+  </button>
 </nav>
 
 <header class="connect-hero">
