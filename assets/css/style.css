@@ -12,9 +12,15 @@
   --ink: #2C2C2C;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* { 
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box; 
+}
 
-html { scroll-behavior: smooth; }
+html { 
+  scroll-behavior: smooth; 
+}
 
 body {
   background: var(--cream);
@@ -63,15 +69,18 @@ nav {
   text-decoration: none;
   cursor: pointer;
 }
+
 .nav-compass-needle {
   transform-box: fill-box;
   transform-origin: center;
   animation: nav-compass-spin 6s linear infinite;
 }
+
 @keyframes nav-compass-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
 @media (prefers-reduced-motion: reduce) {
   .nav-compass-needle { animation: none; }
 }
@@ -94,21 +103,27 @@ nav {
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
+
 .nav-links a {
   color: var(--navy);
   text-decoration: none;
   position: relative;
   padding-bottom: 4px;
 }
+
 .nav-links a.active { color: var(--brick); }
+
 .nav-links a::after {
   content: '';
   position: absolute;
-  left: 0; bottom: 0;
-  width: 0; height: 2px;
+  left: 0; 
+  bottom: 0;
+  width: 0; 
+  height: 2px;
   background: var(--gold);
   transition: width 0.25s ease;
 }
+
 .nav-links a:hover::after { width: 100%; }
 
 .nav-cta {
@@ -124,7 +139,11 @@ nav {
   border: 1px solid var(--navy);
   transition: all 0.25s ease;
 }
-.nav-cta:hover { background: transparent; color: var(--navy); }
+
+.nav-cta:hover { 
+  background: transparent; 
+  color: var(--navy); 
+}
 
 /* Mobile Hamburger Toggle Button */
 .mobile-nav-toggle {
@@ -155,17 +174,15 @@ nav {
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: calc(100% - 1px); /* Overlaps nav border seamlessly */
+    top: calc(100% - 1px);
     left: 0;
     right: 0;
-    background-color: #FAF7F0 !important; /* Exact site cream hex */
+    background-color: var(--cream);
     border-bottom: 2px solid var(--gold);
     padding: 20px 6%;
     gap: 18px;
-    /* Pure downward shadow — no upward dark bleed */
     box-shadow: 0 16px 20px -6px rgba(27, 42, 74, 0.15);
     
-    /* Off-screen slide transition */
     transform: translateY(-150%);
     opacity: 0;
     visibility: hidden;
@@ -186,26 +203,6 @@ nav {
   }
 }
 
-    /* Off-screen slide transition */
-    transform: translateY(-150%);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease-in-out;
-    z-index: 99;
-  }
-
-  .nav-links.nav-open {
-    transform: translateY(0);
-    opacity: 1 !important;
-    visibility: visible;
-  }
-
-  .nav-links a {
-    font-size: 1rem;
-    padding: 6px 0;
-  }
-}
-
 /* ---------- EYEBROW LABEL ---------- */
 .eyebrow {
   font-family: 'Oswald', sans-serif;
@@ -217,6 +214,7 @@ nav {
   align-items: center;
   gap: 12px;
 }
+
 .eyebrow::before,
 .eyebrow::after {
   content: '';
@@ -327,7 +325,6 @@ section { padding: 100px 6%; }
   font-size: 1.6rem;
   line-height: 1;
   color: var(--navy);
-  cursor: pointer;
   padding: 0 0 0 12px;
 }
 .directions-modal-sub {
@@ -392,19 +389,28 @@ a:focus-visible, .order-card:focus-visible {
   outline-offset: 3px;
 }
 
-/* Custom default cursor */
+/* ---------- CUSTOM CURSORS ---------- */
+/* Default Cursor */
 html, body {
   cursor: url('../../images/cursor/custom-cursor.png') 16 16, default;
 }
 
-/* Custom pointer cursor */
+/* Interactive Cursor (Hover State across all buttons, links, and form triggers) */
 a,
 a *,
-button, 
-.nav-cta, 
-.btn-primary, 
-select, 
+button,
+button *,
+.nav-cta,
+.btn-primary,
+.btn-secondary,
+.btn-gold,
+.directions-close,
+.directions-option,
+.mobile-nav-toggle,
+select,
 input[type="submit"],
+input[type="button"],
+input[type="reset"],
 .connect-value {
-  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' style='font-size:24px'><text x='4' y='24'>☕</text></svg>") 16 16, pointer;
+  cursor: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='32'%20height='32'%20style='font-size:24px'%3E%3Ctext%20x='4'%20y='24'%3E☕%3C/text%3E%3C/svg%3E") 16 16, pointer !important;
 }
