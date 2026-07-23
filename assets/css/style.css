@@ -158,7 +158,7 @@ nav {
     top: 100%;
     left: 0;
     right: 0;
-    background: var(--cream);
+    background: var(--cream) !important;
     border-bottom: 2px solid var(--gold);
     padding: 20px 6%;
     gap: 18px;
@@ -173,7 +173,7 @@ nav {
 
   .nav-links.nav-open {
     transform: translateY(0);
-    opacity: 1;
+    opacity: 1 !important;
     visibility: visible;
   }
 
