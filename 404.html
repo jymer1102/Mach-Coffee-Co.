@@ -158,6 +158,7 @@ permalink: /404.html
     <path d="M5 12l7-7 7 7"></path>
   </svg>
 </button>
+<script src="{{ '/assets/js/back-to-top.js' | relative_url }}" defer></script>
 
 
 <section class="error-section">
@@ -249,25 +250,6 @@ permalink: /404.html
   })();
 
   // --- Sticky header: add shadow/backdrop once the page scrolls ---
-  // --- Back to top button ---
-  (function backToTop() {
-    const btn = document.getElementById('backToTop');
-    if (!btn) return;
-    const toggle = () => {
-      if (window.scrollY > 500) {
-        btn.classList.add('visible');
-      } else {
-        btn.classList.remove('visible');
-      }
-    };
-    window.addEventListener('scroll', toggle, { passive: true });
-    toggle();
-    btn.addEventListener('click', () => {
-      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
-    });
-  })();
-
   (function stickyHeaderShadow() {
     const nav = document.getElementById('top');
     if (!nav) return;
