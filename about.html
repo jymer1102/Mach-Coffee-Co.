@@ -8,6 +8,9 @@
 <title>Mach Coffee Co. | Our Story</title>
 <link rel="icon" id="favicon" type="image/png" href="{{ '/images/favicon/frame_00.png' | relative_url }}">
 <link rel="apple-touch-icon" href="{{ '/images/favicon/apple-touch-icon.png' | relative_url }}">
+<link rel="canonical" href="{{ '/about/' | absolute_url }}">
+<meta name="description" content="How a ten-year-old's love of airplanes became a coffee shop built to feel like takeoff.">
+<meta name="theme-color" content="#1B2A4A">
 
 <!-- Social preview (Open Graph / Twitter Card) -->
 <!-- NOTE: swap "https://jymer1102.github.io/Mach-Coffee-Co" below for your real domain once you buy one -->
@@ -215,7 +218,7 @@
     <path d="M5 12l7-7 7 7"></path>
   </svg>
 </button>
-<script src="{{ '/assets/js/back-to-top.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
 
 
 <section class="about-hero">
@@ -342,76 +345,6 @@
       frameIndex = (frameIndex + 1) % FRAME_COUNT;
       setFavicon(frameUrls[frameIndex]);
     }, FRAME_INTERVAL_MS);
-  })();
-</script>
-<script>
-  // --- Mobile Navigation Drawer Toggle (bars morph into an X) ---
-  (function mobileNav() {
-    const toggleBtn = document.getElementById('mobileNavToggle');
-    const navLinks = document.getElementById('navLinks');
-    const backdrop = document.getElementById('navBackdrop');
-    if (!toggleBtn || !navLinks) return;
-
-    function closeMenu() {
-      navLinks.classList.remove('nav-open');
-      toggleBtn.classList.remove('active');
-      toggleBtn.setAttribute('aria-expanded', 'false');
-      if (backdrop) backdrop.classList.remove('active');
-      document.body.classList.remove('nav-scroll-lock');
-    }
-
-    toggleBtn.addEventListener('click', () => {
-      const isOpen = navLinks.classList.toggle('nav-open');
-      toggleBtn.classList.toggle('active', isOpen);
-      toggleBtn.setAttribute('aria-expanded', String(isOpen));
-      if (backdrop) backdrop.classList.toggle('active', isOpen);
-      document.body.classList.toggle('nav-scroll-lock', isOpen);
-    });
-
-    if (backdrop) backdrop.addEventListener('click', closeMenu);
-    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeMenu();
-    });
-  })();
-
-  // --- Sticky header: add shadow/backdrop once the page scrolls ---
-  (function stickyHeaderShadow() {
-    const nav = document.getElementById('top');
-    if (!nav) return;
-    function onScroll() {
-      nav.classList.toggle('scrolled', window.scrollY > 12);
-    }
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-  })();
-
-  // --- Scroll-reveal: fade/slide elements with class "reveal" into place ---
-  (function scrollReveal() {
-    const targets = document.querySelectorAll('.reveal');
-    if (!targets.length) return;
-
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
-      targets.forEach(el => el.classList.add('in-view'));
-      return;
-    }
-
-    // Stagger elements that reveal together (e.g. rows/cards in the same batch)
-    targets.forEach((el, i) => {
-      el.style.transitionDelay = (Math.min(i % 5, 4) * 0.08) + 's';
-    });
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in-view');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-
-    targets.forEach(el => observer.observe(el));
   })();
 </script>
 
