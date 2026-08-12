@@ -116,6 +116,56 @@
     min-height: 140px;
   }
 
+  /* ---------- FORM SUBMIT STATE ---------- */
+  #transmitBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+  }
+  #transmitBtn:disabled {
+    opacity: 0.75;
+    cursor: default;
+  }
+  #transmitBtn .btn-spinner {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid rgba(250,247,240,0.35);
+    border-top-color: var(--cream);
+    animation: btnSpin 0.7s linear infinite;
+    display: none;
+  }
+  #transmitBtn.is-loading .btn-spinner { display: inline-block; }
+  @keyframes btnSpin {
+    to { transform: rotate(360deg); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #transmitBtn .btn-spinner { animation-duration: 1.4s; }
+  }
+
+  .form-status {
+    margin-top: 16px;
+    font-size: 0.9rem;
+    text-align: center;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: opacity 0.3s ease, transform 0.3s ease, max-height 0.3s ease;
+  }
+  .form-status.visible {
+    max-height: 60px;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .form-status.success { color: #3a7d44; }
+  .form-status.error { color: var(--brick); }
+  @media (prefers-reduced-motion: reduce) {
+    .form-status { transition: opacity 0.15s linear; }
+  }
+
   /* ---------- COMM CHANNELS GRID ---------- */
   .comm-channels {
     background: var(--navy);
@@ -284,7 +334,7 @@
 
 <section class="transmission-section">
   <div class="form-container reveal">
-    <form action="https://formspree.io/f/xwvgbark" method="POST">
+    <form action="https://formspree.io/f/xwvgbark" method="POST" id="transmissionForm">
       <div class="form-group">
         <label for="callsign">Pilot Name / Callsign</label>
         <input type="text" id="callsign" name="name" class="form-control" placeholder="e.g., Captain Maverick" required>
@@ -311,7 +361,11 @@
         <textarea id="log-message" name="message" class="form-control" placeholder="Write down your parameters or inquiries here..." required></textarea>
       </div>
 
-      <button type="submit" class="btn-primary" style="width: 100%; text-align: center; border-radius: 2px; padding: 14px;">Transmit Message</button>
+      <button type="submit" class="btn-primary" id="transmitBtn" style="width: 100%; text-align: center; border-radius: 2px; padding: 14px;">
+        <span class="btn-label">Transmit Message</span>
+      </button>
+
+      <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
     </form>
   </div>
 </section>
@@ -507,6 +561,57 @@
     }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
 
     targets.forEach(el => observer.observe(el));
+  })();
+
+  // --- Transmission form: submit via fetch, no full-page reload ---
+  (function transmissionForm() {
+    const form = document.getElementById('transmissionForm');
+    const btn = document.getElementById('transmitBtn');
+    const statusEl = document.getElementById('formStatus');
+    if (!form || !btn || !statusEl) return;
+
+    const label = btn.querySelector('.btn-label');
+    const originalLabel = label ? label.textContent : 'Transmit Message';
+
+    if (!btn.querySelector('.btn-spinner')) {
+      const spinner = document.createElement('span');
+      spinner.className = 'btn-spinner';
+      btn.appendChild(spinner);
+    }
+
+    function setStatus(message, type) {
+      statusEl.textContent = message;
+      statusEl.className = 'form-status visible' + (type ? ' ' + type : '');
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      btn.disabled = true;
+      btn.classList.add('is-loading');
+      if (label) label.textContent = 'Transmitting…';
+      setStatus('', '');
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          setStatus('Transmission received — we\u2019ll be in touch soon.', 'success');
+          form.reset();
+        } else {
+          setStatus('Transmission failed to send. Please try again or email us directly.', 'error');
+        }
+      } catch (err) {
+        setStatus('Transmission failed to send. Please check your connection and try again.', 'error');
+      } finally {
+        btn.disabled = false;
+        btn.classList.remove('is-loading');
+        if (label) label.textContent = originalLabel;
+      }
+    });
   })();
 </script>
 
