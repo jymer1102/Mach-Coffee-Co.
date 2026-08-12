@@ -196,8 +196,23 @@
     gap: 24px;
     padding: 22px 0;
     border-bottom: 1px dashed rgba(27,42,74,0.25);
+    position: relative;
+    overflow: hidden;
   }
   .manifest-row:last-child { border-bottom: none; }
+  .manifest-row::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(201,162,75,0.12), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.7s ease;
+    pointer-events: none;
+  }
+  .manifest-row:hover::before { transform: translateX(100%); }
+  @media (prefers-reduced-motion: reduce) {
+    .manifest-row::before { display: none; }
+  }
 
   .manifest-code {
     font-family: 'Oswald', sans-serif;
@@ -312,6 +327,10 @@
     transform: translateY(-4px);
     box-shadow: 0 14px 30px rgba(27,42,74,0.12);
   }
+  .order-card:active { transform: translateY(-1px) scale(0.98); }
+  @media (prefers-reduced-motion: reduce) {
+    .order-card:hover, .order-card:active { transform: none; }
+  }
   .order-card .platform {
     font-family: 'Oswald', sans-serif;
     font-size: 1.05rem;
@@ -347,6 +366,14 @@
     letter-spacing: 0.1em;
     padding: 3px 9px;
     border-radius: 2px;
+    animation: badgePulse 2.2s ease-in-out 1.4s 2;
+  }
+  @keyframes badgePulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .order-card--pickup::before { animation: none; }
   }
 
   /* ---------- LOCATION / CONTACT ---------- */
@@ -393,28 +420,7 @@
   .hours-day { font-family: 'Oswald', sans-serif; letter-spacing: 0.05em; color: var(--navy); font-size: 0.85rem; }
 
   /* ---------- DIRECTIONS PICKER MODAL ---------- */
-  .directions-overlay {
-    display: none;
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(18, 29, 54, 0.55);
-    z-index: 1000;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-  }
-  .directions-overlay.active {
-    display: flex;
-  }
-  .directions-modal {
-    background: var(--cream);
-    border-radius: 4px;
-    max-width: 420px;
-    width: 100%;
-    padding: 30px 30px 26px;
-    box-shadow: 0 24px 60px rgba(0,0,0,0.35);
-    border: 1px solid var(--gold);
-  }
+  /* Overlay/modal open/close animation now lives in assets/css/style.css (shared) */
   .directions-modal-head {
     display: flex;
     justify-content: space-between;
@@ -505,25 +511,28 @@
 
   <a href="{{ '/#order' | relative_url }}" class="nav-cta">Order Now</a>
 
-  <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation">
-    <i class="fa-solid fa-bars"></i>
+  <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation" aria-expanded="false">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
   </button>
 </nav>
+<div class="nav-backdrop" id="navBackdrop"></div>
 
 
 <header class="hero">
   <div class="altitude-line"></div>
   <div class="hero-grid">
     <div>
-      <div class="eyebrow">Est. Flight Plan Filed</div>
-      <h1>Coffee, Engineered<br>for <span class="accent">Altitude.</span></h1>
-      <p class="hero-sub">Every drink on the manifest is built like a flight checklist — precise, deliberate, and a little dangerous at full throttle. Welcome to Mach Coffee Co.</p>
-      <div class="hero-actions">
+      <div class="eyebrow hero-anim hero-anim-1">Est. Flight Plan Filed</div>
+      <h1 class="hero-anim hero-anim-2">Coffee, Engineered<br>for <span class="accent">Altitude.</span></h1>
+      <p class="hero-sub hero-anim hero-anim-3">Every drink on the manifest is built like a flight checklist — precise, deliberate, and a little dangerous at full throttle. Welcome to Mach Coffee Co.</p>
+      <div class="hero-actions hero-anim hero-anim-4">
         <a href="#menu" class="btn-primary">View the Manifest</a>
         <a href="#order" class="btn-secondary">Order Ahead</a>
       </div>
     </div>
-    <div class="compass-wrap">
+    <div class="compass-wrap hero-anim hero-anim-5">
       <div class="compass-instrument">
         <!-- Static bezel: outer casing, engraved ticks, degree numerals, cardinal letters -->
        <svg class="compass-bezel" viewBox="0 0 440 440" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -696,12 +705,12 @@
 
 <section class="menu-preview" id="menu">
   <div class="section-inner">
-    <div class="section-head">
+    <div class="section-head reveal">
       <div class="eyebrow">The Manifest</div>
       <h2>Flagship Drinks</h2>
     </div>
     <div class="manifest-table">
-      <div class="manifest-row">
+      <div class="manifest-row reveal">
         <div class="manifest-code">01</div>
         <div>
           <div class="manifest-name">The Redliner</div>
@@ -710,7 +719,7 @@
         <div></div>
         <div class="manifest-temps">H / I / B</div>
       </div>
-      <div class="manifest-row">
+      <div class="manifest-row reveal">
         <div class="manifest-code">02</div>
         <div>
           <div class="manifest-name">The Afterburner</div>
@@ -719,7 +728,7 @@
         <div></div>
         <div class="manifest-temps">H / I / B</div>
       </div>
-      <div class="manifest-row">
+      <div class="manifest-row reveal">
         <div class="manifest-code">03</div>
         <div>
           <div class="manifest-name">The Glider</div>
@@ -728,7 +737,7 @@
         <div></div>
         <div class="manifest-temps">H / I / B</div>
       </div>
-      <div class="manifest-row">
+      <div class="manifest-row reveal">
         <div class="manifest-code">04</div>
         <div>
           <div class="manifest-name">The Mayday</div>
@@ -738,7 +747,7 @@
         <div class="manifest-temps">ICED</div>
       </div>
     </div>
-    <div class="menu-cta">
+    <div class="menu-cta reveal">
       <a href="{{ '/menu/' | relative_url }}" class="btn-secondary">See Full Menu</a>
     </div>
   </div>
@@ -746,13 +755,13 @@
 
 <section class="about-teaser" id="story">
   <div class="about-grid">
-    <div>
+    <div class="reveal">
       <div class="eyebrow">Our Story</div>
       <h2>Built on a Dream of the Sky</h2>
       <p>Mach Coffee Co. started with a simple idea: coffee should feel like the moment a plane lifts off the runway. Every name on the menu, every detail in the build, comes from a real love of aviation and the people who push themselves to fly.</p>
       <a href="{{ '/about/' | relative_url }}" class="btn-secondary" style="border-color: var(--gold); color: var(--gold);">Read the Full Story</a>
     </div>
-    <div class="logbook-card">
+    <div class="logbook-card reveal">
       <h3>The Short Version</h3>
       <p>This shop is being built by someone with their sights set on the sky — every cup is a small step toward something bigger. More to come as the story unfolds.</p>
     </div>
@@ -761,24 +770,24 @@
 
 <section class="order-strip" id="order">
   <div class="section-inner">
-    <div class="section-head">
+    <div class="section-head reveal">
       <div class="eyebrow">Cleared for Departure</div>
       <h2>Order Now</h2>
     </div>
     <div class="order-options">
-      <a href="#visit" class="order-card order-card--pickup">
+      <a href="#visit" class="order-card order-card--pickup reveal">
         <div class="platform">Pickup In-Shop</div>
         <div class="platform-sub">Order ahead, skip the line</div>
       </a>
-      <a href="#" class="order-card">
+      <a href="#" class="order-card reveal">
         <div class="platform">DoorDash</div>
         <div class="platform-sub">Delivery &amp; pickup</div>
       </a>
-      <a href="#" class="order-card">
+      <a href="#" class="order-card reveal">
         <div class="platform">Grubhub</div>
         <div class="platform-sub">Delivery &amp; pickup</div>
       </a>
-      <a href="#" class="order-card">
+      <a href="#" class="order-card reveal">
         <div class="platform">Uber Eats</div>
         <div class="platform-sub">Delivery &amp; pickup</div>
       </a>
@@ -788,13 +797,13 @@
 
 <section class="location" id="visit">
   <div class="location-grid">
-    <div class="location-block">
+    <div class="location-block reveal">
       <h3>Find Us</h3>
       <p>123 Runway Lane<br>Springfield, MO 65801</p>
       <p style="margin-top: 14px;"><a href="tel:4178723145">(417) 872-3145</a></p>
       <p style="margin-top: 14px;"><a href="#" id="directionsLink">Get Directions</a></p>
     </div>
-    <div class="location-block">
+    <div class="location-block reveal">
       <h3>Hours</h3>
       <div class="hours-row"><span class="hours-day">Mon &ndash; Fri</span><span>6:00 AM &ndash; 5:00 PM</span></div>
       <div class="hours-row"><span class="hours-day">Saturday</span><span>7:00 AM &ndash; 3:00 PM</span></div>
@@ -1032,19 +1041,73 @@
   })();
 </script>
 <script>
-  // --- Mobile Navigation Drawer Toggle ---
+  // --- Mobile Navigation Drawer Toggle (bars morph into an X) ---
   (function mobileNav() {
     const toggleBtn = document.getElementById('mobileNavToggle');
     const navLinks = document.getElementById('navLinks');
+    const backdrop = document.getElementById('navBackdrop');
     if (!toggleBtn || !navLinks) return;
+
+    function closeMenu() {
+      navLinks.classList.remove('nav-open');
+      toggleBtn.classList.remove('active');
+      toggleBtn.setAttribute('aria-expanded', 'false');
+      if (backdrop) backdrop.classList.remove('active');
+      document.body.classList.remove('nav-scroll-lock');
+    }
 
     toggleBtn.addEventListener('click', () => {
       const isOpen = navLinks.classList.toggle('nav-open');
-      const icon = toggleBtn.querySelector('i');
-      if (icon) {
-        icon.className = isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
-      }
+      toggleBtn.classList.toggle('active', isOpen);
+      toggleBtn.setAttribute('aria-expanded', String(isOpen));
+      if (backdrop) backdrop.classList.toggle('active', isOpen);
+      document.body.classList.toggle('nav-scroll-lock', isOpen);
     });
+
+    if (backdrop) backdrop.addEventListener('click', closeMenu);
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeMenu();
+    });
+  })();
+
+  // --- Sticky header: add shadow/backdrop once the page scrolls ---
+  (function stickyHeaderShadow() {
+    const nav = document.getElementById('top');
+    if (!nav) return;
+    function onScroll() {
+      nav.classList.toggle('scrolled', window.scrollY > 12);
+    }
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  })();
+
+  // --- Scroll-reveal: fade/slide elements with class "reveal" into place ---
+  (function scrollReveal() {
+    const targets = document.querySelectorAll('.reveal');
+    if (!targets.length) return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+      targets.forEach(el => el.classList.add('in-view'));
+      return;
+    }
+
+    // Stagger elements that reveal together (e.g. rows/cards in the same batch)
+    targets.forEach((el, i) => {
+      el.style.transitionDelay = (Math.min(i % 5, 4) * 0.08) + 's';
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+    targets.forEach(el => observer.observe(el));
   })();
 </script>
 
