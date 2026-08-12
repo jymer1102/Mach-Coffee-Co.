@@ -181,28 +181,7 @@
   }
 
    /* Modal Styles */
-  .directions-overlay {
-    display: none;
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(18, 29, 54, 0.55);
-    z-index: 1000;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-  }
-  .directions-overlay.active {
-    display: flex;
-  }
-  .directions-modal {
-    background: var(--cream);
-    border-radius: 4px;
-    max-width: 420px;
-    width: 100%;
-    padding: 30px 30px 26px;
-    box-shadow: 0 24px 60px rgba(0,0,0,0.35);
-    border: 1px solid var(--gold);
-  }
+   /* Overlay/modal open/close animation now lives in assets/css/style.css (shared) */
   .directions-modal-head {
     display: flex;
     justify-content: space-between;
@@ -289,19 +268,22 @@
 
   <a href="{{ '/#order' | relative_url }}" class="nav-cta">Order Now</a>
 
-  <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation">
-    <i class="fa-solid fa-bars"></i>
+  <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation" aria-expanded="false">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
   </button>
 </nav>
+<div class="nav-backdrop" id="navBackdrop"></div>
 
 <header class="connect-hero">
-  <div class="eyebrow">Open Comm Channels</div>
-  <h1>Establish <span class="accent">Contact.</span></h1>
-  <p class="connect-sub">Filing a mission manifest, detailing a heavy payload event, or dropping feedback into the flight log? Transmit your signal down below.</p>
+  <div class="eyebrow hero-anim hero-anim-1">Open Comm Channels</div>
+  <h1 class="hero-anim hero-anim-2">Establish <span class="accent">Contact.</span></h1>
+  <p class="connect-sub hero-anim hero-anim-3">Filing a mission manifest, detailing a heavy payload event, or dropping feedback into the flight log? Transmit your signal down below.</p>
 </header>
 
 <section class="transmission-section">
-  <div class="form-container">
+  <div class="form-container reveal">
     <form action="https://formspree.io/f/xwvgbark" method="POST">
       <div class="form-group">
         <label for="callsign">Pilot Name / Callsign</label>
@@ -336,7 +318,7 @@
 
 <section class="comm-channels">
   <div class="channels-grid">
-    <div class="channel-card">
+    <div class="channel-card reveal">
       <h3>Secure Line</h3>
        <div class="connect-item">
         <span class="connect-label"><i class="fa-solid fa-phone"></i></i>Phone</span>
@@ -352,7 +334,7 @@
       </div>
     </div>
     
-    <div class="channel-card">
+    <div class="channel-card reveal">
       <h3>HQ Coordinates</h3>
       <p>Drop into our location vector for a face-to-face debrief.<br>
       <a href="#" id="directionsLink" class="connect-value">123 Runway Lane, Springfield, MO 65801</a></p>
@@ -458,19 +440,73 @@
   })();
 </script>
 <script>
-  // --- Mobile Navigation Drawer Toggle ---
+  // --- Mobile Navigation Drawer Toggle (bars morph into an X) ---
   (function mobileNav() {
     const toggleBtn = document.getElementById('mobileNavToggle');
     const navLinks = document.getElementById('navLinks');
+    const backdrop = document.getElementById('navBackdrop');
     if (!toggleBtn || !navLinks) return;
+
+    function closeMenu() {
+      navLinks.classList.remove('nav-open');
+      toggleBtn.classList.remove('active');
+      toggleBtn.setAttribute('aria-expanded', 'false');
+      if (backdrop) backdrop.classList.remove('active');
+      document.body.classList.remove('nav-scroll-lock');
+    }
 
     toggleBtn.addEventListener('click', () => {
       const isOpen = navLinks.classList.toggle('nav-open');
-      const icon = toggleBtn.querySelector('i');
-      if (icon) {
-        icon.className = isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
-      }
+      toggleBtn.classList.toggle('active', isOpen);
+      toggleBtn.setAttribute('aria-expanded', String(isOpen));
+      if (backdrop) backdrop.classList.toggle('active', isOpen);
+      document.body.classList.toggle('nav-scroll-lock', isOpen);
     });
+
+    if (backdrop) backdrop.addEventListener('click', closeMenu);
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeMenu();
+    });
+  })();
+
+  // --- Sticky header: add shadow/backdrop once the page scrolls ---
+  (function stickyHeaderShadow() {
+    const nav = document.getElementById('top');
+    if (!nav) return;
+    function onScroll() {
+      nav.classList.toggle('scrolled', window.scrollY > 12);
+    }
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  })();
+
+  // --- Scroll-reveal: fade/slide elements with class "reveal" into place ---
+  (function scrollReveal() {
+    const targets = document.querySelectorAll('.reveal');
+    if (!targets.length) return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+      targets.forEach(el => el.classList.add('in-view'));
+      return;
+    }
+
+    // Stagger elements that reveal together (e.g. rows/cards in the same batch)
+    targets.forEach((el, i) => {
+      el.style.transitionDelay = (Math.min(i % 5, 4) * 0.08) + 's';
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+    targets.forEach(el => observer.observe(el));
   })();
 </script>
 
