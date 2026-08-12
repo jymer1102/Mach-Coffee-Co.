@@ -380,6 +380,12 @@ body.nav-scroll-lock {
 section { padding: 100px 6%; }
 .section-inner { max-width: 1280px; margin: 0 auto; }
 
+/* Keep in-page anchor jumps (nav CTA, hero buttons, menu category nav)
+   from landing content underneath the sticky header */
+section[id], .menu-section[id] {
+  scroll-margin-top: 96px;
+}
+
 .section-head {
   text-align: center;
   margin-bottom: 64px;
