@@ -201,57 +201,60 @@
 
   <a href="{{ '/#order' | relative_url }}" class="nav-cta">Order Now</a>
 
-  <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation">
-    <i class="fa-solid fa-bars"></i>
+  <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation" aria-expanded="false">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
   </button>
 </nav>
+<div class="nav-backdrop" id="navBackdrop"></div>
 
 
 <section class="about-hero">
-  <div class="eyebrow">Flight Log &mdash; Entry 01</div>
-  <h1>Our Story</h1>
-  <p class="lede">How a ten-year-old's love of airplanes became a coffee shop built to feel like takeoff.</p>
+  <div class="eyebrow hero-anim hero-anim-1">Flight Log &mdash; Entry 01</div>
+  <h1 class="hero-anim hero-anim-2">Our Story</h1>
+  <p class="lede hero-anim hero-anim-3">How a ten-year-old's love of airplanes became a coffee shop built to feel like takeoff.</p>
 </section>
 
 <section class="timeline-section">
   <div class="timeline">
 
-    <div class="timeline-entry">
+    <div class="timeline-entry reveal">
       <div class="timeline-dot">10</div>
       <div class="timeline-age">Age 10</div>
       <h3>Wheels Up</h3>
       <p>Jackson Weimer fell in love with airplanes the way a lot of kids do &mdash; completely, and without any plan to grow out of it. He didn't, and he never would.</p>
     </div>
 
-    <div class="timeline-entry">
+    <div class="timeline-entry reveal">
       <div class="timeline-dot">13</div>
       <div class="timeline-age">Age 13</div>
       <h3>The Second Obsession</h3>
       <p>Three years later, coffee entered the picture. It wasn't a passing phase either &mdash; Jackson approached it with the same curiosity he gave airplanes, learning what made a cup good, bad, or unforgettable.</p>
     </div>
 
-    <div class="timeline-entry">
+    <div class="timeline-entry reveal">
       <div class="timeline-dot">14</div>
       <div class="timeline-age">Age 14</div>
       <h3>Behind the Stick</h3>
       <p>At fourteen, Jackson started flying for real. What began as a fascination became a discipline &mdash; checklists, precision, the weight of doing something that demands your full attention. It stuck, and it never let go.</p>
     </div>
 
-    <div class="timeline-entry">
+    <div class="timeline-entry reveal">
       <div class="timeline-dot">15</div>
       <div class="timeline-age">Age 15</div>
       <h3>The Idea</h3>
       <p>One thought changed the trajectory of everything: <em>what if a coffee shop felt like an airplane?</em> Jackson loved the idea immediately, and that same year, he officially began planning the business that would become Mach Coffee Co. Every drink on the manifest today &mdash; the Redliner, the Afterburner, the Glider, all of it &mdash; traces back to the original list he wrote that year. Not a single name has changed since.</p>
     </div>
 
-    <div class="timeline-entry">
+    <div class="timeline-entry reveal">
       <div class="timeline-dot">15</div>
       <div class="timeline-age">The Build</div>
       <h3>Designing the Manifest</h3>
       <p>Jackson designed and built this website himself, treating it the same way he approached flight training &mdash; methodically, with attention to every detail, refusing to cut corners just because no one was watching yet. The site you're looking at now is the result of that same mindset applied to a brand instead of a cockpit.</p>
     </div>
 
-    <div class="timeline-entry">
+    <div class="timeline-entry reveal">
       <div class="timeline-dot">&#9670;</div>
       <div class="timeline-age">The Standard</div>
       <h3>What This Shop Believes</h3>
@@ -263,7 +266,7 @@
 </section>
 
 <section class="logbook-section">
-  <div class="logbook-inner">
+  <div class="logbook-inner reveal">
     <div class="eyebrow">Looking Back</div>
     <p class="logbook-quote">"Jackson Weimer went on to serve as a pilot in the United States Air Force &mdash; but Mach Coffee Co. was never put on hold. It was always part of the flight plan."</p>
     <div class="logbook-attribution">Mach Coffee Co. &mdash; Official History</div>
@@ -271,24 +274,24 @@
 </section>
 
 <section class="today-section">
-  <div class="eyebrow" style="justify-content: flex-start;">Where We Are Now</div>
-  <h2 style="color: var(--navy); font-size: clamp(1.8rem, 3.5vw, 2.6rem); margin-bottom: 24px;">Built to Last, From the Ground Up</h2>
-  <p class="section-text">Mach Coffee Co. is still, at its core, the same idea a fifteen-year-old had: coffee that feels like the exact moment a plane leaves the runway. Every name on the manifest carries that same energy &mdash; precise, deliberate, and built with intent.</p>
-  <p class="section-text">This is a shop built by someone who treats both flying and coffee as crafts worth taking seriously &mdash; and that hasn't changed, no matter how far the story has come since.</p>
+  <div class="eyebrow reveal" style="justify-content: flex-start;">Where We Are Now</div>
+  <h2 class="reveal" style="color: var(--navy); font-size: clamp(1.8rem, 3.5vw, 2.6rem); margin-bottom: 24px;">Built to Last, From the Ground Up</h2>
+  <p class="section-text reveal">Mach Coffee Co. is still, at its core, the same idea a fifteen-year-old had: coffee that feels like the exact moment a plane leaves the runway. Every name on the manifest carries that same energy &mdash; precise, deliberate, and built with intent.</p>
+  <p class="section-text reveal">This is a shop built by someone who treats both flying and coffee as crafts worth taking seriously &mdash; and that hasn't changed, no matter how far the story has come since.</p>
 
   <div class="today-grid">
-    <div class="today-card">
+    <div class="today-card reveal">
       <h3>The Aviation Thread</h3>
       <p>Every drink name on the menu connects back to something real in flight &mdash; altitude, instruments, fuel, weather. Nothing is just a theme bolted on after the fact.</p>
     </div>
-    <div class="today-card">
+    <div class="today-card reveal">
       <h3>The Coffee Thread</h3>
       <p>Behind every aviation name is a real, deliberate build &mdash; shots, ratios, flavor pairings that were tested and refined long before this site ever existed.</p>
     </div>
   </div>
 </section>
 
-<div class="about-cta-band">
+<div class="about-cta-band reveal">
   <h2>See the Full Manifest</h2>
   <p>Every drink Jackson built, organized and ready to order.</p>
   <a href="{{ '/menu/' | relative_url }}" class="btn-primary">View the Menu</a>
@@ -334,19 +337,73 @@
   })();
 </script>
 <script>
-  // --- Mobile Navigation Drawer Toggle ---
+  // --- Mobile Navigation Drawer Toggle (bars morph into an X) ---
   (function mobileNav() {
     const toggleBtn = document.getElementById('mobileNavToggle');
     const navLinks = document.getElementById('navLinks');
+    const backdrop = document.getElementById('navBackdrop');
     if (!toggleBtn || !navLinks) return;
+
+    function closeMenu() {
+      navLinks.classList.remove('nav-open');
+      toggleBtn.classList.remove('active');
+      toggleBtn.setAttribute('aria-expanded', 'false');
+      if (backdrop) backdrop.classList.remove('active');
+      document.body.classList.remove('nav-scroll-lock');
+    }
 
     toggleBtn.addEventListener('click', () => {
       const isOpen = navLinks.classList.toggle('nav-open');
-      const icon = toggleBtn.querySelector('i');
-      if (icon) {
-        icon.className = isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
-      }
+      toggleBtn.classList.toggle('active', isOpen);
+      toggleBtn.setAttribute('aria-expanded', String(isOpen));
+      if (backdrop) backdrop.classList.toggle('active', isOpen);
+      document.body.classList.toggle('nav-scroll-lock', isOpen);
     });
+
+    if (backdrop) backdrop.addEventListener('click', closeMenu);
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeMenu();
+    });
+  })();
+
+  // --- Sticky header: add shadow/backdrop once the page scrolls ---
+  (function stickyHeaderShadow() {
+    const nav = document.getElementById('top');
+    if (!nav) return;
+    function onScroll() {
+      nav.classList.toggle('scrolled', window.scrollY > 12);
+    }
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  })();
+
+  // --- Scroll-reveal: fade/slide elements with class "reveal" into place ---
+  (function scrollReveal() {
+    const targets = document.querySelectorAll('.reveal');
+    if (!targets.length) return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+      targets.forEach(el => el.classList.add('in-view'));
+      return;
+    }
+
+    // Stagger elements that reveal together (e.g. rows/cards in the same batch)
+    targets.forEach((el, i) => {
+      el.style.transitionDelay = (Math.min(i % 5, 4) * 0.08) + 's';
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+    targets.forEach(el => observer.observe(el));
   })();
 </script>
 
