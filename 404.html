@@ -144,23 +144,26 @@ permalink: /404.html
 
   <a href="{{ '/#order' | relative_url }}" class="nav-cta">Order Now</a>
 
-  <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation">
-    <i class="fa-solid fa-bars"></i>
+  <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation" aria-expanded="false">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
   </button>
 </nav>
+<div class="nav-backdrop" id="navBackdrop"></div>
 
 
 <section class="error-section">
   <div class="error-container">
-    <div class="radar-wrap">
+    <div class="radar-wrap hero-anim hero-anim-1">
       <div class="radar-sweep"></div>
     </div>
-    <div class="eyebrow">Signal Lost</div>
-    <div class="error-code">404</div>
-    <h1 class="error-title">You've Drifted Off Course</h1>
-    <p class="error-sub">The coordinates you requested are outside assigned airspace. Return to base vector or consult the menu manifest.</p>
+    <div class="eyebrow hero-anim hero-anim-2">Signal Lost</div>
+    <div class="error-code hero-anim hero-anim-3">404</div>
+    <h1 class="error-title hero-anim hero-anim-4">You've Drifted Off Course</h1>
+    <p class="error-sub hero-anim hero-anim-5">The coordinates you requested are outside assigned airspace. Return to base vector or consult the menu manifest.</p>
     
-    <div class="error-actions">
+    <div class="error-actions hero-anim hero-anim-5">
       <a href="{{ '/' | relative_url }}" class="btn-primary">Return to Base</a>
       <a href="{{ '/menu/' | relative_url }}" class="btn-secondary">View Menu Manifest</a>
     </div>
@@ -208,19 +211,73 @@ permalink: /404.html
   })();
 </script>
 <script>
-  // --- Mobile Navigation Drawer Toggle ---
+  // --- Mobile Navigation Drawer Toggle (bars morph into an X) ---
   (function mobileNav() {
     const toggleBtn = document.getElementById('mobileNavToggle');
     const navLinks = document.getElementById('navLinks');
+    const backdrop = document.getElementById('navBackdrop');
     if (!toggleBtn || !navLinks) return;
+
+    function closeMenu() {
+      navLinks.classList.remove('nav-open');
+      toggleBtn.classList.remove('active');
+      toggleBtn.setAttribute('aria-expanded', 'false');
+      if (backdrop) backdrop.classList.remove('active');
+      document.body.classList.remove('nav-scroll-lock');
+    }
 
     toggleBtn.addEventListener('click', () => {
       const isOpen = navLinks.classList.toggle('nav-open');
-      const icon = toggleBtn.querySelector('i');
-      if (icon) {
-        icon.className = isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
-      }
+      toggleBtn.classList.toggle('active', isOpen);
+      toggleBtn.setAttribute('aria-expanded', String(isOpen));
+      if (backdrop) backdrop.classList.toggle('active', isOpen);
+      document.body.classList.toggle('nav-scroll-lock', isOpen);
     });
+
+    if (backdrop) backdrop.addEventListener('click', closeMenu);
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeMenu();
+    });
+  })();
+
+  // --- Sticky header: add shadow/backdrop once the page scrolls ---
+  (function stickyHeaderShadow() {
+    const nav = document.getElementById('top');
+    if (!nav) return;
+    function onScroll() {
+      nav.classList.toggle('scrolled', window.scrollY > 12);
+    }
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  })();
+
+  // --- Scroll-reveal: fade/slide elements with class "reveal" into place ---
+  (function scrollReveal() {
+    const targets = document.querySelectorAll('.reveal');
+    if (!targets.length) return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+      targets.forEach(el => el.classList.add('in-view'));
+      return;
+    }
+
+    // Stagger elements that reveal together (e.g. rows/cards in the same batch)
+    targets.forEach((el, i) => {
+      el.style.transitionDelay = (Math.min(i % 5, 4) * 0.08) + 's';
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+    targets.forEach(el => observer.observe(el));
   })();
 </script>
 
