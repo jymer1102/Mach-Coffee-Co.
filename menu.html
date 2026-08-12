@@ -145,6 +145,10 @@
     box-shadow: 0 12px 28px rgba(27,42,74,0.1);
     transform: translateY(-2px);
   }
+  .drink-card:active { transform: translateY(0) scale(0.99); }
+  @media (prefers-reduced-motion: reduce) {
+    .drink-card:hover, .drink-card:active { transform: none; }
+  }
   .drink-card-top {
     display: flex;
     justify-content: space-between;
@@ -261,18 +265,21 @@
 
   <a href="{{ '/#order' | relative_url }}" class="nav-cta">Order Now</a>
 
-  <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation">
-    <i class="fa-solid fa-bars"></i>
+  <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation" aria-expanded="false">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
   </button>
 </nav>
+<div class="nav-backdrop" id="navBackdrop"></div>
 
 
 <section class="menu-hero">
-  <div class="eyebrow">The Manifest</div>
-  <h1>Full Menu</h1>
-  <p>Every drink, every build, every flight condition. Pick your altitude.</p>
+  <div class="eyebrow hero-anim hero-anim-1">The Manifest</div>
+  <h1 class="hero-anim hero-anim-2">Full Menu</h1>
+  <p class="hero-anim hero-anim-3">Every drink, every build, every flight condition. Pick your altitude.</p>
 
-  <div class="temp-key">
+  <div class="temp-key hero-anim hero-anim-4">
     <div class="temp-key-item"><span class="temp-key-letter">H</span> Hot</div>
     <div class="temp-key-item"><span class="temp-key-letter">I</span> Iced</div>
     <div class="temp-key-item"><span class="temp-key-letter">B</span> Blended</div>
@@ -289,14 +296,14 @@
 </div>
 
 <section class="menu-section" id="signature">
-  <div class="category-head">
+  <div class="category-head reveal">
     <span class="category-num">01</span>
     <h2>Signature Shots</h2>
   </div>
   <p class="category-tag">High-octane espresso builds. Not for the faint of heart.</p>
 
   <div class="drink-grid">
-    <div class="drink-card">
+    <div class="drink-card reveal">
       <div>
         <div class="drink-card-top">
           <div class="drink-name">The Redliner</div>
@@ -311,7 +318,7 @@
       </div>
     </div>
 
-    <div class="drink-card">
+    <div class="drink-card reveal">
       <div>
         <div class="drink-card-top">
           <div class="drink-name">The Afterburner</div>
@@ -326,7 +333,7 @@
       </div>
     </div>
 
-    <div class="drink-card">
+    <div class="drink-card reveal">
       <div>
         <div class="drink-card-top">
           <div class="drink-name">The Stall</div>
@@ -341,7 +348,7 @@
       </div>
     </div>
 
-    <div class="drink-card">
+    <div class="drink-card reveal">
       <div>
         <div class="drink-card-top">
           <div class="drink-name">The Bingo Fuel</div>
@@ -360,14 +367,14 @@
 <div class="menu-divider"></div>
 
 <section class="menu-section" id="smooth">
-  <div class="category-head">
+  <div class="category-head reveal">
     <span class="category-num">02</span>
     <h2>Smooth Cruise</h2>
   </div>
   <p class="category-tag">Easy, balanced, steady altitude. No turbulence.</p>
 
   <div class="drink-grid">
-    <div class="drink-card">
+    <div class="drink-card reveal">
       <div>
         <div class="drink-card-top">
           <div class="drink-name">The Cruise</div>
@@ -381,7 +388,7 @@
       </div>
     </div>
 
-    <div class="drink-card">
+    <div class="drink-card reveal">
       <div>
         <div class="drink-card-top">
           <div class="drink-name">The Glider</div>
@@ -395,7 +402,7 @@
       </div>
     </div>
 
-    <div class="drink-card">
+    <div class="drink-card reveal">
       <div>
         <div class="drink-card-top">
           <div class="drink-name">The Still</div>
@@ -409,7 +416,7 @@
       </div>
     </div>
 
-    <div class="drink-card">
+    <div class="drink-card reveal">
       <div>
         <div class="drink-card-top">
           <div class="drink-name">The Cloud</div>
@@ -423,7 +430,7 @@
       </div>
     </div>
 
-    <div class="drink-card">
+    <div class="drink-card reveal">
       <div>
         <div class="drink-card-top">
           <div class="drink-name">The Climb</div>
@@ -442,14 +449,14 @@
 <div class="menu-divider"></div>
 
 <section class="menu-section" id="loaded">
-  <div class="category-head">
+  <div class="category-head reveal">
     <span class="category-num">03</span>
     <h2>Loaded Flavors</h2>
   </div>
   <p class="category-tag">Heavy cargo. Rich, stacked, full payload.</p>
 
   <div class="drink-grid">
-    <div class="drink-card">
+    <div class="drink-card reveal">
       <div>
         <div class="drink-card-top">
           <div class="drink-name">The Payload</div>
@@ -463,7 +470,7 @@
       </div>
     </div>
 
-    <div class="drink-card">
+    <div class="drink-card reveal">
       <div>
         <div class="drink-card-top">
           <div class="drink-name">The Heavy Lift</div>
@@ -477,7 +484,7 @@
       </div>
     </div>
 
-    <div class="drink-card">
+    <div class="drink-card reveal">
       <div>
         <div class="drink-card-top">
           <div class="drink-name">The Tailspin</div>
@@ -491,7 +498,7 @@
       </div>
     </div>
 
-    <div class="drink-card">
+    <div class="drink-card reveal">
       <div>
         <div class="drink-card-top">
           <div class="drink-name">The Black Box</div>
@@ -505,7 +512,7 @@
       </div>
     </div>
 
-    <div class="drink-card">
+    <div class="drink-card reveal">
       <div>
         <div class="drink-card-top">
           <div class="drink-name">The Crosswind</div>
@@ -519,7 +526,7 @@
       </div>
     </div>
 
-    <div class="drink-card">
+    <div class="drink-card reveal">
       <div>
         <div class="drink-card-top">
           <div class="drink-name">The Jet Exhaust</div>
@@ -538,14 +545,14 @@
 <div class="menu-divider"></div>
 
 <section class="menu-section" id="tea">
-  <div class="category-head">
+  <div class="category-head reveal">
     <span class="category-num">04</span>
     <h2>Tea &amp; Matcha</h2>
   </div>
   <p class="category-tag">No espresso required. Calm air, clear skies.</p>
 
   <div class="drink-grid">
-    <div class="drink-card">
+    <div class="drink-card reveal">
       <div>
         <div class="drink-card-top">
           <div class="drink-name">The Tailwind</div>
@@ -559,7 +566,7 @@
       </div>
     </div>
 
-    <div class="drink-card">
+    <div class="drink-card reveal">
       <div>
         <div class="drink-card-top">
           <div class="drink-name">The Headwind</div>
@@ -573,7 +580,7 @@
       </div>
     </div>
 
-    <div class="drink-card">
+    <div class="drink-card reveal">
       <div>
         <div class="drink-card-top">
           <div class="drink-name">The Field Landing</div>
@@ -587,7 +594,7 @@
       </div>
     </div>
 
-    <div class="drink-card">
+    <div class="drink-card reveal">
       <div>
         <div class="drink-card-top">
           <div class="drink-name">The Strawberry Field Landing</div>
@@ -606,14 +613,14 @@
 <div class="menu-divider"></div>
 
 <section class="menu-section" id="cold">
-  <div class="category-head">
+  <div class="category-head reveal">
     <span class="category-num">05</span>
     <h2>Cold &amp; Refreshers</h2>
   </div>
   <p class="category-tag">High altitude, low temperature.</p>
 
   <div class="drink-grid">
-    <div class="drink-card">
+    <div class="drink-card reveal">
       <div>
         <div class="drink-card-top">
           <div class="drink-name">The Mayday</div>
@@ -627,7 +634,7 @@
       </div>
     </div>
 
-    <div class="drink-card">
+    <div class="drink-card reveal">
       <div>
         <div class="drink-card-top">
           <div class="drink-name">The Jet Fuel</div>
@@ -641,7 +648,7 @@
       </div>
     </div>
 
-    <div class="drink-card">
+    <div class="drink-card reveal">
       <div>
         <div class="drink-card-top">
           <div class="drink-name">The Standby</div>
@@ -655,7 +662,7 @@
       </div>
     </div>
 
-    <div class="drink-card">
+    <div class="drink-card reveal">
       <div>
         <div class="drink-card-top">
           <div class="drink-name">The Frostline</div>
@@ -674,14 +681,14 @@
 <div class="menu-divider"></div>
 
 <section class="menu-section" id="specialty">
-  <div class="category-head">
+  <div class="category-head reveal">
     <span class="category-num">06</span>
     <h2>Specialty</h2>
   </div>
   <p class="category-tag">A couple of one-off builds, just because.</p>
 
   <div class="drink-grid">
-    <div class="drink-card">
+    <div class="drink-card reveal">
       <div>
         <div class="drink-card-top">
           <div class="drink-name">The Flight Deck</div>
@@ -695,7 +702,7 @@
       </div>
     </div>
 
-    <div class="drink-card">
+    <div class="drink-card reveal">
       <div>
         <div class="drink-card-top">
           <div class="drink-name">The Mach Break</div>
@@ -711,7 +718,7 @@
   </div>
 </section>
 
-<div class="order-cta-band">
+<div class="order-cta-band reveal">
   <h2>Ready to Order?</h2>
   <p>Pick up in-shop or get it delivered &mdash; you're in command.</p>
   <a href="{{ '/' | relative_url }}#order" class="btn-gold">Order Now</a>
@@ -757,19 +764,73 @@
   })();
 </script>
 <script>
-  // --- Mobile Navigation Drawer Toggle ---
+  // --- Mobile Navigation Drawer Toggle (bars morph into an X) ---
   (function mobileNav() {
     const toggleBtn = document.getElementById('mobileNavToggle');
     const navLinks = document.getElementById('navLinks');
+    const backdrop = document.getElementById('navBackdrop');
     if (!toggleBtn || !navLinks) return;
+
+    function closeMenu() {
+      navLinks.classList.remove('nav-open');
+      toggleBtn.classList.remove('active');
+      toggleBtn.setAttribute('aria-expanded', 'false');
+      if (backdrop) backdrop.classList.remove('active');
+      document.body.classList.remove('nav-scroll-lock');
+    }
 
     toggleBtn.addEventListener('click', () => {
       const isOpen = navLinks.classList.toggle('nav-open');
-      const icon = toggleBtn.querySelector('i');
-      if (icon) {
-        icon.className = isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
-      }
+      toggleBtn.classList.toggle('active', isOpen);
+      toggleBtn.setAttribute('aria-expanded', String(isOpen));
+      if (backdrop) backdrop.classList.toggle('active', isOpen);
+      document.body.classList.toggle('nav-scroll-lock', isOpen);
     });
+
+    if (backdrop) backdrop.addEventListener('click', closeMenu);
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeMenu();
+    });
+  })();
+
+  // --- Sticky header: add shadow/backdrop once the page scrolls ---
+  (function stickyHeaderShadow() {
+    const nav = document.getElementById('top');
+    if (!nav) return;
+    function onScroll() {
+      nav.classList.toggle('scrolled', window.scrollY > 12);
+    }
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  })();
+
+  // --- Scroll-reveal: fade/slide elements with class "reveal" into place ---
+  (function scrollReveal() {
+    const targets = document.querySelectorAll('.reveal');
+    if (!targets.length) return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+      targets.forEach(el => el.classList.add('in-view'));
+      return;
+    }
+
+    // Stagger elements that reveal together (e.g. rows/cards in the same batch)
+    targets.forEach((el, i) => {
+      el.style.transitionDelay = (Math.min(i % 5, 4) * 0.08) + 's';
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+    targets.forEach(el => observer.observe(el));
   })();
 </script>
 
