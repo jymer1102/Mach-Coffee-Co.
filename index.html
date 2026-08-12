@@ -170,15 +170,24 @@
     overflow: hidden;
     border-top: 2px solid var(--gold);
     border-bottom: 2px solid var(--gold);
+    /* Fade the strip's edges instead of cutting text off abruptly */
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 40px, #000 calc(100% - 40px), transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, #000 40px, #000 calc(100% - 40px), transparent 100%);
   }
   .marquee-track {
     display: inline-block;
     animation: scroll-left 150s linear infinite;
   }
+  .marquee-strip:hover .marquee-track {
+    animation-play-state: paused;
+  }
   .marquee-track span { margin: 0 28px; }
   @keyframes scroll-left {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track { animation: none; }
   }
 
   /* ---------- MENU PREVIEW ---------- */
