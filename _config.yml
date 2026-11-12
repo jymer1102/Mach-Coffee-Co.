@@ -1,6 +1,15 @@
-title: "Mach Coffee Co."
-description: "Coffee, engineered for altitude."
-theme: minima
-permalink: pretty
-baseurl: "/Mach-Coffee-Co."
-url: "https://jymer1102.github.io"
+# _config.yml
+title: Mach Coffee Co.
+description: "Mach Coffee Co. offers the finest freshly roasted coffee. Explore our menu and story."
+url: "https://www.machcoffeeco.com" # Replace with your actual live URL
+author: "Mach Coffee Co."
+
+# Social images
+image: /images/social-card.png
+twitter:
+  card: summary_large_image
+  username: machcoffeeco # Replace with your actual Twitter handle if applicable
+
+# Jekyll Setup
+plugins:
+  - jekyll-seo-tag
