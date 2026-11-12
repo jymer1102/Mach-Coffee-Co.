@@ -1,0 +1,39 @@
+<!-- _includes/header.html : top strip, navigation, mobile drawer backdrop, back-to-top -->
+<div class="top-strip">Concept Location &mdash; Opening Soon &mdash; Springfield, MO</div>
+
+<nav id="top">
+  <a href="{{ '/' | relative_url }}" class="logo-mark" aria-label="Mach Coffee Co. — Home">
+    <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+      <circle cx="17" cy="17" r="16" stroke="#1B2A4A" stroke-width="1.5"/>
+      <path d="M17 3 L17 31 M3 17 L31 17" stroke="#1B2A4A" stroke-width="0.75"/>
+      <g class="nav-compass-needle">
+        <path d="M17 6 L20 17 L17 28 L14 17 Z" fill="#8B2E2E"/>
+      </g>
+      <circle cx="17" cy="17" r="2.5" fill="#C9A24B"/>
+    </svg>
+    <div class="logo-text">MACH <span>COFFEE CO.</span></div>
+  </a>
+
+  <div class="nav-links" id="navLinks">
+    <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} class="active" aria-current="page"{% endif %}>Home</a>
+    <a href="{{ '/menu/' | relative_url }}"{% if page.url == '/menu/' %} class="active" aria-current="page"{% endif %}>Menu</a>
+    <a href="{{ '/about/' | relative_url }}"{% if page.url == '/about/' %} class="active" aria-current="page"{% endif %}>Our Story</a>
+    <a href="{{ '/connect/' | relative_url }}"{% if page.url == '/connect/' %} class="active" aria-current="page"{% endif %}>Connect</a>
+  </div>
+
+  <a href="{{ '/#order' | relative_url }}" class="nav-cta">Order Now</a>
+
+  <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation" aria-expanded="false">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </button>
+</nav>
+<div class="nav-backdrop" id="navBackdrop"></div>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top" type="button">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 19V5"></path>
+    <path d="M5 12l7-7 7 7"></path>
+  </svg>
+</button>

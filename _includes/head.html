@@ -2,11 +2,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- Jekyll SEO Tag plugin automates title, description, and social meta tags -->
+
+  <!-- jekyll-seo-tag builds <title>, description, canonical URL, Open Graph and
+       Twitter Card tags from each page's front matter (title, description)
+       and the site-wide values in _config.yml (url, image, twitter). -->
   {% seo %}
 
-  <!-- Favicon Links -->
-  <link rel="icon" type="image/x-icon" href="{{ '/images/favicon/favicon.ico' | relative_url }}">
+  <meta name="theme-color" content="#1B2A4A">
+  {% if page.noindex %}<meta name="robots" content="noindex, follow">{% endif %}
+
+  <!-- Favicon (id="favicon" is used by the spinning-favicon script) -->
+  <link rel="icon" id="favicon" type="image/png" href="{{ '/images/favicon/frame_00.png' | relative_url }}">
   <link rel="apple-touch-icon" href="{{ '/images/favicon/apple-touch-icon.png' | relative_url }}">
+
+  <!-- Fonts & icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css">
+
+  <!-- Shared styles, then optional page-specific styles (set `page_css: name` in front matter) -->
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  {% if page.page_css %}<link rel="stylesheet" href="{{ '/assets/css/pages/' | append: page.page_css | append: '.css' | relative_url }}">{% endif %}
 </head>

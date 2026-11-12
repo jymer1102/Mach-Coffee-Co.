@@ -1,0 +1,94 @@
+  .error-section {
+    padding: 100px 6% 120px;
+    text-align: center;
+    background: var(--cream);
+    min-height: calc(100vh - 250px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .error-container {
+    max-width: 620px;
+    margin: 0 auto;
+  }
+
+  /* Ensures eyebrow alignment remains centered */
+  .error-container .eyebrow {
+    justify-content: center;
+  }
+
+  .error-code {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(5rem, 12vw, 9rem);
+    font-weight: 700;
+    line-height: 0.9;
+    color: var(--brick);
+    letter-spacing: 0.05em;
+    margin-bottom: 10px;
+  }
+
+  .error-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    color: var(--navy);
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+
+  .error-sub {
+    font-size: 1.1rem;
+    color: #44433f;
+    margin-bottom: 36px;
+    line-height: 1.6;
+  }
+
+  .error-actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  /* Radar scanning element */
+  .radar-wrap {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 30px;
+    position: relative;
+    border-radius: 50%;
+    border: 2px solid var(--navy);
+    background: radial-gradient(circle, rgba(27,42,74,0.05) 0%, rgba(27,42,74,0.15) 100%);
+    box-shadow: 0 0 15px rgba(27,42,74,0.1);
+  }
+
+  .radar-wrap::before, .radar-wrap::after {
+    content: '';
+    position: absolute;
+    background: rgba(27,42,74,0.2);
+  }
+
+  .radar-wrap::before {
+    top: 50%; left: 0; right: 0; height: 1px;
+  }
+
+  .radar-wrap::after {
+    left: 50%; top: 0; bottom: 0; width: 1px;
+  }
+
+  .radar-sweep {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, transparent 0deg, transparent 270deg, rgba(201,162,75,0.4) 360deg);
+    animation: radar-spin 4s linear infinite;
+  }
+
+  @keyframes radar-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .radar-sweep { animation: none; }
+  }

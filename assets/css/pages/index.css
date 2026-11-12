@@ -1,0 +1,466 @@
+  /* ---------- HERO ---------- */
+  .hero {
+    position: relative;
+    padding: 90px 6% 110px;
+    background: var(--cream);
+    overflow: hidden;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 60px;
+    align-items: center;
+    max-width: 1280px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero h1 {
+    font-size: clamp(3rem, 6.5vw, 5.2rem);
+    line-height: 0.98;
+    color: var(--navy);
+    margin-bottom: 26px;
+    font-weight: 700;
+  }
+  .hero h1 .accent { color: var(--brick); }
+
+  .hero-sub {
+    font-size: 1.15rem;
+    color: #44433f;
+    max-width: 460px;
+    margin-bottom: 38px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+
+  /* Compass rose motif */
+  .compass-wrap {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .compass-instrument {
+    position: relative;
+    width: 100%;
+    max-width: 440px;
+  }
+  .compass-bezel {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 18px 34px rgba(27,42,74,0.22));
+  }
+  .compass-needle-layer {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotate(0deg);
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .compass-needle-layer.ambient-spin {
+    animation: spin-slow 70s linear infinite;
+    transition: none;
+  }
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .compass-needle-layer.ambient-spin { animation: none; }
+  }
+
+  .compass-status {
+    margin-top: 22px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--navy);
+    opacity: 0.65;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: default;
+  }
+  .compass-status .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--brick);
+  }
+  .compass-status.live .dot { background: #3a7d44; }
+  .compass-status button {
+    background: none;
+    border: 1px solid var(--navy);
+    color: var(--navy);
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 2px;
+    cursor: pointer;
+    margin-left: 6px;
+  }
+  .compass-status button:hover { background: var(--navy); color: var(--cream); }
+  .compass-heading-readout {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.95rem;
+    color: var(--navy);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+  }
+
+  .altitude-line {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 1px;
+    background: repeating-linear-gradient(to bottom, var(--gold) 0 6px, transparent 6px 14px);
+    opacity: 0.4;
+  }
+
+  /* ---------- MARQUEE STRIP ---------- */
+  .marquee-strip {
+    background: var(--navy);
+    color: var(--gold);
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 14px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    border-top: 2px solid var(--gold);
+    border-bottom: 2px solid var(--gold);
+    /* Fade the strip's edges instead of cutting text off abruptly */
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 40px, #000 calc(100% - 40px), transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, #000 40px, #000 calc(100% - 40px), transparent 100%);
+  }
+  .marquee-track {
+    display: inline-block;
+    animation: scroll-left 150s linear infinite;
+  }
+  .marquee-strip:hover .marquee-track {
+    animation-play-state: paused;
+  }
+  .marquee-track span { margin: 0 28px; }
+  @keyframes scroll-left {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track { animation: none; }
+  }
+
+  /* ---------- MENU PREVIEW ---------- */
+  .menu-preview { background: var(--cream); }
+
+  .manifest-table {
+    border-top: 2px solid var(--navy);
+    border-bottom: 2px solid var(--navy);
+  }
+
+  .manifest-row {
+    display: grid;
+    grid-template-columns: 80px 1fr auto 140px;
+    align-items: baseline;
+    gap: 24px;
+    padding: 22px 0;
+    border-bottom: 1px dashed rgba(27,42,74,0.25);
+    position: relative;
+    overflow: hidden;
+  }
+  .manifest-row:last-child { border-bottom: none; }
+  .manifest-row::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(201,162,75,0.12), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.7s ease;
+    pointer-events: none;
+  }
+  .manifest-row:hover::before { transform: translateX(100%); }
+  @media (prefers-reduced-motion: reduce) {
+    .manifest-row::before { display: none; }
+  }
+
+  .manifest-code {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.75rem;
+    color: var(--brick);
+    letter-spacing: 0.1em;
+  }
+
+  .manifest-name {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.2rem;
+    color: var(--navy);
+    letter-spacing: 0.02em;
+  }
+
+  .manifest-desc {
+    font-size: 0.92rem;
+    color: #5a594f;
+    font-style: italic;
+  }
+
+  .manifest-temps {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.75rem;
+    color: var(--gold);
+    text-align: right;
+    letter-spacing: 0.1em;
+  }
+
+  .menu-cta {
+    text-align: center;
+    margin-top: 48px;
+  }
+
+  /* ---------- ABOUT TEASER ---------- */
+  .about-teaser {
+    background: var(--navy);
+    color: var(--cream);
+    position: relative;
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 70px;
+    align-items: center;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .about-teaser .eyebrow { color: var(--gold); }
+  .about-teaser .eyebrow::before,
+  .about-teaser .eyebrow::after { background: var(--gold); }
+  .about-teaser h2 { color: var(--cream); margin-bottom: 24px; font-size: clamp(2rem, 3.6vw, 2.8rem); }
+  .about-teaser p { color: rgba(250,247,240,0.85); font-size: 1.05rem; margin-bottom: 20px; max-width: 520px; }
+
+  .logbook-card {
+    background: var(--cream);
+    color: var(--ink);
+    padding: 44px;
+    border-radius: 2px;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  }
+  .logbook-card::before {
+    content: 'FLIGHT LOG — ENTRY 01';
+    position: absolute;
+    top: -14px;
+    left: 30px;
+    background: var(--gold);
+    color: var(--navy);
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    padding: 6px 14px;
+  }
+  .logbook-card h3 {
+    color: var(--navy);
+    font-size: 1.1rem;
+    margin-bottom: 14px;
+    margin-top: 8px;
+  }
+  .logbook-card p {
+    color: #4a4940;
+    font-size: 0.95rem;
+  }
+
+  /* ---------- ORDER STRIP ---------- */
+  .order-strip {
+    background: var(--cream);
+    text-align: center;
+  }
+  .order-strip .section-head { margin-bottom: 48px; }
+
+  .order-options {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .order-card {
+    background: #fff;
+    border: 1px solid rgba(27,42,74,0.15);
+    padding: 32px 40px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: var(--navy);
+    min-width: 200px;
+    transition: all 0.25s ease;
+  }
+  .order-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-4px);
+    box-shadow: 0 14px 30px rgba(27,42,74,0.12);
+  }
+  .order-card:active { transform: translateY(-1px) scale(0.98); }
+  @media (prefers-reduced-motion: reduce) {
+    .order-card:hover, .order-card:active { transform: none; }
+  }
+  .order-card .platform {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.05rem;
+    letter-spacing: 0.04em;
+    margin-bottom: 6px;
+  }
+  .order-card .platform-sub {
+    font-size: 0.8rem;
+    color: #8a8a82;
+    font-style: italic;
+  }
+
+  .order-card--pickup {
+    background: var(--navy);
+    border-color: var(--navy);
+    position: relative;
+  }
+  .order-card--pickup .platform { color: var(--cream); }
+  .order-card--pickup .platform-sub { color: var(--gold); font-style: normal; }
+  .order-card--pickup:hover {
+    border-color: var(--gold);
+    background: var(--navy-dark);
+  }
+  .order-card--pickup::before {
+    content: 'NO FEES';
+    position: absolute;
+    top: -10px;
+    right: 14px;
+    background: var(--gold);
+    color: var(--navy);
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    padding: 3px 9px;
+    border-radius: 2px;
+    animation: badgePulse 2.2s ease-in-out 1.4s 2;
+  }
+  @keyframes badgePulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .order-card--pickup::before { animation: none; }
+  }
+
+  /* ---------- LOCATION / CONTACT ---------- */
+  .location {
+    background: var(--cream);
+    border-top: 1px solid rgba(27,42,74,0.15);
+  }
+  .location-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .location-block h3 {
+    color: var(--navy);
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .location-block h3::before {
+    content: '';
+    width: 8px; height: 8px;
+    background: var(--brick);
+    border-radius: 50%;
+  }
+  .location-block p {
+    font-size: 1.05rem;
+    color: #44433f;
+  }
+  .location-block a { color: var(--navy); text-decoration: none; border-bottom: 1px solid var(--gold); }
+
+  .hours-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px dashed rgba(27,42,74,0.2);
+    font-size: 0.95rem;
+  }
+  .hours-row:last-child { border-bottom: none; }
+  .hours-day { font-family: 'Oswald', sans-serif; letter-spacing: 0.05em; color: var(--navy); font-size: 0.85rem; }
+
+  /* ---------- DIRECTIONS PICKER MODAL ---------- */
+  /* Overlay/modal open/close animation now lives in assets/css/style.css (shared) */
+  .directions-modal-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 1.05rem;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .directions-close {
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    line-height: 1;
+    color: var(--navy);
+    cursor: pointer;
+    padding: 0 0 0 12px;
+  }
+  .directions-modal-sub {
+    font-size: 0.9rem;
+    color: #5a594f;
+    margin-bottom: 22px;
+  }
+  .directions-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .directions-option {
+    display: block;
+    text-align: center;
+    background: var(--navy);
+    color: var(--cream);
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    padding: 14px;
+    text-decoration: none;
+    border-radius: 2px;
+    border: 1px solid var(--navy);
+    transition: all 0.2s ease;
+  }
+  .directions-option:hover {
+    background: transparent;
+    color: var(--navy);
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 880px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .compass-wrap { order: -1; max-width: 260px; margin: 0 auto 20px; }
+    .about-grid { grid-template-columns: 1fr; }
+    .location-grid { grid-template-columns: 1fr; gap: 40px; }
+    .manifest-row { grid-template-columns: 50px 1fr; row-gap: 6px; }
+    .manifest-desc { grid-column: 2 / 3; }
+    .manifest-temps { grid-column: 2 / 3; text-align: left; }
+    section { padding: 70px 6%; }
+  }
