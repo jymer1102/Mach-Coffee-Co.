@@ -1,5 +1,6 @@
 # _config.yml
 title: Mach Coffee Co.
+tagline: "Coffee, Engineered for Altitude" # shown after the site title on the homepage <title>
 description: "Mach Coffee Co. offers a coffee experienced fused with aviation. Explore our menu and story."
 url: "https://jymer1102.github.io/Mach-Coffee-Co." # Replace with your actual live URL
 author: "Mach Coffee Co."
