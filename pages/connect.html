@@ -4,6 +4,7 @@ title: "Connect"
 description: "Establish contact with ground control. File your message on our transmission frequencies."
 permalink: /connect/
 page_css: connect
+page_js: connect
 ---
 
 <header class="connect-hero">
@@ -96,94 +97,3 @@ page_css: connect
     </div>
   </div>
 </div>
-
-<script>
-  // --- Directions picker: Apple Maps / Google Maps / Waze ---
-  (function directionsPicker() {
-    const SHOP_ADDRESS = '123 Runway Lane, Springfield, MO 65801';
-    const encoded = encodeURIComponent(SHOP_ADDRESS);
-
-    const overlay = document.getElementById('directionsOverlay');
-    const trigger = document.getElementById('directionsLink');
-    const closeBtn = document.getElementById('directionsClose');
-    const appleLink = document.getElementById('directionsApple');
-    const googleLink = document.getElementById('directionsGoogle');
-    const wazeLink = document.getElementById('directionsWaze');
-
-    if (!overlay || !trigger) return;
-
-    if (appleLink) appleLink.href = `https://maps.apple.com/?daddr=${encoded}`;
-    if (googleLink) googleLink.href = `https://www.google.com/maps/search/?api=1&query=$${encoded}`;
-    if (wazeLink) wazeLink.href = `https://waze.com/ul?q=${encoded}&navigate=yes`;
-
-    function openModal(e) {
-      e.preventDefault();
-      overlay.classList.add('active');
-    }
-    function closeModal() {
-      overlay.classList.remove('active');
-    }
-
-    trigger.addEventListener('click', openModal);
-    if (closeBtn) closeBtn.addEventListener('click', closeModal);
-    overlay.addEventListener('click', (e) => {
-      if (e.target === overlay) closeModal();
-    });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeModal();
-    });
-  })();
-
-</script>
-<script>
-  // --- Transmission form: submit via fetch, no full-page reload ---
-  (function transmissionForm() {
-    const form = document.getElementById('transmissionForm');
-    const btn = document.getElementById('transmitBtn');
-    const statusEl = document.getElementById('formStatus');
-    if (!form || !btn || !statusEl) return;
-
-    const label = btn.querySelector('.btn-label');
-    const originalLabel = label ? label.textContent : 'Transmit Message';
-
-    if (!btn.querySelector('.btn-spinner')) {
-      const spinner = document.createElement('span');
-      spinner.className = 'btn-spinner';
-      btn.appendChild(spinner);
-    }
-
-    function setStatus(message, type) {
-      statusEl.textContent = message;
-      statusEl.className = 'form-status visible' + (type ? ' ' + type : '');
-    }
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      btn.disabled = true;
-      btn.classList.add('is-loading');
-      if (label) label.textContent = 'Transmitting…';
-      setStatus('', '');
-
-      try {
-        const response = await fetch(form.action, {
-          method: 'POST',
-          body: new FormData(form),
-          headers: { 'Accept': 'application/json' }
-        });
-
-        if (response.ok) {
-          setStatus('Transmission received — we\u2019ll be in touch soon.', 'success');
-          form.reset();
-        } else {
-          setStatus('Transmission failed to send. Please try again or email us directly.', 'error');
-        }
-      } catch (err) {
-        setStatus('Transmission failed to send. Please check your connection and try again.', 'error');
-      } finally {
-        btn.disabled = false;
-        btn.classList.remove('is-loading');
-        if (label) label.textContent = originalLabel;
-      }
-    });
-  })();
-</script>

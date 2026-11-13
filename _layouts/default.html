@@ -9,6 +9,7 @@
     {% include footer.html %}
 
     <script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
-    {% include favicon-animation.html %}
+    {% if page.page_js %}<script src="{{ '/assets/js/' | append: page.page_js | append: '.js' | relative_url }}" defer></script>{% endif %}
+    <script src="{{ '/assets/js/favicon-animation.js' | relative_url }}" data-frame-base="{{ '/images/favicon/' | relative_url }}" defer></script>
   </body>
 </html>

@@ -87,3 +87,39 @@
     window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
   });
 })();
+
+// --- Directions picker: Apple Maps / Google Maps / Waze ---
+(function directionsPicker() {
+  const SHOP_ADDRESS = '123 Runway Lane, Springfield, MO 65801';
+  const encoded = encodeURIComponent(SHOP_ADDRESS);
+
+  const overlay = document.getElementById('directionsOverlay');
+  const trigger = document.getElementById('directionsLink');
+  const closeBtn = document.getElementById('directionsClose');
+  const appleLink = document.getElementById('directionsApple');
+  const googleLink = document.getElementById('directionsGoogle');
+  const wazeLink = document.getElementById('directionsWaze');
+
+  if (!overlay || !trigger) return;
+
+  if (appleLink) appleLink.href = `https://maps.apple.com/?daddr=${encoded}`;
+  if (googleLink) googleLink.href = `https://www.google.com/maps/search/?api=1&query=${encoded}`;
+  if (wazeLink) wazeLink.href = `https://waze.com/ul?q=${encoded}&navigate=yes`;
+
+  function openModal(e) {
+    e.preventDefault();
+    overlay.classList.add('active');
+  }
+  function closeModal() {
+    overlay.classList.remove('active');
+  }
+
+  trigger.addEventListener('click', openModal);
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closeModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
+})();
